@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>משא האבנים של קאי · אגדות המראה</title>
+    <meta name="theme-color" content="#312e81">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Frank+Ruhl+Libre:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles.css">
+    <script>
+        /* Runs before the body paints, so a reader who chose a theme never sees
+           the other one flash first. No stored choice means no attribute, and
+           the CSS falls through to prefers-color-scheme. */
+        (function () {
+            try {
+                var saved = localStorage.getItem('tells.theme');
+                if (saved === 'dark' || saved === 'light') {
+                    document.documentElement.setAttribute('data-theme', saved);
+                }
+            } catch (e) { /* private mode: system preference still applies */ }
+        })();
+    </script></head>
+<body>
+
+    <header class="compact" id="top">
+        <button type="button" class="theme-toggle" id="themeToggle" aria-label="מעבר בין מצב בהיר לכהה" title="מצב בהיר / כהה">
+            <span class="icon-dark" aria-hidden="true">🌙</span>
+            <span class="icon-light" aria-hidden="true">☀️</span>
+        </button>
+        <div class="header-content">
+            <a class="home-link" href="index.html">כל הסיפורים</a>
+            <p class="story-page">סיפור 5 מתוך 6</p>
+            <h1>משא האבנים של קאי</h1>
+        </div>
+    </header>
+
+    <main>
+    <article class="story-card" id="story-5">
+            <div class="story-header">
+                <span class="story-tag">נושא: מלכודת האשמה והפיכת בן הזוג לכתובת לכל תסכול</span>
+            </div>
+            <div class="story-body">
+                <p>במרומי הרי הבדולח חיו הנפח <strong>קאי</strong> וזוגתו <strong>סלין</strong>. בכל פעם שסלין חוותה קושי, פחד או עלבון מהעולם, היא הפכה את קאי למקור הבלעדי של הבעיה:</p>
+                <ul>
+                    <li>אם מעדה בשביל – <span class="dialogue">"בגללך נפלתי, לא פינית את הדרך!"</span></li>
+                    <li>אם ירד גשם על הבדים – <span class="dialogue">"אתה אשם שלא מנעת את זה!"</span></li>
+                    <li>אם חשה מרוחקת מאנשי הכפר – <span class="dialogue">"אתה אשם שאין לי אף אחד!"</span></li>
+                </ul>
+                <p>קאי האמין שתפקידו לספוג הכל כדי להגן עליה. בכל פעם שהאשימה אותו, הניחה על גבו אבן בזלת שחורה. קאי כפף את גבו ונשא את המשא בשקט, עד שערימת האבנים גבהה למגדל כבד מנשוא.</p>
+                <p>ערב אחד, כשתבשיל המרק נחרך מעט, צעקה סלין: <span class="dialogue">"אתה אשם בכל מה שרע בחיים שלי!"</span> והשליכה אבן כבדה נוספת.</p>
+                <p>גבו של קאי נשבר בקול נפץ. הוא קרס אל הקרקע, משותק ומרוסק תחת האבנים שלא היו שלו מעולם.</p>
+                <p>רופאת ההרים הזקנה אמרה לסלין הבוכייה: <span class="dialogue">"אהבה אינה שק חבטות. במקום לקחת אחריות על סערות נפשך, הפכת את האדם היחיד שהגן עלייך למטרה לחצי הזעם שלך – עד שריסקת את הכתפיים שרצו לשאת אותך."</span></p>
+            </div>
+            <div class="quote-box insight">
+                <div class="quote-title">מוסר השכל</div>
+                <p>בן זוג אינו כלי קיבול להשלכת כל תסכולי החיים. מי שמטיל את כל כובד משקלו הרגשי על האחר, ירסק בסופו של דבר את הקשר ואת האדם שאוהב אותו.</p>
+            </div>
+        </article>
+
+        <nav class="story-nav" aria-label="ניווט בין סיפורים">
+            <a href="story-4.html"><span class="dir">הסיפור הקודם</span><span>מי הגילוי של רזיה</span></a>
+            <a class="all" href="index.html"><span>כל הסיפורים</span></a>
+            <a href="story-6.html"><span class="dir">הסיפור הבא</span><span>יסודות הבקתה של נואית</span></a>
+        </nav>
+    </main>
+
+    <footer>
+        <p>אגדות המראה • משלים מודרניים על לב, פחד ואהבה</p>
+
+        <div class="credit">
+            <a class="credit-link" href="https://birkat-hanasi.lovable.app" target="_blank" rel="noopener"
+               aria-label="פותח על ידי ברכת הנשיא — אתר רשמי">
+                <img src="images/birkat-hanasi-logo.webp" alt="" width="44" height="44" onerror="this.remove()">
+                <span class="c-txt">
+                    <span class="c-lead">פותח על ידי</span>
+                    <span class="c-name">ברכת הנשיא</span> <span class="c-tr">Birkat HaNasi</span>
+                    <span class="c-tag">פיתוח תוכנה מותאם, במהירות הבזק, בטכנולוגיית AI</span>
+                </span>
+            </a>
+        </div>
+    </footer>
+
+    <a href="#top" class="back-to-top" title="חזרה לראש העמוד">↑</a>
+    <script src="assets/theme.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>יסודות הבקתה של נואית · אגדות המראה</title>
+    <meta name="theme-color" content="#312e81">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Frank+Ruhl+Libre:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles.css">
+    <script>
+        /* Runs before the body paints, so a reader who chose a theme never sees
+           the other one flash first. No stored choice means no attribute, and
+           the CSS falls through to prefers-color-scheme. */
+        (function () {
+            try {
+                var saved = localStorage.getItem('tells.theme');
+                if (saved === 'dark' || saved === 'light') {
+                    document.documentElement.setAttribute('data-theme', saved);
+                }
+            } catch (e) { /* private mode: system preference still applies */ }
+        })();
+    </script></head>
+<body>
+
+    <header class="compact" id="top">
+        <button type="button" class="theme-toggle" id="themeToggle" aria-label="מעבר בין מצב בהיר לכהה" title="מצב בהיר / כהה">
+            <span class="icon-dark" aria-hidden="true">🌙</span>
+            <span class="icon-light" aria-hidden="true">☀️</span>
+        </button>
+        <div class="header-content">
+            <a class="home-link" href="index.html">כל הסיפורים</a>
+            <p class="story-page">סיפור 6 מתוך 6</p>
+            <h1>יסודות הבקתה של נואית</h1>
+        </div>
+    </header>
+
+    <main>
+    <article class="story-card" id="story-6">
+            <div class="story-header">
+                <span class="story-tag">נושא: השימוש בנשק הפרידה והאיום בגירוש כדי להשיג שליטה</span>
+            </div>
+            <div class="story-body">
+                <p>במורדות הרי הארגמן חיו <strong>דן</strong> ו<strong>נואית</strong> בבקתת אבן איתנה.</p>
+                <p>אך לנואית היה הרגל הרסני: בכל ויכוח, תסכול או אי-הסכמה, שלפה את הנשק הכבד ביותר. היא הייתה טורקת את הדלת וזועקת: <span class="dialogue">"צא מהבית! אל תחזור לכאן לעולם! נפרק את הבית הזה עוד היום!"</span></p>
+                <p>בכל פעם שאיימה, תלשה אבן אחת מיסודות הבקתה והשליכה לתהום, כדי לאלץ את דן להתחנן ולהוכיח את אהבתו. דן היה עומד בקור, סופג את העלבון, וחוזר לנסות לתקן.</p>
+                <p>יום אחד, בוויכוח פעוט נוסף, צרחה נואית: <span class="dialogue">"הפעם זה סופי! צא ולא תראה אותי יותר!"</span></p>
+                <p>דן הביט בה בעיניים עייפות וריקות. הוא לא התחנן ולא צעק; הוא פשוט הסתובב והלך. נואית המתינה שידפוק על הדלת, אך במקום זאת שמעה חריקה עזה: קירות הבקתה קרסו והתקרה התמוטטה.</p>
+                <p>שומרת ההרים ניצבה מול החורבות ואמרה: <span class="dialogue">"דן לא הרס את הבית – את עשית זאת. בית אינו זירה למשחקי כוח. בכל פעם שהשתמשת באיום הסופי כנשק יומיומי, עקרת עוד אבן מהיסודות – עד שלא נותר דבר שיחזיק את הגג מעל ראשך."</span></p>
+            </div>
+            <div class="quote-box insight">
+                <div class="quote-title">מוסר השכל</div>
+                <p>מי שמשתמש באיום בפרידה ובסילוק כדי לזכות באהבה ושליטה, משמיד את תחושת הביטחון הבסיסית שבלעדיה שום בית אינו יכול לעמוד.</p>
+            </div>
+        </article>
+
+        <nav class="story-nav" aria-label="ניווט בין סיפורים">
+            <a href="story-5.html"><span class="dir">הסיפור הקודם</span><span>משא האבנים של קאי</span></a>
+            <a class="all" href="index.html"><span>כל הסיפורים</span></a>
+            
+        </nav>
+    </main>
+
+    <footer>
+        <p>אגדות המראה • משלים מודרניים על לב, פחד ואהבה</p>
+
+        <div class="credit">
+            <a class="credit-link" href="https://birkat-hanasi.lovable.app" target="_blank" rel="noopener"
+               aria-label="פותח על ידי ברכת הנשיא — אתר רשמי">
+                <img src="images/birkat-hanasi-logo.webp" alt="" width="44" height="44" onerror="this.remove()">
+                <span class="c-txt">
+                    <span class="c-lead">פותח על ידי</span>
+                    <span class="c-name">ברכת הנשיא</span> <span class="c-tr">Birkat HaNasi</span>
+                    <span class="c-tag">פיתוח תוכנה מותאם, במהירות הבזק, בטכנולוגיית AI</span>
+                </span>
+            </a>
+        </div>
+    </footer>
+
+    <a href="#top" class="back-to-top" title="חזרה לראש העמוד">↑</a>
+    <script src="assets/theme.js"></script>
+
+</body>
+</html>

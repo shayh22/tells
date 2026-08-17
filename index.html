@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>אגדות המראה: אסופת סיפורים על לב, פחד ואהבה</title>
+    <meta name="theme-color" content="#312e81">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <meta name="theme-color" content="#312e81">
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Frank+Ruhl+Libre:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles.css">
     <script>
         /* Runs before the body paints, so a reader who chose a theme never sees
            the other one flash first. No stored choice means no attribute, and
@@ -20,558 +21,10 @@
                 }
             } catch (e) { /* private mode: system preference still applies */ }
         })();
-    </script>
-    <style>
-        /* Light is the base palette: every colour token is defined here, so a
-           token can never be missing when the dark blocks below don't apply. */
-        :root {
-            --bg-primary: #f8fafc;
-            --bg-card: #ffffff;
-            --bg-soft: #f8fafc;
-            --text-main: #1e293b;
-            --text-body: #334155;
-            --text-muted: #64748b;
-            --accent: #4f46e5;
-            --accent-light: #eef2ff;
-            --accent-border: #c7d2fe;
-            --badge-bg: #e0e7ff;
-            --heading: #312e81;
-            --heading-strong: #1e1b4b;
-            --line: #e2e8f0;
-            --line-soft: #edf2f7;
-            --quote-bg: #faf5ff;
-            --quote-border: #a855f7;
-            --insight-bg: #f0fdf4;
-            --insight-border: #22c55e;
-            --insight-title: #15803d;
-            --insight-text: #166534;
-            --dialogue-bg: #f5f3ff;
-            --dialogue-text: #4338ca;
-            --fab-bg: #1e1b4b;
-            --fab-text: #ffffff;
-            --img-filter: none;
-            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
-            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.04);
-            --radius-md: 12px;
-            --radius-lg: 20px;
-        }
-
-        /* Only the colours change in dark mode. The rule is repeated for the
-           system preference (unless the reader explicitly chose light) and for
-           an explicit dark choice, so the toggle wins in both directions. */
-        @media (prefers-color-scheme: dark) {
-            :root:not([data-theme="light"]) {
-                --bg-primary: #0b1120;
-                --bg-card: #151f33;
-                --bg-soft: #1b2740;
-                --text-main: #e2e8f0;
-                --text-body: #cbd5e1;
-                --text-muted: #94a3b8;
-                --accent: #a5b4fc;
-                --accent-light: #232c4d;
-                --accent-border: #3f4b8a;
-                --badge-bg: #2c3563;
-                --heading: #c7d2fe;
-                --heading-strong: #e0e7ff;
-                --line: #27334a;
-                --line-soft: #222d42;
-                --quote-bg: #241a38;
-                --quote-border: #a855f7;
-                --insight-bg: #10251b;
-                --insight-border: #22c55e;
-                --insight-title: #4ade80;
-                --insight-text: #a7f3c4;
-                --dialogue-bg: #232a52;
-                --dialogue-text: #c7d2fe;
-                --fab-bg: #4338ca;
-                --fab-text: #ffffff;
-                --img-filter: brightness(0.88) contrast(1.02);
-                --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.5), 0 2px 4px -2px rgba(0,0,0,0.4);
-                --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.55), 0 4px 6px -4px rgba(0,0,0,0.4);
-            }
-        }
-
-        :root[data-theme="dark"] {
-            --bg-primary: #0b1120;
-            --bg-card: #151f33;
-            --bg-soft: #1b2740;
-            --text-main: #e2e8f0;
-            --text-body: #cbd5e1;
-            --text-muted: #94a3b8;
-            --accent: #a5b4fc;
-            --accent-light: #232c4d;
-            --accent-border: #3f4b8a;
-            --badge-bg: #2c3563;
-            --heading: #c7d2fe;
-            --heading-strong: #e0e7ff;
-            --line: #27334a;
-            --line-soft: #222d42;
-            --quote-bg: #241a38;
-            --quote-border: #a855f7;
-            --insight-bg: #10251b;
-            --insight-border: #22c55e;
-            --insight-title: #4ade80;
-            --insight-text: #a7f3c4;
-            --dialogue-bg: #232a52;
-            --dialogue-text: #c7d2fe;
-            --fab-bg: #4338ca;
-            --fab-text: #ffffff;
-            --img-filter: brightness(0.88) contrast(1.02);
-            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.5), 0 2px 4px -2px rgba(0,0,0,0.4);
-            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.55), 0 4px 6px -4px rgba(0,0,0,0.4);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Assistant', sans-serif;
-            background-color: var(--bg-primary);
-            color: var(--text-main);
-            line-height: 1.8;
-            font-size: 1.05rem;
-            padding: 0;
-        }
-
-        /* tells the browser which scheme its own UI (scrollbars, form
-           controls, focus rings) should match */
-        :root { color-scheme: light; }
-        @media (prefers-color-scheme: dark) {
-            :root:not([data-theme="light"]) { color-scheme: dark; }
-        }
-        :root[data-theme="dark"] { color-scheme: dark; }
-        :root[data-theme="light"] { color-scheme: light; }
-
-        .theme-toggle {
-            position: absolute;
-            top: 1.25rem;
-            left: 1.25rem;
-            z-index: 3;
-            width: 44px;
-            height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(255,255,255,0.28);
-            background: rgba(255,255,255,0.12);
-            color: #ffffff;
-            border-radius: 50%;
-            cursor: pointer;
-            font: inherit;
-            font-size: 1.15rem;
-            line-height: 1;
-            transition: background 0.2s ease, transform 0.2s ease;
-        }
-
-        .theme-toggle:hover {
-            background: rgba(255,255,255,0.24);
-            transform: translateY(-2px);
-        }
-
-        .theme-toggle:focus-visible {
-            outline: 3px solid #ffffff;
-            outline-offset: 2px;
-        }
-
-        /* one button, two glyphs: each theme shows the one it switches to */
-        .theme-toggle .icon-dark { display: inline; }
-        .theme-toggle .icon-light { display: none; }
-        @media (prefers-color-scheme: dark) {
-            :root:not([data-theme="light"]) .theme-toggle .icon-dark { display: none; }
-            :root:not([data-theme="light"]) .theme-toggle .icon-light { display: inline; }
-        }
-        :root[data-theme="dark"] .theme-toggle .icon-dark { display: none; }
-        :root[data-theme="dark"] .theme-toggle .icon-light { display: inline; }
-        :root[data-theme="light"] .theme-toggle .icon-dark { display: inline; }
-        :root[data-theme="light"] .theme-toggle .icon-light { display: none; }
-
-        @media (prefers-reduced-motion: reduce) {
-            .theme-toggle,
-            .toc-link,
-            .story-card,
-            .back-to-top {
-                transition: none;
-            }
-        }
-
-        header {
-            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%);
-            color: #ffffff;
-            padding: 4.5rem 1.5rem 3.5rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at top center, rgba(255,255,255,0.12) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .header-content {
-            max-width: 760px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        h1 {
-            font-family: 'Frank Ruhl Libre', serif;
-            font-size: 2.8rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            margin-bottom: 0.8rem;
-            line-height: 1.2;
-        }
-
-        .subtitle {
-            font-size: 1.25rem;
-            font-weight: 300;
-            color: #e0e7ff;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        main {
-            max-width: 860px;
-            margin: -2rem auto 4rem;
-            padding: 0 1.5rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .toc-card {
-            background: var(--bg-card);
-            border-radius: var(--radius-lg);
-            padding: 2rem;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid var(--line);
-            margin-bottom: 3rem;
-        }
-
-        .toc-card h2 {
-            font-family: 'Frank Ruhl Libre', serif;
-            font-size: 1.5rem;
-            color: var(--heading);
-            margin-bottom: 1.25rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--accent-light);
-        }
-
-        .toc-list {
-            list-style: none;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 0.75rem;
-        }
-
-        @media (min-width: 640px) {
-            .toc-list {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .toc-link {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.85rem 1rem;
-            background: var(--bg-soft);
-            border: 1px solid var(--line-soft);
-            border-radius: var(--radius-md);
-            color: var(--text-main);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.2s ease;
-        }
-
-        .toc-link:hover {
-            background: var(--accent-light);
-            border-color: var(--accent-border);
-            color: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        .toc-badge {
-            background: var(--badge-bg);
-            color: var(--accent);
-            width: 28px;
-            height: 28px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            font-size: 0.9rem;
-            flex-shrink: 0;
-        }
-
-        .story-card {
-            background: var(--bg-card);
-            border-radius: var(--radius-lg);
-            padding: 2.5rem;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--line);
-            margin-bottom: 3rem;
-            scroll-margin-top: 2rem;
-            transition: box-shadow 0.25s ease;
-        }
-
-        .story-card:hover {
-            box-shadow: var(--shadow-lg);
-        }
-
-        .story-header {
-            margin-bottom: 1.75rem;
-        }
-
-        .story-tag {
-            display: inline-block;
-            background: var(--accent-light);
-            color: var(--accent);
-            font-size: 0.85rem;
-            font-weight: 600;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            margin-bottom: 0.75rem;
-            border: 1px solid var(--accent-border);
-        }
-
-        .story-title {
-            font-family: 'Frank Ruhl Libre', serif;
-            font-size: 1.85rem;
-            font-weight: 700;
-            color: var(--heading-strong);
-            line-height: 1.3;
-        }
-
-        .story-body p {
-            margin-bottom: 1.25rem;
-            color: var(--text-body);
-            text-align: justify;
-        }
-
-        .story-body ul {
-            list-style: none;
-            padding: 0;
-            margin: 1.25rem 0;
-        }
-
-        .story-body ul li {
-            position: relative;
-            padding-right: 1.5rem;
-            margin-bottom: 0.75rem;
-            color: var(--text-body);
-        }
-
-        .story-body ul li::before {
-            content: "•";
-            color: var(--accent);
-            font-size: 1.5rem;
-            position: absolute;
-            right: 0;
-            top: -0.2rem;
-        }
-
-        .quote-box {
-            background: var(--quote-bg);
-            border-right: 4px solid var(--quote-border);
-            border-radius: 0 var(--radius-md) var(--radius-md) 0;
-            padding: 1.25rem 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .quote-box.insight {
-            background: var(--insight-bg);
-            border-right-color: var(--insight-border);
-        }
-
-        .quote-title {
-            font-weight: 700;
-            color: var(--insight-title);
-            margin-bottom: 0.35rem;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-
-        .quote-box p {
-            margin: 0;
-            color: var(--insight-text);
-            font-weight: 600;
-            text-align: right;
-        }
-
-        .dialogue {
-            font-style: italic;
-            color: var(--dialogue-text);
-            background: var(--dialogue-bg);
-            padding: 0.1rem 0.4rem;
-            border-radius: 4px;
-        }
-
-        .story-figure {
-            margin: 2rem 0;
-        }
-
-        .story-figure img {
-            display: block;
-            width: 100%;
-            height: auto;
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-md);
-            background: var(--line);
-            /* the illustrations are lit for a bright page; take the glare off
-               them in dark mode rather than having them shine out of it */
-            filter: var(--img-filter);
-        }
-
-        .story-figure figcaption {
-            margin-top: 0.65rem;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            text-align: center;
-            font-style: italic;
-        }
-
-        .story-figure.lead {
-            margin-top: 0;
-        }
-
-        footer {
-            text-align: center;
-            padding: 3rem 1rem;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            border-top: 1px solid var(--line);
-        }
-
-        /* Developer credit — same block as the footer of the Klaser app
-           (github.com/shayh22/klaser), restyled with this page's palette. */
-        .credit {
-            max-width: 460px;
-            margin: 1.5rem auto 0;
-            padding-top: 1.25rem;
-            border-top: 1px solid var(--line);
-        }
-
-        .credit-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.7rem;
-            flex-wrap: wrap;
-            text-decoration: none;
-            color: inherit;
-            border-radius: 14px;
-            padding: 0.6rem 0.75rem;
-            transition: background 0.15s ease;
-        }
-
-        a.credit-link:hover {
-            background: var(--accent-light);
-        }
-
-        a.credit-link:hover .c-name {
-            color: var(--accent);
-            text-decoration: underline;
-        }
-
-        a.credit-link:focus-visible {
-            outline: 3px solid var(--accent);
-            outline-offset: 2px;
-        }
-
-        .credit img {
-            width: 44px;
-            height: 44px;
-            border-radius: 10px;
-            object-fit: contain;
-            flex: 0 0 auto;
-            background: #fff;
-            border: 1px solid var(--line);
-            padding: 1px;
-        }
-
-        .credit .c-txt {
-            text-align: start;
-        }
-
-        .credit .c-lead {
-            display: block;
-            font-size: 0.72rem;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
-
-        .credit .c-name {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--text-main);
-        }
-
-        .credit .c-tr {
-            font-size: 0.7rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            direction: ltr;
-            unicode-bidi: isolate;
-        }
-
-        .credit .c-tag {
-            display: block;
-            font-size: 0.72rem;
-            color: var(--text-muted);
-            max-width: 30ch;
-            line-height: 1.45;
-            text-wrap: balance;
-        }
-
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            left: 2rem;
-            background: var(--fab-bg);
-            color: var(--fab-text);
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            box-shadow: var(--shadow-lg);
-            opacity: 0.85;
-            transition: all 0.2s ease;
-            z-index: 100;
-        }
-
-        .back-to-top:hover {
-            opacity: 1;
-            transform: translateY(-3px);
-            background: var(--accent);
-        }
-
-        @media (max-width: 640px) {
-            h1 { font-size: 2.1rem; }
-            .story-card { padding: 1.75rem 1.25rem; }
-            .toc-card { padding: 1.5rem 1rem; }
-        }
-    </style>
-</head>
+    </script></head>
 <body>
 
-    <header>
+    <header id="top">
         <button type="button" class="theme-toggle" id="themeToggle" aria-label="מעבר בין מצב בהיר לכהה" title="מצב בהיר / כהה">
             <span class="icon-dark" aria-hidden="true">🌙</span>
             <span class="icon-light" aria-hidden="true">☀️</span>
@@ -583,212 +36,67 @@
     </header>
 
     <main>
-        <!-- תוכן עניינים -->
-        <nav class="toc-card" id="top">
+        <nav class="toc-card" aria-label="תוכן העניינים">
             <h2>תוכן העניינים</h2>
-            <ul class="toc-list">
+            <ul class="index-list">
                 <li>
-                    <a href="#story-1" class="toc-link">
-                        <span class="toc-badge">1</span>
-                        <span>שריון המראות של ליריון</span>
+                    <a class="index-link" href="story-1.html">
+                        <span class="index-num">1</span>
+                        <span class="index-text">
+                            <span class="index-title">שריון המראות של ליריון</span>
+                            <span class="index-topic">רגישות יתר, דימוי עצמי נמוך ותחושת נרדפות</span>
+                            <span class="index-count">6 איורים</span>
+                        </span>
                     </a>
                 </li>
                 <li>
-                    <a href="#story-2" class="toc-link">
-                        <span class="toc-badge">2</span>
-                        <span>אריג האמת של אלרן</span>
+                    <a class="index-link" href="story-2.html">
+                        <span class="index-num">2</span>
+                        <span class="index-text">
+                            <span class="index-title">אריג האמת של אלרן</span>
+                            <span class="index-topic">התמקדות כפייתית בחסר ובפגמים</span>
+                            <span class="index-count">5 איורים</span>
+                        </span>
                     </a>
                 </li>
                 <li>
-                    <a href="#story-3" class="toc-link">
-                        <span class="toc-badge">3</span>
-                        <span>שורשי הארז של אריאן</span>
+                    <a class="index-link" href="story-3.html">
+                        <span class="index-num">3</span>
+                        <span class="index-text">
+                            <span class="index-title">שורשי הארז של אריאן</span>
+                            <span class="index-topic">מבחן הנאמנות והתביעה לקריעת קשרים</span>
+                        </span>
                     </a>
                 </li>
                 <li>
-                    <a href="#story-4" class="toc-link">
-                        <span class="toc-badge">4</span>
-                        <span>מי הגילוי של רזיה</span>
+                    <a class="index-link" href="story-4.html">
+                        <span class="index-num">4</span>
+                        <span class="index-text">
+                            <span class="index-title">מי הגילוי של רזיה</span>
+                            <span class="index-topic">אשליית קריאת המחשבות והלבשת כוונות זדון</span>
+                        </span>
                     </a>
                 </li>
                 <li>
-                    <a href="#story-5" class="toc-link">
-                        <span class="toc-badge">5</span>
-                        <span>משא האבנים של קאי</span>
+                    <a class="index-link" href="story-5.html">
+                        <span class="index-num">5</span>
+                        <span class="index-text">
+                            <span class="index-title">משא האבנים של קאי</span>
+                            <span class="index-topic">מלכודת האשמה והפיכת בן הזוג לכתובת לכל תסכול</span>
+                        </span>
                     </a>
                 </li>
                 <li>
-                    <a href="#story-6" class="toc-link">
-                        <span class="toc-badge">6</span>
-                        <span>יסודות הבקתה של נואית</span>
+                    <a class="index-link" href="story-6.html">
+                        <span class="index-num">6</span>
+                        <span class="index-text">
+                            <span class="index-title">יסודות הבקתה של נואית</span>
+                            <span class="index-topic">השימוש בנשק הפרידה והאיום בגירוש כדי להשיג שליטה</span>
+                        </span>
                     </a>
                 </li>
             </ul>
         </nav>
-
-        <!-- סיפור 1 -->
-        <article class="story-card" id="story-1">
-            <div class="story-header">
-                <span class="story-tag">נושא: רגישות יתר, דימוי עצמי נמוך ותחושת נרדפות</span>
-                <h2 class="story-title">1. שריון המראות של ליריון</h2>
-            </div>
-            <div class="story-body">
-                <p>בממלכת עמק האזמרגד, במעמקי יער של עצי אלון עתיקים, חי יצור קטן, עדין ובעל פרווה רכה בשם <strong>ליריון</strong>. לליריון היה לב עשוי קריסטל דק – הוא הרגיש כל משב רוח בעוצמה של סערה, וכל עלה שנושר נשמע לו כרעם מתגלגל.</p>
-                <figure class="story-figure lead">
-                    <img src="images/liryon-01-heart-of-crystal.jpg" alt="ליריון, יצור קטן ולבן בעל לב קריסטל זוהר, יושב לבדו ביער עתיק ומחזיק שבר מראה" loading="lazy" width="1280" height="698">
-                    <figcaption>ליריון ולבו העשוי קריסטל דק – כל משב רוח נשמע לו כסערה.</figcaption>
-                </figure>
-                <p>אך לליריון היה צל כבד שליווה אותו: הוא האמין בכל ליבו שהוא קטן, פגום, ואינו ראוי לאהבה. משום שחשב כך על עצמו, היה בטוח שכל שאר שוכני היער רואים זאת בדיוק כמוהו – ושכולם, ללא יוצא מן הכלל, זוממים לפגוע בו או ללעוג לו.</p>
-                <p>כדי להגן על לבו השביר, בנה לעצמו ליריון שריון עשוי שברי מראות עכורות. הוא האמין שהשריון יסנוור את אלו שמביטים בו וישמור עליו מפני חצי הלעג של העולם.</p>
-                <figure class="story-figure">
-                    <img src="images/liryon-02-mirror-armor.jpg" alt="ליריון עטוי שריון כבד העשוי שברי מראות עכורות, ולבו האדום זוהר מבעד לסדקים" loading="lazy" width="1280" height="698">
-                    <figcaption>השריון שנועד להגן – שברי מראות עכורות שסיננו את כל מה שראה.</figcaption>
-                </figure>
-                <p>אך המראות של השריון היו מעוותות:</p>
-                <ul>
-                    <li>כששועל היער הביט לעברו וחייך בטוב לב, ליריון ראה במראות חיוך של לעג וזלזול.</li>
-                    <li>כשלהקת הציפורים צייצה בהתרגשות על ענף סמוך, ליריון שמע לחישות מרושעות שזוממות לנדות אותו.</li>
-                    <li>כשהקיפוד הציע לו לחלוק פרי עסיסי, ליריון היה בטוח שזהו ניסיון להרעיל אותו או להוכיח לו שהוא חלש מכדי למצוא מזון בעצמו.</li>
-                </ul>
-                <figure class="story-figure">
-                    <img src="images/liryon-03-hedgehog-offering.jpg" alt="קיפוד מציע פרי תאנה בשל לליריון, ובהשתקפות שבשריון המראות נראה הקיפוד נוהם ומאיים" loading="lazy" width="1280" height="698">
-                    <figcaption>הקיפוד הושיט פרי בשל – אך במראות המעוותות הוא נראה כמי שנוהם ומאיים.</figcaption>
-                </figure>
-                <p>בכל פעם שמישהו התקרב, ליריון היה נוהם, זועק על העוול שעושים לו, ומכריז חרם: <span class="dialogue">"אני לא אדבר איתכם לעולם! כולכם אכזריים, כולכם נגדי, ורק אני נשארתי לסבול לבדי בעולם הזה!"</span></p>
-                <p>עם הזמן, שוכני היער – שאהבו את ליריון ורצו בקרבתו – עייפו מכך שכל כוונה טובה מתפרשת כפגיעה זדונית. הם החלו להתרחק. ליריון ישב בביתו החשוך ובכה: <span class="dialogue">"ידעתי שכולם שונאים אותי ונידו אותי."</span></p>
-                <figure class="story-figure">
-                    <img src="images/liryon-04-isolation.jpg" alt="ליריון בשריונו יושב כפוף לבדו למרגלות עץ, ולצידו סלסילת פירות שהשאירו שוכני היער המביטים בו מרחוק" loading="lazy" width="1280" height="698">
-                    <figcaption>המתנות נותרו מונחות לצידו, ושוכני היער הביטו בו מרחוק – בדידות בתוך שריון.</figcaption>
-                </figure>
-                <p>יום אחד, הגיע ינשוף זקן והוביל את ליריון אל מעיין האמת שבפסגת ההר. כשהביט במים, ראה רק את השתקפות השריון המעוות שלו.</p>
-                <p><span class="dialogue">"הורד את השריון לרגע אחד,"</span> אמר הינשוף.</p>
-                <p>ליריון השיל את השריון. לפתע ראה במים יצור עדין ופצוע, ומסביבו ראה את סלסילת התותים שהשאיר הקיפוד ואת הציפורים ששרו מגעגוע.</p>
-                <figure class="story-figure">
-                    <img src="images/liryon-05-spring-of-truth.jpg" alt="ליריון ללא שריון, זוהר באור חם, נוגע במים של מעיין האמת בעוד שברי המראות מוטלים על החוף וחיות היער צופות בו" loading="lazy" width="1280" height="698">
-                    <figcaption>במעיין האמת, בלי השריון, ראה לראשונה את עצמו – ואת מי שחיכה לו על החוף.</figcaption>
-                </figure>
-                <p><span class="dialogue">"אף אחד לא שנא אותך,"</span> אמר הינשוף. <span class="dialogue">"האויב היחיד שרדף אותך היה המחשבה שאינך ראוי לאהבה. הפכת כל יד שהושטה לעברך לאגרוף, וגירשת את העולם שרק רצה לחבק אותך."</span></p>
-                <figure class="story-figure">
-                    <img src="images/liryon-06-reunion-at-sunset.jpg" alt="ליריון עומד בשקיעה על שפת האגם מוקף בקיפוד, ארנב, גירית, סנאי ועופר, ושברי המראות מונחים מאחוריו" loading="lazy" width="1280" height="698">
-                    <figcaption>בשקיעה, כששברי המראות נותרו מאחור, גילה ליריון שמעולם לא היה לבד.</figcaption>
-                </figure>
-            </div>
-            <div class="quote-box insight">
-                <div class="quote-title">מוסר השכל</div>
-                <p>כשאדם שבוי בדימוי עצמי נמוך וברגישות יתר, הוא הופך את עצמו למוקד של עולם עוין שאינו קיים במציאות. מי שמפרש כל תנועה כפגיעה, גוזר על עצמו בידוד ומרירות – ומשכנע את עצמו שהוא קורבן של העולם, בעוד שהוא שבוי של פחדיו בלבד.</p>
-            </div>
-        </article>
-
-        <!-- סיפור 2 -->
-        <article class="story-card" id="story-2">
-            <div class="story-header">
-                <span class="story-tag">נושא: התמקדות כפייתית בחסר ובפגמים</span>
-                <h2 class="story-title">2. אריג האמת של אלרן</h2>
-            </div>
-            <div class="story-body">
-                <p>בממלכת אור־השחר גר שומר הגנים המלכותי, <strong>אלרן</strong>. לאלרן הייתה עין חדה, אך תכונה אחת החשיכה את חייו: הוא מעולם לא ראה את האור, אלא נמשך תמיד אל הנקודות השחורות.</p>
-                <p>אם שזרו עבורו שטיח משי עם אלפי חוטי זהב ונקודה אחת דהויה, היה זועק בזעם על הכיעור של השטיח ועל הכוונה לפגוע בו.</p>
-                <p>בביתו, אשתו המסורה גידלה את ילדיהם, בישלה ודאגה לכל מחסורו. אך אלרן לא ראה עשרות שנות מסירות. אם שבה מהשוק ושכחה תבלין אחד מתוך עשרים, ראה רק את החסר והטיח בה שהיא מזלזלת בו ושמעולם לא היה חשוב לה. כשמשפחתו הזמינה אותו לאירועים, סרק את החדר כצייד: כל מבט חטוף או עיכוב בברכת שלום הפכו למזימה שמצדיקה נידוי וחרם.</p>
-                <p>יום אחד, הציג אורג זקן בכיכר העיר את <strong>"אריג האמת"</strong> – יריעת משי ענקית, לבנה ובוהקת, ובמרכזה נקודת דיו זעירה בגודל גרגר שומשום.</p>
-                <p>אלרן נעמד מול הבד וזעק: <span class="dialogue">"איזו חרפה! הבד כולו מוכתם ומכוער!"</span></p>
-                <p>האורג הביט בו ברוגע ושאל: <span class="dialogue">"מדוע מתוך מרחב עצום של משי לבן וטהור, בחרת לראות רק את גרגר הדיו הקטן ולשפוט לפיו את הכל?"</span></p>
-                <p>אלרן נאלם דום.</p>
-                <p><span class="dialogue">"אתה מחפש את הפגם משום שבתוכך אתה מרגיש פגום,"</span> אמר הזקן. <span class="dialogue">"מי שמחפש על מה לכעוס, תמיד ימצא סיבה. כשאתה מתמקד רק בנקודות השחורות, אתה עיוור לים של אהבה ומסירות שמקיף אותך. איש אינו מנסה להרוס אותך – אתה מרעיל את בארך בעצמך."</span></p>
-            </div>
-            <div class="quote-box insight">
-                <div class="quote-title">מוסר השכל</div>
-                <p>מי שמחפש פגמים ימצא אותם תמיד. התמקדות בחסר ובשגיאות קטנות מוחקת עולם שלם של טוב, והופכת את האדם לקורבן של מציאות שהוא עצמו צבע בשחור.</p>
-            </div>
-        </article>
-
-        <!-- סיפור 3 -->
-        <article class="story-card" id="story-3">
-            <div class="story-header">
-                <span class="story-tag">נושא: מבחן הנאמנות והתביעה לקריעת קשרים</span>
-                <h2 class="story-title">3. שורשי הארז של אריאן</h2>
-            </div>
-            <div class="story-body">
-                <p>בממלכת יערות האזמרגד חיו <strong>אריאן</strong> ו<strong>מירה</strong>. מירה נשאה בתוכה פחד עמוק מנטישה, ואריאן אהב אותה בכל נפשו.</p>
-                <p>לאריאן הייתה משפחה חמה ומלוכדת בעמק הסמוך. אך בעיניה של מירה, כל קשר של אריאן עם משפחתו היה איום ובגידה. בכל פעם שביקר אותם, זעקה: <span class="dialogue">"אם היית אוהב אותי, לא היית נושם את האוויר שלהם! אתה בוחר בהם על פניי!"</span></p>
-                <p>אריאן, שרצה להעניק לה ביטחון, ויתר על ארוחות חג, התרחק מאחיו והרכין ראשו. אך הדרישות רק גברו. כשאחיו הצעיר נישא, אמרה מירה: <span class="dialogue">"אם תלך לחתונה, אין לך לאן לחזור. אתה תגזור עלינו פירוד."</span></p>
-                <p>באותו לילה הופיעה שומרת היערות עם עציץ ובו עץ ארז צעיר.</p>
-                <p>היא פנתה למירה: <span class="dialogue">"את מבקשת מאריאן שיהיה לך למגן בלעדי. אך כדי שיוכיח זאת, את דורשת ממנו לכרות את שורשיו באדמה ולשרוף את היער שממנו צמח."</span></p>
-                <p>הקשישה גזמה את שורשי העץ הקטן, ובתוך רגעים ספורים ענפיו נשמטו והוא קרס ללא רוח חיים.</p>
-                <p><span class="dialogue">"אדם שכרתת את שורשיו לא יוכל לעמוד בסערה ולהגן עלייך,"</span> אמרה הזקנה. <span class="dialogue">"אהבה אינה חרם. מי שתובע מבן זוגו להוכיח אהבה דרך נידוי משפחתו, אינו מחפש ברית – הוא מחפש שותף לכלא הבדידות שלו."</span></p>
-            </div>
-            <div class="quote-box insight">
-                <div class="quote-title">מוסר השכל</div>
-                <p>ביטחון זוגי אינו נבנה על חורבותיהם של קשרים אחרים. דרישה לנתק שורשים מחלישה את האדם ואת הקשר כולו, במקום להעניק לו יציבות.</p>
-            </div>
-        </article>
-
-        <!-- סיפור 4 -->
-        <article class="story-card" id="story-4">
-            <div class="story-header">
-                <span class="story-tag">נושא: אשליית קריאת המחשבות והלבשת כוונות זדון</span>
-                <h2 class="story-title">4. מי הגילוי של רזיה</h2>
-            </div>
-            <div class="story-body">
-                <p>בנפת המעיינות חיו חרש הזכוכית <strong>דורון</strong> וזוגתו <strong>רזיה</strong>. במוחה של רזיה פעלה מכונת תרגום בלתי פוסקת שפירשה כל מחווה של דורון ומשפחתו כרוע מכוון.</p>
-                <ul>
-                    <li>אנחת עייפות של דורון פורשה כבוז ורצון לברוח.</li>
-                    <li>שיחה שקטה של משפחתו על פרנסה פורשה כמזימה נגדה.</li>
-                    <li>גם כוס תה שהגיש לה באהבה פורשה כניסיון להשקיט מצפון אשם.</li>
-                </ul>
-                <p>רזיה הייתה חותכת כל הסבר במילים: <span class="dialogue">"אל תיתמם! אני יודעת בדיוק מה הכוונות האמיתיות והמכוערות שלך!"</span></p>
-                <p>קוסם נודד הגיש לדורון את <strong>"מי הגילוי"</strong> – שיקוי הגורם למחשבות הפנימיות להיראות לעין כל. רזיה דרשה שישתה, בטוחה שייחשפו מפלצות של בגידה.</p>
-                <p>כששתה, הופיעו באוויר דמויות אור מרהיבות: היא ראתה את דורון חושב כיצד לשמח אותה; ראתה אותו עומד מול אחיו ומגן עליה בלהט; וראתה אותו מתפלל בלילה בדמעות שהיא תפסיק לראות בו אויב. לא היה שם שמץ של זדון – רק אהבה עמוקה שנשחקה.</p>
-                <p>הקוסם הביט ברזיה ואמר: <span class="dialogue">"במשך שנים נלחמת במפלצות שבראת בראשך שלך. שפטת אותו על פשעים שמעולם לא ביצע. מי שמקשיב רק לפחדיו, תמיד יקרא בלב הזולת מלחמה – גם כשהאחר מושיט לו שלום."</span></p>
-            </div>
-            <div class="quote-box insight">
-                <div class="quote-title">מוסר השכל</div>
-                <p>כשאנו מניחים מראש כוונות רעות, אנו נלחמים בסרטים הפנימיים שלנו במקום לראות את האדם האוהב שנמצא מולנו במציאות.</p>
-            </div>
-        </article>
-
-        <!-- סיפור 5 -->
-        <article class="story-card" id="story-5">
-            <div class="story-header">
-                <span class="story-tag">נושא: מלכודת האשמה והפיכת בן הזוג לכתובת לכל תסכול</span>
-                <h2 class="story-title">5. משא האבנים של קאי</h2>
-            </div>
-            <div class="story-body">
-                <p>במרומי הרי הבדולח חיו הנפח <strong>קאי</strong> וזוגתו <strong>סלין</strong>. בכל פעם שסלין חוותה קושי, פחד או עלבון מהעולם, היא הפכה את קאי למקור הבלעדי של הבעיה:</p>
-                <ul>
-                    <li>אם מעדה בשביל – <span class="dialogue">"בגללך נפלתי, לא פינית את הדרך!"</span></li>
-                    <li>אם ירד גשם על הבדים – <span class="dialogue">"אתה אשם שלא מנעת את זה!"</span></li>
-                    <li>אם חשה מרוחקת מאנשי הכפר – <span class="dialogue">"אתה אשם שאין לי אף אחד!"</span></li>
-                </ul>
-                <p>קאי האמין שתפקידו לספוג הכל כדי להגן עליה. בכל פעם שהאשימה אותו, הניחה על גבו אבן בזלת שחורה. קאי כפף את גבו ונשא את המשא בשקט, עד שערימת האבנים גבהה למגדל כבד מנשוא.</p>
-                <p>ערב אחד, כשתבשיל המרק נחרך מעט, צעקה סלין: <span class="dialogue">"אתה אשם בכל מה שרע בחיים שלי!"</span> והשליכה אבן כבדה נוספת.</p>
-                <p>גבו של קאי נשבר בקול נפץ. הוא קרס אל הקרקע, משותק ומרוסק תחת האבנים שלא היו שלו מעולם.</p>
-                <p>רופאת ההרים הזקנה אמרה לסלין הבוכייה: <span class="dialogue">"אהבה אינה שק חבטות. במקום לקחת אחריות על סערות נפשך, הפכת את האדם היחיד שהגן עלייך למטרה לחצי הזעם שלך – עד שריסקת את הכתפיים שרצו לשאת אותך."</span></p>
-            </div>
-            <div class="quote-box insight">
-                <div class="quote-title">מוסר השכל</div>
-                <p>בן זוג אינו כלי קיבול להשלכת כל תסכולי החיים. מי שמטיל את כל כובד משקלו הרגשי על האחר, ירסק בסופו של דבר את הקשר ואת האדם שאוהב אותו.</p>
-            </div>
-        </article>
-
-        <!-- סיפור 6 -->
-        <article class="story-card" id="story-6">
-            <div class="story-header">
-                <span class="story-tag">נושא: השימוש בנשק הפרידה והאיום בגירוש כדי להשיג שליטה</span>
-                <h2 class="story-title">6. יסודות הבקתה של נואית</h2>
-            </div>
-            <div class="story-body">
-                <p>במורדות הרי הארגמן חיו <strong>דן</strong> ו<strong>נואית</strong> בבקתת אבן איתנה.</p>
-                <p>אך לנואית היה הרגל הרסני: בכל ויכוח, תסכול או אי-הסכמה, שלפה את הנשק הכבד ביותר. היא הייתה טורקת את הדלת וזועקת: <span class="dialogue">"צא מהבית! אל תחזור לכאן לעולם! נפרק את הבית הזה עוד היום!"</span></p>
-                <p>בכל פעם שאיימה, תלשה אבן אחת מיסודות הבקתה והשליכה לתהום, כדי לאלץ את דן להתחנן ולהוכיח את אהבתו. דן היה עומד בקור, סופג את העלבון, וחוזר לנסות לתקן.</p>
-                <p>יום אחד, בוויכוח פעוט נוסף, צרחה נואית: <span class="dialogue">"הפעם זה סופי! צא ולא תראה אותי יותר!"</span></p>
-                <p>דן הביט בה בעיניים עייפות וריקות. הוא לא התחנן ולא צעק; הוא פשוט הסתובב והלך. נואית המתינה שידפוק על הדלת, אך במקום זאת שמעה חריקה עזה: קירות הבקתה קרסו והתקרה התמוטטה.</p>
-                <p>שומרת ההרים ניצבה מול החורבות ואמרה: <span class="dialogue">"דן לא הרס את הבית – את עשית זאת. בית אינו זירה למשחקי כוח. בכל פעם שהשתמשת באיום הסופי כנשק יומיומי, עקרת עוד אבן מהיסודות – עד שלא נותר דבר שיחזיק את הגג מעל ראשך."</span></p>
-            </div>
-            <div class="quote-box insight">
-                <div class="quote-title">מוסר השכל</div>
-                <p>מי שמשתמש באיום בפרידה ובסילוק כדי לזכות באהבה ושליטה, משמיד את תחושת הביטחון הבסיסית שבלעדיה שום בית אינו יכול לעמוד.</p>
-            </div>
-        </article>
     </main>
 
     <footer>
@@ -806,44 +114,7 @@
             </a>
         </div>
     </footer>
-
-    <a href="#top" class="back-to-top" title="חזרה לראש העמוד">↑</a>
-
-    <script>
-        (function () {
-            var root = document.documentElement;
-            var btn = document.getElementById('themeToggle');
-            var media = window.matchMedia('(prefers-color-scheme: dark)');
-
-            function current() {
-                var set = root.getAttribute('data-theme');
-                return set === 'dark' || set === 'light'
-                    ? set
-                    : (media.matches ? 'dark' : 'light');
-            }
-
-            function sync() {
-                var dark = current() === 'dark';
-                btn.setAttribute('aria-pressed', String(dark));
-                btn.title = dark ? 'מעבר למצב בהיר' : 'מעבר למצב כהה';
-            }
-
-            btn.addEventListener('click', function () {
-                var next = current() === 'dark' ? 'light' : 'dark';
-                root.setAttribute('data-theme', next);
-                try { localStorage.setItem('tells.theme', next); } catch (e) {}
-                sync();
-            });
-
-            /* while no explicit choice is stored the page keeps following the
-               system, including a change made after load */
-            media.addEventListener('change', function () {
-                if (!root.getAttribute('data-theme')) sync();
-            });
-
-            sync();
-        })();
-    </script>
+    <script src="assets/theme.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>שורשי הארז של אריאן · אגדות המראה</title>
+    <meta name="theme-color" content="#312e81">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Frank+Ruhl+Libre:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles.css">
+    <script>
+        /* Runs before the body paints, so a reader who chose a theme never sees
+           the other one flash first. No stored choice means no attribute, and
+           the CSS falls through to prefers-color-scheme. */
+        (function () {
+            try {
+                var saved = localStorage.getItem('tells.theme');
+                if (saved === 'dark' || saved === 'light') {
+                    document.documentElement.setAttribute('data-theme', saved);
+                }
+            } catch (e) { /* private mode: system preference still applies */ }
+        })();
+    </script></head>
+<body>
+
+    <header class="compact" id="top">
+        <button type="button" class="theme-toggle" id="themeToggle" aria-label="מעבר בין מצב בהיר לכהה" title="מצב בהיר / כהה">
+            <span class="icon-dark" aria-hidden="true">🌙</span>
+            <span class="icon-light" aria-hidden="true">☀️</span>
+        </button>
+        <div class="header-content">
+            <a class="home-link" href="index.html">כל הסיפורים</a>
+            <p class="story-page">סיפור 3 מתוך 6</p>
+            <h1>שורשי הארז של אריאן</h1>
+        </div>
+    </header>
+
+    <main>
+    <article class="story-card" id="story-3">
+            <div class="story-header">
+                <span class="story-tag">נושא: מבחן הנאמנות והתביעה לקריעת קשרים</span>
+            </div>
+            <div class="story-body">
+                <p>בממלכת יערות האזמרגד חיו <strong>אריאן</strong> ו<strong>מירה</strong>. מירה נשאה בתוכה פחד עמוק מנטישה, ואריאן אהב אותה בכל נפשו.</p>
+                <p>לאריאן הייתה משפחה חמה ומלוכדת בעמק הסמוך. אך בעיניה של מירה, כל קשר של אריאן עם משפחתו היה איום ובגידה. בכל פעם שביקר אותם, זעקה: <span class="dialogue">"אם היית אוהב אותי, לא היית נושם את האוויר שלהם! אתה בוחר בהם על פניי!"</span></p>
+                <p>אריאן, שרצה להעניק לה ביטחון, ויתר על ארוחות חג, התרחק מאחיו והרכין ראשו. אך הדרישות רק גברו. כשאחיו הצעיר נישא, אמרה מירה: <span class="dialogue">"אם תלך לחתונה, אין לך לאן לחזור. אתה תגזור עלינו פירוד."</span></p>
+                <p>באותו לילה הופיעה שומרת היערות עם עציץ ובו עץ ארז צעיר.</p>
+                <p>היא פנתה למירה: <span class="dialogue">"את מבקשת מאריאן שיהיה לך למגן בלעדי. אך כדי שיוכיח זאת, את דורשת ממנו לכרות את שורשיו באדמה ולשרוף את היער שממנו צמח."</span></p>
+                <p>הקשישה גזמה את שורשי העץ הקטן, ובתוך רגעים ספורים ענפיו נשמטו והוא קרס ללא רוח חיים.</p>
+                <p><span class="dialogue">"אדם שכרתת את שורשיו לא יוכל לעמוד בסערה ולהגן עלייך,"</span> אמרה הזקנה. <span class="dialogue">"אהבה אינה חרם. מי שתובע מבן זוגו להוכיח אהבה דרך נידוי משפחתו, אינו מחפש ברית – הוא מחפש שותף לכלא הבדידות שלו."</span></p>
+            </div>
+            <div class="quote-box insight">
+                <div class="quote-title">מוסר השכל</div>
+                <p>ביטחון זוגי אינו נבנה על חורבותיהם של קשרים אחרים. דרישה לנתק שורשים מחלישה את האדם ואת הקשר כולו, במקום להעניק לו יציבות.</p>
+            </div>
+        </article>
+
+        <nav class="story-nav" aria-label="ניווט בין סיפורים">
+            <a href="story-2.html"><span class="dir">הסיפור הקודם</span><span>אריג האמת של אלרן</span></a>
+            <a class="all" href="index.html"><span>כל הסיפורים</span></a>
+            <a href="story-4.html"><span class="dir">הסיפור הבא</span><span>מי הגילוי של רזיה</span></a>
+        </nav>
+    </main>
+
+    <footer>
+        <p>אגדות המראה • משלים מודרניים על לב, פחד ואהבה</p>
+
+        <div class="credit">
+            <a class="credit-link" href="https://birkat-hanasi.lovable.app" target="_blank" rel="noopener"
+               aria-label="פותח על ידי ברכת הנשיא — אתר רשמי">
+                <img src="images/birkat-hanasi-logo.webp" alt="" width="44" height="44" onerror="this.remove()">
+                <span class="c-txt">
+                    <span class="c-lead">פותח על ידי</span>
+                    <span class="c-name">ברכת הנשיא</span> <span class="c-tr">Birkat HaNasi</span>
+                    <span class="c-tag">פיתוח תוכנה מותאם, במהירות הבזק, בטכנולוגיית AI</span>
+                </span>
+            </a>
+        </div>
+    </footer>
+
+    <a href="#top" class="back-to-top" title="חזרה לראש העמוד">↑</a>
+    <script src="assets/theme.js"></script>
+
+</body>
+</html>
