@@ -63,9 +63,18 @@
 
     /* ---- the drawer ---- */
     var panel = document.getElementById('a11yPanel');
-    var toggle = document.getElementById('a11yToggle');
+    /* the drawer is opened from more than one place — the floating button and
+       the one in the header — so every trigger is bound, and all of them
+       report the drawer's state */
+    var toggles = document.querySelectorAll('[data-a11y-open]');
     var scrim = document.getElementById('a11yScrim');
     var lastFocus = null;
+
+    function setExpanded(v) {
+        Array.prototype.forEach.call(toggles, function (t) {
+            t.setAttribute('aria-expanded', String(v));
+        });
+    }
 
     function focusable() {
         return Array.prototype.filter.call(
@@ -78,7 +87,7 @@
         lastFocus = document.activeElement;
         panel.classList.add('open');
         scrim.hidden = false;
-        toggle.setAttribute('aria-expanded', 'true');
+        setExpanded(true);
         var f = focusable();
         if (f.length) f[0].focus();
     }
@@ -86,13 +95,15 @@
     function close() {
         panel.classList.remove('open');
         scrim.hidden = true;
-        toggle.setAttribute('aria-expanded', 'false');
+        setExpanded(false);
         if (lastFocus && lastFocus.focus) lastFocus.focus();
     }
 
-    if (panel && toggle && scrim) {
-        toggle.addEventListener('click', function () {
-            panel.classList.contains('open') ? close() : open();
+    if (panel && toggles.length && scrim) {
+        Array.prototype.forEach.call(toggles, function (t) {
+            t.addEventListener('click', function () {
+                panel.classList.contains('open') ? close() : open();
+            });
         });
         scrim.addEventListener('click', close);
         var closeBtn = document.getElementById('a11yClose');

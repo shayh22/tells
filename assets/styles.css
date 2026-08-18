@@ -122,11 +122,19 @@ body {
 :root[data-theme="dark"] { color-scheme: dark; }
 :root[data-theme="light"] { color-scheme: light; }
 
-.theme-toggle {
+/* the header carries two controls now, so the pair is positioned as a group
+   and each button is just a button */
+.header-tools {
     position: absolute;
     top: 1.25rem;
     left: 1.25rem;
     z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.theme-toggle {
     width: 44px;
     height: 44px;
     display: flex;
@@ -141,6 +149,11 @@ body {
     font-size: 1.15rem;
     line-height: 1;
     transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.header-tools svg {
+    display: block;
+    fill: currentColor;
 }
 
 .theme-toggle:hover {
@@ -469,9 +482,9 @@ a.credit-link:focus-visible {
 }
 
 .credit img {
-    width: 66px;
-    height: 66px;
-    border-radius: 15px;
+    width: 86px;
+    height: 86px;
+    border-radius: 20px;
     object-fit: contain;
     flex: 0 0 auto;
     background: #fff;
@@ -485,28 +498,20 @@ a.credit-link:focus-visible {
 
 .credit .c-lead {
     display: block;
-    font-size: 1.08rem;
+    font-size: 0.86rem;
     color: var(--text-muted);
     line-height: 1.5;
 }
 
 .credit .c-name {
-    font-size: 1.35rem;
+    font-size: 1.08rem;
     font-weight: 700;
     color: var(--text-main);
 }
 
-.credit .c-tr {
-    font-size: 1.05rem;
-    font-weight: 500;
-    color: var(--text-muted);
-    direction: ltr;
-    unicode-bidi: isolate;
-}
-
 .credit .c-tag {
     display: block;
-    font-size: 1.08rem;
+    font-size: 0.86rem;
     color: var(--text-muted);
     max-width: 30ch;
     line-height: 1.45;

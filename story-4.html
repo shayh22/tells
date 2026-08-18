@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Frank+Ruhl+Libre:wght@500;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/styles.css?v=70faf697">
+    <link rel="stylesheet" href="assets/styles.css?v=5d694fcd">
     <script>
         /* Runs before the body paints, so a reader who chose a theme or an
            accessibility setting never sees the default flash first. */
@@ -36,10 +36,15 @@
 <body>
 
     <header class="compact" id="top">
-        <button type="button" class="theme-toggle" id="themeToggle" aria-label="מעבר בין מצב בהיר לכהה" title="מצב בהיר / כהה">
-            <span class="icon-dark" aria-hidden="true">🌙</span>
-            <span class="icon-light" aria-hidden="true">☀️</span>
-        </button>
+        <div class="header-tools">
+            <button type="button" class="theme-toggle" id="themeToggle" aria-label="מעבר בין מצב בהיר לכהה" title="מצב בהיר / כהה">
+                <span class="icon-dark" aria-hidden="true">🌙</span>
+                <span class="icon-light" aria-hidden="true">☀️</span>
+            </button>
+            <button type="button" class="theme-toggle" data-a11y-open aria-expanded="false" aria-controls="a11yPanel" aria-label="תפריט נגישות" title="תפריט נגישות">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z"/></svg>
+            </button>
+        </div>
         <div class="header-content">
             <a class="home-link" href="index.html">כל הסיפורים</a>
             <p class="story-page">סיפור 4 מתוך 6</p>
@@ -100,10 +105,10 @@
         <div class="credit">
             <a class="credit-link" href="https://birkat-hanasi.lovable.app" target="_blank" rel="noopener"
                aria-label="פותח על ידי ברכת הנשיא — אתר רשמי">
-                <img src="images/birkat-hanasi-logo.webp" alt="" width="66" height="66" onerror="this.remove()">
+                <img src="images/birkat-hanasi-logo.webp" alt="" width="86" height="86" onerror="this.remove()">
                 <span class="c-txt">
                     <span class="c-lead">פותח על ידי</span>
-                    <span class="c-name">ברכת הנשיא</span> <span class="c-tr">Birkat HaNasi</span>
+                    <span class="c-name">ברכת הנשיא</span>
                     <span class="c-tag">פיתוח תוכנה מותאם, במהירות הבזק, בטכנולוגיית AI</span>
                 </span>
             </a>
@@ -112,7 +117,7 @@
 
     <a href="#top" class="back-to-top" title="חזרה לראש העמוד">↑</a>
 
-    <button type="button" class="a11y-toggle" id="a11yToggle" aria-expanded="false" aria-controls="a11yPanel" aria-label="תפריט נגישות" title="תפריט נגישות">
+    <button type="button" class="a11y-toggle" id="a11yToggle" data-a11y-open aria-expanded="false" aria-controls="a11yPanel" aria-label="תפריט נגישות" title="תפריט נגישות">
         <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z"/></svg>
     </button>
     <div class="a11y-scrim" id="a11yScrim" hidden></div>
@@ -139,7 +144,7 @@
 
     <script src="assets/theme.js?v=dac103cd"></script>
     <script src="assets/share.js?v=e479bb1c"></script>
-    <script src="assets/a11y.js?v=0a2a1d09"></script>
+    <script src="assets/a11y.js?v=c0433d3b"></script>
 
 </body>
 </html>
