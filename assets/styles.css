@@ -435,7 +435,7 @@ footer {
 /* Developer credit — same block as the footer of the Klaser app
    (github.com/shayh22/klaser), restyled with this page's palette. */
 .credit {
-    max-width: 460px;
+    max-width: 620px;
     margin: 1.5rem auto 0;
     padding-top: 1.25rem;
     border-top: 1px solid var(--line);
@@ -445,7 +445,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.7rem;
+    gap: 1.05rem;
     flex-wrap: wrap;
     text-decoration: none;
     color: inherit;
@@ -469,9 +469,9 @@ a.credit-link:focus-visible {
 }
 
 .credit img {
-    width: 44px;
-    height: 44px;
-    border-radius: 10px;
+    width: 66px;
+    height: 66px;
+    border-radius: 15px;
     object-fit: contain;
     flex: 0 0 auto;
     background: #fff;
@@ -485,19 +485,19 @@ a.credit-link:focus-visible {
 
 .credit .c-lead {
     display: block;
-    font-size: 0.72rem;
+    font-size: 1.08rem;
     color: var(--text-muted);
     line-height: 1.5;
 }
 
 .credit .c-name {
-    font-size: 0.9rem;
+    font-size: 1.35rem;
     font-weight: 700;
     color: var(--text-main);
 }
 
 .credit .c-tr {
-    font-size: 0.7rem;
+    font-size: 1.05rem;
     font-weight: 500;
     color: var(--text-muted);
     direction: ltr;
@@ -506,7 +506,7 @@ a.credit-link:focus-visible {
 
 .credit .c-tag {
     display: block;
-    font-size: 0.72rem;
+    font-size: 1.08rem;
     color: var(--text-muted);
     max-width: 30ch;
     line-height: 1.45;
