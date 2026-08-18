@@ -12,6 +12,7 @@
     "start": "node --disable-warning=ExperimentalWarning server/index.js",
     "dev": "node --disable-warning=ExperimentalWarning --watch server/index.js",
     "test": "node --disable-warning=ExperimentalWarning --test test/*.test.js",
+    "contract": "node test/contract.mjs",
     "reset-password": "node --disable-warning=ExperimentalWarning server/cli.js reset-password"
   },
   "license": "MIT"

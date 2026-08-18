@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {
     checkEmailSyntax, cleanBody, cleanName, normalizeEmail, normalizeOrigin, normalizePagePath, validateEmail,
 } from '../server/util/validation.js';
-import { decideStatus, scoreComment } from '../server/moderation.js';
+import { decideStatus, scoreComment } from '../shared/moderation.js';
 
 test('email syntax accepts real addresses and rejects the usual junk', () => {
     const valid = ['a@b.co', 'first.last@sub.domain.org', 'user+tag@gmail.com', 'שם@example.com'.replace('שם', 'name')];

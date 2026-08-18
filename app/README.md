@@ -11,7 +11,24 @@
 
 ---
 
-## התקנה והפעלה
+## שתי דרכים להריץ
+
+| | איפה | מתי מתאים |
+| --- | --- | --- |
+| **Cloudflare Workers + D1** | בענן, בתוכנית החינמית | ברירת המחדל: אין שרת לתחזק, יש HTTPS וכתובת קבועה. הוראות מלאות ב־[`worker/README.md`](worker/README.md) |
+| **שרת Node** | מקומי או VPS | פיתוח, או כשרוצים שהנתונים יישבו על מכונה משלכם |
+
+שתי הגרסאות חולקות את אותה לוגיקה (`shared/`), את אותם קבצים סטטיים (`public/`) ואת אותה
+בדיקת חוזה, כך שהמעבר ביניהן לא משנה כלום עבור האתרים שמוטמעים בהם הרכיבים.
+
+```bash
+# Cloudflare
+cd app/worker && npm install && npx wrangler login
+npx wrangler d1 create tells-engage      # להעתיק את ה־database_id ל־wrangler.toml
+npm run db:init && npx wrangler secret put ADMIN_PASSWORD && npm run deploy
+```
+
+## התקנה והפעלה מקומית (Node)
 
 דרישה יחידה: Node.js בגרסה 22.5 ומעלה (מודול `node:sqlite` המובנה). אין `npm install` — אין תלויות.
 
@@ -41,6 +58,7 @@ ADMIN_PASSWORD='הסיסמה-שלי' npm start
 
 ```bash
 npm test                                  # חבילת הבדיקות (שרת אמיתי, בסיס נתונים זמני)
+npm run contract -- http://localhost:4000 'הסיסמה'   # בדיקת קצה־לקצה מול פריסה חיה
 npm run dev                               # הפעלה עם טעינה מחדש אוטומטית
 node server/cli.js reset-password [סיסמה] # איפוס סיסמת הדשבורד
 node server/cli.js create-site "שם" https://example.com
@@ -136,14 +154,14 @@ window.TellsEngage.mountElement(el, { widget: 'likes', page: '/item/42' });
 * **CORS לפי אתר** — לכל אתר רשימת דומיינים מורשים. בקשה מדומיין אחר נדחית (רשימה ריקה = כל דומיין,
   נוח בזמן הקמה, כדאי לצמצם אחר כך).
 * **מפתח אתר ניתן להחלפה** — אם המפתח דלף, "החלפת מפתח" מנתקת מיידית כל רכיב שמשתמש בישן.
-* **דשבורד** — סיסמה עם scrypt, עוגיית `HttpOnly` + `SameSite=Strict`, וכותרת `X-Tells-Admin`
+* **דשבורד** — סיסמה עם scrypt (Node) או PBKDF2 (Cloudflare), עוגיית `HttpOnly` + `SameSite=Strict`, וכותרת `X-Tells-Admin`
   שחוסמת שליחת טפסים מאתר זר. הגבלת קצב על ניסיונות התחברות.
 * **תוכן מבקרים** — נשמר כטקסט ומוצג כטקסט בלבד, גם ברכיב וגם בדשבורד. רק כתובות URL הופכות
   לקישורים, עם `rel="nofollow ugc noopener"`.
 * **הגבלות קצב** — לפי כתובת IP לכל סוג פעולה, ובנוסף השהיה ומכסה שעתית לכל מבקר.
 
-בפרודקשן: הפעילו `SECURE_COOKIES=true` מאחורי HTTPS, ו־`TRUST_PROXY=true` רק אם יש proxy שלכם
-שמגדיר `X-Forwarded-For`.
+בפרודקשן על Node: הפעילו `SECURE_COOKIES=true` מאחורי HTTPS, ו־`TRUST_PROXY=true` רק אם יש proxy
+שלכם שמגדיר `X-Forwarded-For`. ב־Cloudflare שני אלה מטופלים ממילא.
 
 ---
 
@@ -209,3 +227,10 @@ npm test
 27 בדיקות שעולות מול שרת אמיתי ובסיס נתונים זמני: כללי האימייל, רישום אנונימי, מסלול האישור,
 מחיקה, חסימת מבקר, הגבלות קצב וכפילויות, CORS לפי אתר, החלפת מפתח, הגנת ה־CSRF של הדשבורד,
 ריכוז הנתונים מכל האתרים, פעולות קבוצתיות, שרשור תשובות וייצוא CSV.
+
+```bash
+node test/contract.mjs https://your-worker.workers.dev 'הסיסמה'
+```
+
+33 בדיקות שרצות מול פריסה חיה — Node או Cloudflare — ומוודאות שהשתיים מתנהגות אותו דבר.
+הסקריפט יוצר שני אתרי בדיקה ומוחק אותם בסוף, כך שאפשר להריץ אותו גם על סביבה אמיתית.

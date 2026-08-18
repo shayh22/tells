@@ -21,8 +21,11 @@ cd tells
 שרת Node ללא תלויות, דשבורד ניהול בעברית (אישור, דחייה ומחיקה של תגובות), ורכיבי הטמעה
 שמתווספים לכל דף בשורה אחת. פרטים מלאים ב־[`app/README.md`](app/README.md).
 
+אפשר להריץ אותה על Cloudflare Workers + D1 בתוכנית החינמית, או כשרת Node מקומי:
+
 ```bash
-cd app && npm start   # דשבורד: http://localhost:4000/admin/
+cd app/worker && npm install && npm run deploy   # Cloudflare (ראו worker/README.md)
+cd app && npm start                              # מקומי: http://localhost:4000/admin/
 ```
 
 ## 📚 Documentation

@@ -10,7 +10,7 @@ import {
     createVisitor, findVisitorByEmail, findVisitorByToken, refreshVisitorToken,
     tokenFromRequest, touchVisitor,
 } from '../auth.js';
-import { decideStatus, getBlocklist, scoreComment } from '../moderation.js';
+import { decideStatus, getBlocklist, scoreComment } from '../../shared/moderation.js';
 import { getSetting, logAudit } from '../db.js';
 import { rateLimit } from '../ratelimit.js';
 
