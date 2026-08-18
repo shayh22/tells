@@ -828,3 +828,317 @@ header.compact {
     font-style: italic;
     text-wrap: balance;
 }
+/* ---- accessibility ------------------------------------------------ */
+
+/* Text size scales the root, and every size on the page is already in rem,
+   so one value moves the whole document proportionally. */
+
+.a11y-underline a {
+    text-decoration: underline !important;
+}
+
+.a11y-readable body,
+.a11y-readable h1,
+.a11y-readable h2,
+.a11y-readable .story-title,
+.a11y-readable .index-title,
+.a11y-readable .toc-card h2 {
+    font-family: Arial, 'Assistant', system-ui, sans-serif !important;
+    letter-spacing: normal;
+}
+
+.a11y-readable .dialogue,
+.a11y-readable .hero-figure figcaption,
+.a11y-readable .story-figure figcaption {
+    font-style: normal;
+}
+
+/* filters go on the content blocks, never the root: a filter on an ancestor
+   makes it the containing block for fixed children, which would strand the
+   drawer and the back-to-top button mid-page */
+.a11y-grayscale header,
+.a11y-grayscale main,
+.a11y-grayscale footer {
+    filter: grayscale(1);
+}
+
+.a11y-contrast {
+    --bg-primary: #ffffff;
+    --bg-card: #ffffff;
+    --bg-soft: #ffffff;
+    --text-main: #000000;
+    --text-body: #000000;
+    --text-muted: #1a1a1a;
+    --accent: #0000cc;
+    --accent-light: #ffffff;
+    --accent-border: #000000;
+    --badge-bg: #ffffff;
+    --heading: #000000;
+    --heading-strong: #000000;
+    --line: #000000;
+    --line-soft: #000000;
+    --quote-bg: #ffffff;
+    --insight-bg: #ffffff;
+    --insight-title: #000000;
+    --insight-text: #000000;
+    --dialogue-bg: #ffffff;
+    --dialogue-text: #000000;
+    --img-filter: none;
+}
+
+.a11y-contrast .story-card,
+.a11y-contrast .toc-card,
+.a11y-contrast .index-link {
+    border-width: 2px;
+}
+
+.a11y-no-motion *,
+.a11y-no-motion *::before,
+.a11y-no-motion *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+}
+
+/* ---- accessibility drawer ----------------------------------------- */
+
+.a11y-toggle {
+    position: fixed;
+    bottom: 5.5rem;
+    left: 2rem;
+    z-index: 101;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: #1e1b4b;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: var(--shadow-lg);
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.a11y-toggle:hover {
+    background: var(--accent);
+    transform: translateY(-3px);
+}
+
+.a11y-toggle:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.a11y-toggle svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+    display: block;
+}
+
+.a11y-scrim {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.5);
+    z-index: 110;
+}
+
+.a11y-panel {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 120;
+    width: min(20rem, 88vw);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1.25rem;
+    overflow-y: auto;
+    background: var(--bg-card);
+    border-right: 1px solid var(--line);
+    box-shadow: var(--shadow-lg);
+    /* closed: off-canvas and out of the tab order, without hidden's
+       transition-killing display:none */
+    visibility: hidden;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease, visibility 0s linear 0.25s;
+}
+
+.a11y-panel.open {
+    visibility: visible;
+    transform: translateX(0);
+    transition: transform 0.25s ease, visibility 0s;
+}
+
+.a11y-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--line);
+}
+
+.a11y-head h2 {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--heading-strong);
+}
+
+.a11y-close {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 auto;
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    color: var(--text-muted);
+    font: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.a11y-close:hover {
+    background: var(--accent-light);
+    color: var(--accent);
+}
+
+.a11y-label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+}
+
+.a11y-size {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.a11y-size button {
+    flex: 1;
+    direction: ltr;   /* keep "A+" from rendering as "+A" under RTL */
+    min-height: 44px;
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    color: var(--text-main);
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.a11y-size button:hover:not(:disabled) {
+    background: var(--accent-light);
+    border-color: var(--accent-border);
+    color: var(--accent);
+}
+
+.a11y-size button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.a11y-size output {
+    min-width: 3.5rem;
+    text-align: center;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    direction: ltr;
+    unicode-bidi: isolate;
+}
+
+.a11y-opt {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+    width: 100%;
+    min-height: 44px;
+    padding: 0.55rem 0.85rem;
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    color: var(--text-main);
+    font: inherit;
+    font-weight: 600;
+    text-align: start;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.a11y-opt:hover {
+    background: var(--accent-light);
+    border-color: var(--accent-border);
+}
+
+.a11y-opt::after {
+    content: '';
+    flex: 0 0 auto;
+    width: 34px;
+    height: 20px;
+    border-radius: 999px;
+    background: var(--line);
+    box-shadow: inset 0 0 0 2px var(--line);
+    position: relative;
+    transition: background 0.15s ease;
+}
+
+.a11y-opt[aria-pressed="true"] {
+    border-color: var(--accent-border);
+    color: var(--accent);
+}
+
+.a11y-opt[aria-pressed="true"]::after {
+    background: var(--accent);
+}
+
+.a11y-reset {
+    min-height: 44px;
+    margin-top: 0.4rem;
+    background: none;
+    border: 1px dashed var(--line);
+    border-radius: var(--radius-md);
+    color: var(--text-muted);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.a11y-reset:hover {
+    border-color: var(--accent-border);
+    color: var(--accent);
+}
+
+.a11y-panel button:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* the footer pair uses the icon-button shell with letters instead of a glyph */
+.icon-btn .a-glyph {
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1;
+    direction: ltr;
+}
+
+.icon-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+}
+
+@media (max-width: 560px) {
+    .a11y-toggle {
+        left: 1rem;
+        bottom: 4.75rem;
+    }
+}

@@ -8,18 +8,29 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&family=Frank+Ruhl+Libre:wght@500;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/styles.css?v=13deb814">
+    <link rel="stylesheet" href="assets/styles.css?v=a2d24ee3">
     <script>
-        /* Runs before the body paints, so a reader who chose a theme never sees
-           the other one flash first. No stored choice means no attribute, and
-           the CSS falls through to prefers-color-scheme. */
+        /* Runs before the body paints, so a reader who chose a theme or an
+           accessibility setting never sees the default flash first. */
         (function () {
+            var root = document.documentElement;
             try {
-                var saved = localStorage.getItem('tells.theme');
-                if (saved === 'dark' || saved === 'light') {
-                    document.documentElement.setAttribute('data-theme', saved);
+                var theme = localStorage.getItem('tells.theme');
+                if (theme === 'dark' || theme === 'light') {
+                    root.setAttribute('data-theme', theme);
                 }
             } catch (e) { /* private mode: system preference still applies */ }
+            try {
+                var a = JSON.parse(localStorage.getItem('tells.a11y') || '{}');
+                window.__a11yState = { size: a.size || 100 };
+                if (a.size && a.size !== 100) root.style.fontSize = a.size + '%';
+                var flags = { contrast: 'a11y-contrast', grayscale: 'a11y-grayscale',
+                              underline: 'a11y-underline', readable: 'a11y-readable',
+                              motion: 'a11y-no-motion' };
+                for (var k in flags) {
+                    if (a[k]) { root.classList.add(flags[k]); window.__a11yState[k] = true; }
+                }
+            } catch (e) { window.__a11yState = { size: 100 }; }
         })();
     </script></head>
 <body>
@@ -77,6 +88,12 @@
             <a class="icon-btn" href="mailto:shayh22@gmail.com?subject=%D7%90%D7%92%D7%93%D7%95%D7%AA%20%D7%94%D7%9E%D7%A8%D7%90%D7%94" aria-label="צור קשר במייל" title="צור קשר במייל">
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
             </a>
+            <button type="button" class="icon-btn" data-a11y="font-up" aria-label="הגדלת גודל הטקסט" title="הגדלת גודל הטקסט">
+                <span class="a-glyph" aria-hidden="true">A+</span>
+            </button>
+            <button type="button" class="icon-btn" data-a11y="font-down" aria-label="הקטנת גודל הטקסט" title="הקטנת גודל הטקסט">
+                <span class="a-glyph" aria-hidden="true">A−</span>
+            </button>
             <span class="action-toast" id="shareToast" role="status" aria-live="polite"></span>
         </div>
 
@@ -94,8 +111,35 @@
     </footer>
 
     <a href="#top" class="back-to-top" title="חזרה לראש העמוד">↑</a>
+
+    <button type="button" class="a11y-toggle" id="a11yToggle" aria-expanded="false" aria-controls="a11yPanel" aria-label="תפריט נגישות" title="תפריט נגישות">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z"/></svg>
+    </button>
+    <div class="a11y-scrim" id="a11yScrim" hidden></div>
+    <div class="a11y-panel" id="a11yPanel" role="dialog" aria-modal="true" aria-labelledby="a11yTitle">
+        <div class="a11y-head">
+            <h2 id="a11yTitle">תפריט נגישות</h2>
+            <button type="button" class="a11y-close" id="a11yClose" aria-label="סגירת תפריט הנגישות">✕</button>
+        </div>
+        <div>
+            <span class="a11y-label" id="a11ySizeLabel">גודל טקסט</span>
+            <div class="a11y-size">
+                <button type="button" data-a11y="font-down" aria-label="הקטנת גודל הטקסט">A−</button>
+                <output id="a11ySize" for="a11ySizeLabel">100%</output>
+                <button type="button" data-a11y="font-up" aria-label="הגדלת גודל הטקסט">A+</button>
+            </div>
+        </div>
+        <button type="button" class="a11y-opt" data-a11y="contrast" aria-pressed="false">ניגודיות גבוהה</button>
+        <button type="button" class="a11y-opt" data-a11y="grayscale" aria-pressed="false">גווני אפור</button>
+        <button type="button" class="a11y-opt" data-a11y="underline" aria-pressed="false">הדגשת קישורים</button>
+        <button type="button" class="a11y-opt" data-a11y="readable" aria-pressed="false">גופן קריא</button>
+        <button type="button" class="a11y-opt" data-a11y="motion" aria-pressed="false">עצירת אנימציות</button>
+        <button type="button" class="a11y-reset" data-a11y="reset">איפוס הגדרות הנגישות</button>
+    </div>
+
     <script src="assets/theme.js?v=dac103cd"></script>
     <script src="assets/share.js?v=e479bb1c"></script>
+    <script src="assets/a11y.js?v=0a2a1d09"></script>
 
 </body>
 </html>
