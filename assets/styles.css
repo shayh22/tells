@@ -678,6 +678,35 @@ header.compact {
     padding: 0.1rem 0.6rem;
 }
 
+/* ---- reader engagement --------------------------------------- */
+
+.engage {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+}
+
+.engage-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* The widgets carry their own styling and read these variables, so mapping
+   them onto the page tokens is all it takes for them to feel native — and to
+   follow the light/dark toggle without a second palette. */
+[data-tells] {
+    --tlx-fg: var(--text-body);
+    --tlx-muted: var(--text-muted);
+    --tlx-card: var(--bg-card);
+    --tlx-border: var(--line);
+    --tlx-accent: var(--accent);
+    --tlx-accent-fg: var(--bg-card);
+    --tlx-radius: var(--radius-md);
+}
+
 /* ---- between-story navigation -------------------------------- */
 
 .story-nav {
