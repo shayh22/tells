@@ -459,7 +459,9 @@ footer {
     align-items: center;
     justify-content: center;
     gap: 1.05rem;
-    flex-wrap: wrap;
+    /* no wrapping: the logo stays beside the text at every width, on the
+       right of it under RTL, rather than dropping above it on a phone */
+    flex-wrap: nowrap;
     text-decoration: none;
     color: inherit;
     border-radius: 14px;
@@ -494,6 +496,9 @@ a.credit-link:focus-visible {
 
 .credit .c-txt {
     text-align: start;
+    /* lets the text column shrink inside the row instead of forcing the
+       logo onto its own line */
+    min-width: 0;
 }
 
 .credit .c-lead {
