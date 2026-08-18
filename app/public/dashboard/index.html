@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>ניהול תגובות ולייקים</title>
+    <meta name="theme-color" content="#312e81">
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💬</text></svg>">
+</head>
+<body>
+
+<div id="login" class="login" hidden>
+    <form class="login-card" id="loginForm">
+        <h1>ניהול תגובות ולייקים</h1>
+        <p>התחברו כדי לנהל את התגובות מכל האתרים שלכם.</p>
+        <label for="password">סיסמת ניהול</label>
+        <input type="password" id="password" name="password" autocomplete="current-password" required>
+        <button type="submit" class="btn primary">כניסה</button>
+        <p class="error" id="loginError" hidden></p>
+    </form>
+</div>
+
+<div id="app" class="app" hidden>
+    <aside class="sidebar">
+        <div class="brand">
+            <span class="brand-mark" aria-hidden="true">💬</span>
+            <span class="brand-text">ניהול מעורבות</span>
+        </div>
+        <nav>
+            <button type="button" class="nav-item is-active" data-view="overview"><span aria-hidden="true">📊</span> סקירה</button>
+            <button type="button" class="nav-item" data-view="comments"><span aria-hidden="true">💬</span> תגובות <span class="pill" id="pendingPill" hidden>0</span></button>
+            <button type="button" class="nav-item" data-view="likes"><span aria-hidden="true">❤️</span> לייקים</button>
+            <button type="button" class="nav-item" data-view="sites"><span aria-hidden="true">🌐</span> אתרים</button>
+            <button type="button" class="nav-item" data-view="visitors"><span aria-hidden="true">👥</span> מבקרים</button>
+            <button type="button" class="nav-item" data-view="settings"><span aria-hidden="true">⚙️</span> הגדרות</button>
+        </nav>
+        <div class="sidebar-foot">
+            <button type="button" class="btn ghost small" id="themeToggle">מצב בהיר / כהה</button>
+            <button type="button" class="btn ghost small" id="logout">התנתקות</button>
+        </div>
+    </aside>
+
+    <main class="content">
+        <div class="toast" id="toast" hidden></div>
+
+        <!-- סקירה -->
+        <section class="view is-active" data-view="overview">
+            <header class="view-head">
+                <h1>סקירה כללית</h1>
+                <button type="button" class="btn ghost small" data-refresh="overview">רענון</button>
+            </header>
+            <div class="stat-grid" id="statGrid"></div>
+            <div class="panel-grid">
+                <section class="panel">
+                    <h2>פעילות ב־14 הימים האחרונים</h2>
+                    <div id="activityChart" class="chart"></div>
+                </section>
+                <section class="panel">
+                    <h2>הדפים הכי אהובים</h2>
+                    <div id="topPages" class="mini-table"></div>
+                </section>
+            </div>
+            <section class="panel">
+                <h2>לפי אתר</h2>
+                <div id="perSite" class="mini-table"></div>
+            </section>
+            <section class="panel">
+                <h2>התגובות האחרונות</h2>
+                <div id="latestComments" class="comment-list"></div>
+            </section>
+        </section>
+
+        <!-- תגובות -->
+        <section class="view" data-view="comments">
+            <header class="view-head">
+                <h1>תגובות מכל האתרים</h1>
+                <div class="head-actions">
+                    <a class="btn ghost small" id="exportLink" href="/admin/api/comments/export">ייצוא CSV</a>
+                    <button type="button" class="btn ghost small" data-refresh="comments">רענון</button>
+                </div>
+            </header>
+
+            <div class="filters">
+                <div class="tabs" id="statusTabs">
+                    <button type="button" class="tab is-active" data-status="pending">ממתינות <span class="pill" data-count="pending">0</span></button>
+                    <button type="button" class="tab" data-status="approved">מאושרות <span class="pill" data-count="approved">0</span></button>
+                    <button type="button" class="tab" data-status="rejected">נדחו <span class="pill" data-count="rejected">0</span></button>
+                    <button type="button" class="tab" data-status="all">הכול</button>
+                </div>
+                <select id="siteFilter" aria-label="סינון לפי אתר"><option value="">כל האתרים</option></select>
+                <input type="search" id="searchInput" placeholder="חיפוש בטקסט, שם, אימייל או דף" aria-label="חיפוש">
+            </div>
+
+            <div class="bulk-bar" id="bulkBar" hidden>
+                <span id="bulkCount">0 נבחרו</span>
+                <button type="button" class="btn small primary" data-bulk="approve">אישור</button>
+                <button type="button" class="btn small" data-bulk="reject">דחייה</button>
+                <button type="button" class="btn small danger" data-bulk="delete">מחיקה</button>
+                <button type="button" class="btn small ghost" id="clearSelection">ניקוי בחירה</button>
+            </div>
+
+            <div id="commentsList" class="comment-list"></div>
+            <div class="pager">
+                <button type="button" class="btn ghost small" id="prevPage">הקודם</button>
+                <span id="pageInfo"></span>
+                <button type="button" class="btn ghost small" id="nextPage">הבא</button>
+            </div>
+        </section>
+
+        <!-- לייקים -->
+        <section class="view" data-view="likes">
+            <header class="view-head">
+                <h1>לייקים לפי דף</h1>
+                <button type="button" class="btn ghost small" data-refresh="likes">רענון</button>
+            </header>
+            <div id="likesTable" class="mini-table"></div>
+        </section>
+
+        <!-- אתרים -->
+        <section class="view" data-view="sites">
+            <header class="view-head">
+                <h1>האתרים שלי</h1>
+                <button type="button" class="btn primary small" id="newSite">אתר חדש</button>
+            </header>
+            <div id="sitesList" class="sites-list"></div>
+        </section>
+
+        <!-- מבקרים -->
+        <section class="view" data-view="visitors">
+            <header class="view-head">
+                <h1>מבקרים רשומים</h1>
+                <button type="button" class="btn ghost small" data-refresh="visitors">רענון</button>
+            </header>
+            <input type="search" id="visitorSearch" placeholder="חיפוש לפי אימייל או שם" aria-label="חיפוש מבקרים">
+            <div id="visitorsTable" class="mini-table"></div>
+        </section>
+
+        <!-- הגדרות -->
+        <section class="view" data-view="settings">
+            <header class="view-head"><h1>הגדרות</h1></header>
+            <section class="panel">
+                <h2>מילים חסומות</h2>
+                <p class="muted">תגובה שמכילה אחת מהמילים האלה תסומן אוטומטית ותמתין לאישור. מילה בכל שורה.</p>
+                <textarea id="blocklist" rows="6"></textarea>
+                <button type="button" class="btn primary small" id="saveBlocklist">שמירה</button>
+            </section>
+            <section class="panel">
+                <h2>שינוי סיסמת ניהול</h2>
+                <form id="passwordForm" class="stack">
+                    <label for="currentPassword">סיסמה נוכחית</label>
+                    <input type="password" id="currentPassword" autocomplete="current-password" required>
+                    <label for="newPassword">סיסמה חדשה (8 תווים לפחות)</label>
+                    <input type="password" id="newPassword" autocomplete="new-password" minlength="8" required>
+                    <button type="submit" class="btn primary small">עדכון סיסמה</button>
+                </form>
+            </section>
+            <section class="panel">
+                <h2>אימות אימייל</h2>
+                <div id="settingsInfo" class="mini-table"></div>
+            </section>
+            <section class="panel">
+                <h2>יומן פעולות</h2>
+                <div id="auditTable" class="mini-table"></div>
+            </section>
+        </section>
+    </main>
+</div>
+
+<dialog id="siteDialog" class="dialog">
+    <form id="siteForm" class="stack" method="dialog">
+        <h2 id="siteDialogTitle">אתר חדש</h2>
+        <label for="siteName">שם האתר</label>
+        <input type="text" id="siteName" required maxlength="120">
+
+        <label for="siteOrigins">דומיינים מורשים (אחד בכל שורה, ריק = כל דומיין)</label>
+        <textarea id="siteOrigins" rows="3" placeholder="https://example.com"></textarea>
+
+        <label for="siteModeration">מדיניות אישור</label>
+        <select id="siteModeration">
+            <option value="pre">אישור לפני פרסום</option>
+            <option value="post">פרסום מיידי, סינון בדיעבד</option>
+        </select>
+
+        <label for="siteLocale">שפת הרכיבים</label>
+        <select id="siteLocale">
+            <option value="he">עברית</option>
+            <option value="en">אנגלית</option>
+        </select>
+
+        <label class="check"><input type="checkbox" id="siteAnonymous" checked> לאפשר תגובות אנונימיות</label>
+        <label class="check"><input type="checkbox" id="siteComments" checked> תגובות פעילות</label>
+        <label class="check"><input type="checkbox" id="siteLikes" checked> לייקים פעילים</label>
+
+        <div class="dialog-actions">
+            <button type="button" class="btn ghost small" id="siteCancel">ביטול</button>
+            <button type="submit" class="btn primary small">שמירה</button>
+        </div>
+        <p class="error" id="siteError" hidden></p>
+    </form>
+</dialog>
+
+<script src="dashboard.js"></script>
+</body>
+</html>
