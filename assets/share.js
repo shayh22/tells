@@ -2,16 +2,16 @@
     var btn = document.getElementById('shareBtn');
     if (!btn) return;
 
-    var label = btn.querySelector('.share-label');
-    var resting = label.textContent;
+    var toast = document.getElementById('shareToast');
     var timer;
 
-    function flash(msg) {
+    function flash(msg, good) {
         clearTimeout(timer);
-        label.textContent = msg;
-        btn.classList.add('ok');
+        toast.textContent = msg;
+        toast.classList.add('show');
+        if (good) btn.classList.add('ok');
         timer = setTimeout(function () {
-            label.textContent = resting;
+            toast.classList.remove('show');
             btn.classList.remove('ok');
         }, 2200);
     }
@@ -22,7 +22,7 @@
         var url = location.href;
         if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText(url).then(function () {
-                flash('הקישור הועתק');
+                flash('הקישור הועתק', true);
             }, legacy);
         } else {
             legacy();
@@ -36,9 +36,9 @@
             ta.select();
             try {
                 document.execCommand('copy');
-                flash('הקישור הועתק');
+                flash('הקישור הועתק', true);
             } catch (e) {
-                flash('העתיקו את הכתובת מהדפדפן');
+                flash('העתיקו את הכתובת מהדפדפן', false);
             }
             document.body.removeChild(ta);
         }

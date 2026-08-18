@@ -728,59 +728,81 @@ header.compact {
     }
 }
 
-/* ---- share ------------------------------------------------------- */
+/* ---- footer actions ---------------------------------------------- */
 
-.share {
+.footer-actions {
+    position: relative;
     display: flex;
     justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
     margin-top: 1.25rem;
+    padding-bottom: 1.75rem;
 }
 
-.share-btn {
+.icon-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    min-height: 44px;
-    padding: 0.6rem 1.4rem;
+    width: 44px;
+    height: 44px;
+    padding: 0;
     background: var(--bg-card);
     border: 1px solid var(--accent-border);
-    border-radius: 9999px;
+    border-radius: 50%;
     color: var(--accent);
-    font: inherit;
-    font-size: 0.92rem;
-    font-weight: 600;
     cursor: pointer;
     box-shadow: var(--shadow-sm);
-    transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+    transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.share-btn:hover {
+.icon-btn:hover {
     background: var(--accent-light);
     transform: translateY(-2px);
 }
 
-.share-btn:focus-visible {
+.icon-btn:focus-visible {
     outline: 3px solid var(--accent);
     outline-offset: 3px;
 }
 
-.share-btn.ok {
-    background: var(--insight-bg);
-    border-color: var(--insight-border);
-    color: var(--insight-title);
+.icon-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    display: block;
 }
 
-.share-icon {
-    font-size: 1rem;
-    line-height: 1;
+/* the button carries no label, so success is shown by swapping the glyph */
+.icon-btn .i-check { display: none; }
+.icon-btn.ok { color: var(--insight-title); border-color: var(--insight-border); }
+.icon-btn.ok .i-share { display: none; }
+.icon-btn.ok .i-check { display: block; }
+
+.action-toast {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--insight-title);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+    white-space: nowrap;
 }
+
+.action-toast.show { opacity: 1; }
 
 @media (prefers-reduced-motion: reduce) {
-    .share-btn {
+    .icon-btn,
+    .action-toast {
         transition: none;
     }
 }
+
 /* ---- landing hero ------------------------------------------------ */
 
 .hero-figure {
