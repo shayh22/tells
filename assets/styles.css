@@ -728,3 +728,56 @@ header.compact {
     }
 }
 
+/* ---- share ------------------------------------------------------- */
+
+.share {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.25rem;
+}
+
+.share-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0.6rem 1.4rem;
+    background: var(--bg-card);
+    border: 1px solid var(--accent-border);
+    border-radius: 9999px;
+    color: var(--accent);
+    font: inherit;
+    font-size: 0.92rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.share-btn:hover {
+    background: var(--accent-light);
+    transform: translateY(-2px);
+}
+
+.share-btn:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.share-btn.ok {
+    background: var(--insight-bg);
+    border-color: var(--insight-border);
+    color: var(--insight-title);
+}
+
+.share-icon {
+    font-size: 1rem;
+    line-height: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .share-btn {
+        transition: none;
+    }
+}
