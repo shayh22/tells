@@ -15,6 +15,16 @@ git clone https://github.com/shayh22/tells.git
 cd tells
 ```
 
+## 💬 ניהול תגובות ולייקים (`app/`)
+
+תיקיית [`app/`](app/) מכילה אפליקציה עצמאית לניהול תגובות ולייקים של מבקרים בכל האתרים שלי:
+שרת Node ללא תלויות, דשבורד ניהול בעברית (אישור, דחייה ומחיקה של תגובות), ורכיבי הטמעה
+שמתווספים לכל דף בשורה אחת. פרטים מלאים ב־[`app/README.md`](app/README.md).
+
+```bash
+cd app && npm start   # דשבורד: http://localhost:4000/admin/
+```
+
 ## 📚 Documentation
 
 For more information, visit our [GitHub Pages](https://shayh22.github.io/tells/).
