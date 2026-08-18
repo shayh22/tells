@@ -15,17 +15,16 @@ git clone https://github.com/shayh22/tells.git
 cd tells
 ```
 
-## 💬 ניהול תגובות ולייקים (`app/`)
+## 💬 תגובות ולייקים
 
-תיקיית [`app/`](app/) מכילה אפליקציה עצמאית לניהול תגובות ולייקים של מבקרים בכל האתרים שלי:
-שרת Node ללא תלויות, דשבורד ניהול בעברית (אישור, דחייה ומחיקה של תגובות), ורכיבי הטמעה
-שמתווספים לכל דף בשורה אחת. פרטים מלאים ב־[`app/README.md`](app/README.md).
+ניהול התגובות והלייקים של האתר חי בריפו נפרד — [shayh22/web-feeds](https://github.com/shayh22/web-feeds):
+שרת, דשבורד ניהול ורכיבי הטמעה שמשרתים כמה אתרים במקביל. כדי להוסיף כאן תגובות או לייקים,
+פורסים אותו (Cloudflare Workers בתוכנית החינמית) ומדביקים בדף את קוד ההטמעה:
 
-אפשר להריץ אותה על Cloudflare Workers + D1 בתוכנית החינמית, או כשרת Node מקומי:
-
-```bash
-cd app/worker && npm install && npm run deploy   # Cloudflare (ראו worker/README.md)
-cd app && npm start                              # מקומי: http://localhost:4000/admin/
+```html
+<script src="https://<הכתובת-שלכם>/embed.js" data-site="st_xxxx" defer></script>
+<div data-tells="likes"></div>
+<div data-tells="comments"></div>
 ```
 
 ## 📚 Documentation
