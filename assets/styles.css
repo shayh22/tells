@@ -707,6 +707,13 @@ header.compact {
     --tlx-radius: var(--radius-md);
 }
 
+/* A quiet counter closing the collection on the landing page. */
+.views-line {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+}
+
 /* ---- between-story navigation -------------------------------- */
 
 .story-nav {
