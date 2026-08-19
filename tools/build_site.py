@@ -447,10 +447,10 @@ def story_page(lang, i, tr):
 
         <section class="engage" aria-label="%s">
             <div class="engage-bar">
-                <div data-tells="likes"></div>
-                <div data-tells="views"></div>
+                <div data-tells="likes" data-locale="{lang}"></div>
+                <div data-tells="views" data-locale="{lang}"></div>
             </div>
-            <div data-tells="comments"></div>
+            <div data-tells="comments" data-locale="{lang}"></div>
         </section>
 
         <nav class="story-nav" aria-label="%s">
@@ -469,7 +469,8 @@ def story_page(lang, i, tr):
        e(tr[n]["title"]), n, e(u["topic"] % tr[n]["topic"]), "\n".join(body),
        e(u["engage"]), e(u["nav_aria"]), prev_l, e(u["all_stories"]), next_l,
        footer(lang), drawer(lang), scripts(lang))
-    return out
+    # the engagement widgets are told the page's language outright
+    return out.replace('data-locale="{lang}"', 'data-locale="%s"' % lang)
 
 
 def index_page(lang, tr, counts):
@@ -515,7 +516,7 @@ def index_page(lang, tr, counts):
         </nav>
 
         <div class="views-line">
-            <div data-tells="views"></div>
+            <div data-tells="views" data-locale="{lang}"></div>
         </div>
     </main>
 
@@ -527,7 +528,8 @@ def index_page(lang, tr, counts):
        e(u["tagline"]), up, HERO,
        e(u["hero_caption"]), e(u["hero_caption"]), e(u["toc"]), e(u["toc"]),
        "\n".join(items), footer(lang), drawer(lang), scripts(lang))
-    return out
+    # the engagement widgets are told the page's language outright
+    return out.replace('data-locale="{lang}"', 'data-locale="%s"' % lang)
 
 
 # ---------------------------------------------------------------- crawler files
