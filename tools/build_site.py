@@ -19,6 +19,9 @@ HE = [STORY_1, STORY_2, STORY_3, STORY_4, STORY_5, STORY_6, STORY_7]
 N = len(HE)
 ASSET_V = {}          # filled in by stamp()
 EMAIL = "shayh22@gmail.com"
+# the site key the engagement widgets were registered under; without it
+# embed.js renders "missing data-site" instead of the likes and comments
+ENGAGE_SITE = "st_4z18htIPwyOn"
 LOGO = "images/birkat-hanasi-logo.webp"
 HERO = "images/mirror-hero.jpg"
 
@@ -220,35 +223,56 @@ NOFLASH = """    <script>
     </script>"""
 
 
-def lang_menu(lang, page):
-    """Real links, so every translation is crawlable and works without JS."""
+# Flags drawn inline so they render identically everywhere: emoji flags fall
+# back to bare letter pairs on Windows. CSS crops each 3:2 flag to a circle.
+FLAGS = {
+ 'he': ('<rect width="36" height="24" fill="#fff"/>'
+        '<path d="M0 3.6h36v2.4H0zM0 18h36v2.4H0z" fill="#0038b8"/>'
+        '<path d="M18 7.4 22.2 14.6H13.8ZM18 16.6 13.8 9.4H22.2Z" fill="none"'
+        ' stroke="#0038b8" stroke-width="0.95"/>'),
+ 'en': ('<rect width="36" height="24" fill="#012169"/>'
+        '<path d="M0 0 36 24M36 0 0 24" stroke="#fff" stroke-width="5"/>'
+        '<path d="M0 0 36 24M36 0 0 24" stroke="#c8102e" stroke-width="2.2"/>'
+        '<path d="M18 0V24M0 12H36" stroke="#fff" stroke-width="8"/>'
+        '<path d="M18 0V24M0 12H36" stroke="#c8102e" stroke-width="4.6"/>'),
+ 'ru': ('<path d="M0 0h36v8H0z" fill="#fff"/>'
+        '<path d="M0 8h36v8H0z" fill="#0039a6"/>'
+        '<path d="M0 16h36v8H0z" fill="#d52b1e"/>'),
+ 'es': ('<rect width="36" height="24" fill="#aa151b"/>'
+        '<path d="M0 6h36v12H0z" fill="#f1bf00"/>'),
+ 'zh': ('<rect width="36" height="24" fill="#ee1c25"/>'
+        '<path d="M12.00 5.00L12.90 7.76L15.80 7.76L13.45 9.47L14.35 12.24L12.00 10.53L9.65 12.24L10.55 9.47L8.20 7.76L11.10 7.76ZM18.60 3.25L18.93 4.25L19.98 4.25L19.13 4.87L19.45 5.87L18.60 5.25L17.75 5.87L18.07 4.87L17.22 4.25L18.27 4.25ZM21.20 5.85L21.53 6.85L22.58 6.85L21.73 7.47L22.05 8.47L21.20 7.85L20.35 8.47L20.67 7.47L19.82 6.85L20.87 6.85ZM21.20 9.45L21.53 10.45L22.58 10.45L21.73 11.07L22.05 12.07L21.20 11.45L20.35 12.07L20.67 11.07L19.82 10.45L20.87 10.45ZM18.60 12.05L18.93 13.05L19.98 13.05L19.13 13.67L19.45 14.67L18.60 14.05L17.75 14.67L18.07 13.67L17.22 13.05L18.27 13.05Z" fill="#ffde00"/>'),
+}
+
+
+def lang_flags(lang, page):
+    """A row of real <a hreflang> links, one flag each, always visible: the
+    switcher stays crawlable and needs no JavaScript to open."""
     items = []
     for l in LANGS:
         cur = ' aria-current="true"' if l == lang else ""
-        href = url(l, page) if False else (("../" if META[lang]["path"] else "")
-                                           + META[l]["path"] + page)
-        items.append('                    <li><a lang="%s" hreflang="%s" href="%s"%s>%s</a></li>'
-                     % (l, l, href, cur, META[l]["native"]))
-    return """        <details class="lang-menu">
-            <summary aria-label="%s" title="%s"><span aria-hidden="true">%s</span></summary>
-            <nav aria-label="%s">
-                <ul>
+        href = (("../" if META[lang]["path"] else "")
+                + META[l]["path"] + page) or "./"
+        items.append(
+            '                <a lang="%s" hreflang="%s" href="%s"%s title="%s"'
+            ' aria-label="%s">\n'
+            '                    <svg viewBox="0 0 36 24" aria-hidden="true"'
+            ' focusable="false" preserveAspectRatio="xMidYMid slice">%s</svg>\n'
+            '                </a>' % (l, l, href, cur, e(META[l]["native"]),
+                                      e(META[l]["native"]), FLAGS[l]))
+    return """        <nav class="lang-flags" aria-label="%s">
 %s
-                </ul>
-            </nav>
-        </details>""" % (e(UI[lang]["lang_aria"]), e(UI[lang]["lang"]),
-                         META[lang]["native"], e(UI[lang]["lang_aria"]), "\n".join(items))
+        </nav>""" % (e(UI[lang]["lang_aria"]), "\n".join(items))
 
 
-def header_tools(lang, page):
+def header_tools(lang):
     u = UI[lang]
     return """        <div class="header-tools">
             <button type="button" class="theme-toggle" id="themeToggle" aria-label="%s" title="%s">
                 <span class="icon-dark" aria-hidden="true">🌙</span>
                 <span class="icon-light" aria-hidden="true">☀️</span>
             </button>
-%s
-        </div>""" % (e(u["theme_aria"]), e(u["theme"]), lang_menu(lang, page))
+        </div>""" % (e(u["theme_aria"]), e(u["theme"]))
 
 
 SHARE_PATH = ("M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7"
@@ -343,10 +367,12 @@ def scripts(lang):
     return ('    <script src="%s"></script>\n'
             '    <script src="%s"></script>\n'
             '    <script src="%s"></script>\n'
-            '    <script src="https://web-feeds.shayh22.workers.dev/embed.js"></script>\n'
+            '    <script src="https://web-feeds.shayh22.workers.dev/embed.js"'
+            ' data-site="%s" defer></script>\n'
             '    <script src="%s"></script>\n'
             % (asset(lang, "assets/theme.js"), asset(lang, "assets/share.js"),
-               asset(lang, "assets/a11y.js"), asset(lang, "assets/engage.js")))
+               asset(lang, "assets/a11y.js"), ENGAGE_SITE,
+               asset(lang, "assets/engage.js")))
 
 
 # ---------------------------------------------------------------- pages
@@ -402,6 +428,7 @@ def story_page(lang, i, tr):
     out += """
     <header class="compact" id="top">
 %s
+%s
         <div class="header-content">
             <a class="home-link" href="index.html">%s</a>
             <p class="story-page">%s</p>
@@ -437,7 +464,8 @@ def story_page(lang, i, tr):
 %s
 </body>
 </html>
-""" % (header_tools(lang, page), e(u["all_stories"]), e(u["story_of"] % (n, N)),
+""" % (header_tools(lang), lang_flags(lang, page), e(u["all_stories"]),
+       e(u["story_of"] % (n, N)),
        e(tr[n]["title"]), n, e(u["topic"] % tr[n]["topic"]), "\n".join(body),
        e(u["engage"]), e(u["nav_aria"]), prev_l, e(u["all_stories"]), next_l,
        footer(lang), drawer(lang), scripts(lang))
@@ -465,6 +493,7 @@ def index_page(lang, tr, counts):
     out = head(lang, "", u["site_title"], u["tagline"], HERO, index_jsonld(lang, tr))
     out += """
     <header id="top">
+%s
 %s
         <div class="header-content">
             <h1>%s</h1>
@@ -494,7 +523,8 @@ def index_page(lang, tr, counts):
 %s
 </body>
 </html>
-""" % (header_tools(lang, ""), e(u["site"]), e(u["tagline"]), up, HERO,
+""" % (header_tools(lang), lang_flags(lang, ""), e(u["site"]),
+       e(u["tagline"]), up, HERO,
        e(u["hero_caption"]), e(u["hero_caption"]), e(u["toc"]), e(u["toc"]),
        "\n".join(items), footer(lang), drawer(lang), scripts(lang))
     return out
