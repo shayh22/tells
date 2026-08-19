@@ -23,14 +23,15 @@
     --insight-text: #166534;
     --dialogue-bg: #f5f3ff;
     --dialogue-text: #4338ca;
-    --fab-bg: #1e1b4b;
-    --fab-text: #ffffff;
     --img-filter: none;
     --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
     --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
     --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.04);
     --radius-md: 12px;
     --radius-lg: 20px;
+    /* comfortable line length for running Hebrew text; the card
+       stays wide so illustrations can run past the text column */
+    --measure: 34rem;
 }
 
 /* Only the colours change in dark mode. The rule is repeated for the
@@ -60,8 +61,6 @@
         --insight-text: #a7f3c4;
         --dialogue-bg: #232a52;
         --dialogue-text: #c7d2fe;
-        --fab-bg: #4338ca;
-        --fab-text: #ffffff;
         --img-filter: brightness(0.88) contrast(1.02);
         --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.5), 0 2px 4px -2px rgba(0,0,0,0.4);
         --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.55), 0 4px 6px -4px rgba(0,0,0,0.4);
@@ -91,8 +90,6 @@
     --insight-text: #a7f3c4;
     --dialogue-bg: #232a52;
     --dialogue-text: #c7d2fe;
-    --fab-bg: #4338ca;
-    --fab-text: #ffffff;
     --img-filter: brightness(0.88) contrast(1.02);
     --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.5), 0 2px 4px -2px rgba(0,0,0,0.4);
     --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.55), 0 4px 6px -4px rgba(0,0,0,0.4);
@@ -102,6 +99,22 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+/* belt and braces against a sideways scrollbar: clip (not hidden) so that
+   position: sticky keeps working, plus a ceiling on anything replaced */
+html {
+    overflow-x: clip;
+    max-width: 100%;
+}
+
+img,
+svg,
+video,
+iframe,
+table,
+pre {
+    max-width: 100%;
 }
 
 body {
@@ -181,8 +194,7 @@ body {
 @media (prefers-reduced-motion: reduce) {
     .theme-toggle,
     .toc-link,
-    .story-card,
-    .back-to-top {
+    .story-card {
         transition: none;
     }
 }
@@ -321,6 +333,7 @@ main {
 
 .story-header {
     margin-bottom: 1.75rem;
+    text-align: center;
 }
 
 .story-tag {
@@ -346,7 +359,21 @@ main {
 .story-body p {
     margin-bottom: 1.25rem;
     color: var(--text-body);
-    text-align: justify;
+    text-align: start;
+}
+
+/* the running text is held to a measure and centred in the card, while the
+   illustrations below keep the card's full width */
+.story-body > p,
+.story-body > ul,
+.story-body > .quote-box,
+.story-card > .quote-box {
+    max-width: var(--measure);
+    margin-inline: auto;
+}
+
+.story-body > figure + p {
+    margin-top: 0;
 }
 
 .story-body ul {
@@ -372,6 +399,7 @@ main {
 }
 
 .quote-box {
+    width: 100%;
     background: var(--quote-bg);
     border-right: 4px solid var(--quote-border);
     border-radius: 0 var(--radius-md) var(--radius-md) 0;
@@ -419,6 +447,9 @@ main {
     height: auto;
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-md);
+    /* a hairline keeps a light-edged illustration from bleeding into the
+       card behind it */
+    border: 1px solid var(--line);
     background: var(--line);
     /* the illustrations are lit for a bright page; take the glare off
        them in dark mode rather than having them shine out of it */
@@ -426,6 +457,8 @@ main {
 }
 
 .story-figure figcaption {
+    max-width: var(--measure);
+    margin-inline: auto;
     margin-top: 0.65rem;
     font-size: 0.9rem;
     color: var(--text-muted);
@@ -523,35 +556,16 @@ a.credit-link:focus-visible {
     text-wrap: balance;
 }
 
-.back-to-top {
-    position: fixed;
-    bottom: 2rem;
-    left: 2rem;
-    background: var(--fab-bg);
-    color: var(--fab-text);
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    box-shadow: var(--shadow-lg);
-    opacity: 0.85;
-    transition: all 0.2s ease;
-    z-index: 100;
-}
-
-.back-to-top:hover {
-    opacity: 1;
-    transform: translateY(-3px);
-    background: var(--accent);
-}
-
 @media (max-width: 640px) {
     h1 { font-size: 2.1rem; }
-    .story-card { padding: 1.75rem 1.25rem; }
+    .story-card { padding: 1.75rem 1.1rem; }
     .toc-card { padding: 1.5rem 1rem; }
+    main { padding: 0 1rem; }
+    .story-figure { margin: 1.5rem 0; }
+}
+
+@media (min-width: 900px) {
+    .story-card { padding: 3rem 3rem 2.75rem; }
 }
 /* ---- multi-page shell ---------------------------------------- */
 
@@ -901,7 +915,7 @@ header.compact {
 
 /* filters go on the content blocks, never the root: a filter on an ancestor
    makes it the containing block for fixed children, which would strand the
-   drawer and the back-to-top button mid-page */
+   drawer and the accessibility button mid-page */
 .a11y-grayscale header,
 .a11y-grayscale main,
 .a11y-grayscale footer {
@@ -950,8 +964,7 @@ header.compact {
 
 .a11y-toggle {
     /* pinned to the top right of the viewport, so it stays reachable at any
-       scroll position and never crowds the theme toggle or the back-to-top
-       button on the other side */
+       scroll position and never crowds the theme toggle on the other side */
     position: fixed;
     top: 1.25rem;
     right: 1.25rem;
