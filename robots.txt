@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Assistants and answer engines are welcome to read and cite these texts.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://shayh22.github.io/tells/sitemap.xml

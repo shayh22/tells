@@ -1,0 +1,29 @@
+# Tales of the Mirror (אגדות המראה)
+
+> Modern fables about emotional defences, the patterns couples fall into, and the road back to yourself
+
+Seven modern fables, each about one way a person can turn love away:
+hypersensitivity, fault-finding, loyalty tests, mind-reading, blame,
+the threat of separation, and the refusal to forgive. Written in Hebrew
+and published in Hebrew, English, Russian, Spanish and Chinese.
+
+## Stories (English)
+
+- [Liryon's Armour of Mirrors](https://shayh22.github.io/tells/en/story-1.html): hypersensitivity, low self-worth and the sense of being persecuted
+- [Elran's Cloth of Truth](https://shayh22.github.io/tells/en/story-2.html): a compulsive focus on what is missing and on flaws
+- [Arian's Cedar Roots](https://shayh22.github.io/tells/en/story-3.html): the loyalty test and the demand to tear other bonds apart
+- [Razia's Waters of Revelation](https://shayh22.github.io/tells/en/story-4.html): the illusion of mind-reading, and dressing others in malice
+- [Kai's Burden of Stones](https://shayh22.github.io/tells/en/story-5.html): the trap of blame, turning a partner into the address for every frustration
+- [Noit's Cabin Foundations](https://shayh22.github.io/tells/en/story-6.html): using separation and the threat of banishment as a weapon for control
+- [Tamara's Bridges of Ash](https://shayh22.github.io/tells/en/story-7.html): demanding perfection, refusing to forgive, and cutting every tie
+
+## Other languages
+
+- עברית: https://shayh22.github.io/tells/
+- Русский: https://shayh22.github.io/tells/ru/
+- Español: https://shayh22.github.io/tells/es/
+- 中文: https://shayh22.github.io/tells/zh/
+
+## Licence
+
+Free to read, quote and cite with attribution to Tales of the Mirror.

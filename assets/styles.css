@@ -192,8 +192,91 @@ body {
 :root[data-theme="light"] .theme-toggle .icon-dark { display: inline; }
 :root[data-theme="light"] .theme-toggle .icon-light { display: none; }
 
+/* language switcher: a <details> so it opens with no JS and every
+   translation stays a real, crawlable <a hreflang> link */
+.lang-menu {
+    position: relative;
+}
+
+.lang-menu > summary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    height: 44px;
+    padding: 0 0.7rem;
+    border: 1px solid rgba(255,255,255,0.28);
+    background: rgba(255,255,255,0.12);
+    color: #ffffff;
+    border-radius: 999px;
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.88rem;
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+    list-style: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.lang-menu > summary::-webkit-details-marker { display: none; }
+.lang-menu > summary::marker { content: ""; }
+
+.lang-menu > summary:hover {
+    background: rgba(255,255,255,0.24);
+    transform: translateY(-2px);
+}
+
+.lang-menu > summary:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 2px;
+}
+
+.lang-menu > nav {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    right: auto;
+    z-index: 6;
+    min-width: 11rem;
+    max-width: min(15rem, calc(100vw - 2.5rem));
+    padding: 0.35rem;
+    border: 1px solid var(--line);
+    border-radius: 0.85rem;
+    background: var(--bg-card);
+    box-shadow: 0 14px 34px rgba(15, 23, 42, 0.22);
+}
+
+.lang-menu > nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.lang-menu > nav a {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.6rem;
+    color: var(--text-body);
+    font-size: 0.95rem;
+    text-decoration: none;
+    text-align: start;
+}
+
+.lang-menu > nav a:hover,
+.lang-menu > nav a:focus-visible {
+    background: var(--accent-light);
+    color: var(--accent);
+}
+
+.lang-menu > nav a[aria-current="true"] {
+    font-weight: 700;
+    background: rgba(99, 102, 241, 0.14);
+}
+
 @media (prefers-reduced-motion: reduce) {
     .theme-toggle,
+    .lang-menu > summary,
     .toc-link,
     .story-card {
         transition: none;
@@ -206,7 +289,8 @@ header {
     padding: 4.5rem 1.5rem 3.5rem;
     text-align: center;
     position: relative;
-    overflow: hidden;
+    /* no overflow clipping here: the language menu drops out of the header,
+       and the only absolutely positioned child (::before) is inset to 0 */
 }
 
 header::before {
