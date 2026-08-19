@@ -103,7 +103,8 @@
 
 /* belt and braces against a sideways scrollbar: clip (not hidden) so that
    position: sticky keeps working, plus a ceiling on anything replaced */
-html {
+html,
+body {
     overflow-x: clip;
     max-width: 100%;
 }
@@ -694,6 +695,18 @@ header.compact {
 
 /* ---- reader engagement --------------------------------------- */
 
+.engage,
+.engage-bar,
+.views-line {
+    max-width: 100%;
+    min-width: 0;
+}
+
+[data-tells] * {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
 .engage {
     display: flex;
     flex-direction: column;
@@ -712,6 +725,14 @@ header.compact {
    them onto the page tokens is all it takes for them to feel native — and to
    follow the light/dark toggle without a second palette. */
 [data-tells] {
+    /* The widget markup comes from another origin and can carry pixel widths
+       wider than a phone. Under RTL that surplus lands on the LEFT and shows
+       as a gap beside the page, so keep the mount point and its contents in
+       their box and let anything genuinely wide scroll inside itself. */
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+
     --tlx-fg: var(--text-body);
     --tlx-muted: var(--text-muted);
     --tlx-card: var(--bg-card);
