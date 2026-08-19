@@ -357,6 +357,33 @@ main {
     line-height: 1.3;
 }
 
+/* the full texts carry their own section breaks; these sit on the reading
+   measure with the paragraphs, not the wider illustrations */
+.story-section {
+    max-width: var(--measure);
+    margin: 2.5rem auto 1.1rem;
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--heading);
+    text-align: center;
+    text-wrap: balance;
+}
+
+.story-section::after {
+    content: '';
+    display: block;
+    width: 3rem;
+    height: 2px;
+    margin: 0.6rem auto 0;
+    background: var(--accent-border);
+    border-radius: 2px;
+}
+
+.story-body > figure + .story-section {
+    margin-top: 2rem;
+}
+
 .story-body p {
     margin-bottom: 1.25rem;
     color: var(--text-body);
