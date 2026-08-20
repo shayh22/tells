@@ -693,6 +693,34 @@ header.compact {
     margin-bottom: 0.6rem;
 }
 
+/* the plain-language opening on the landing page: what this collection is
+   about, in the words a reader would use themselves */
+.lede {
+    max-width: var(--measure);
+    margin: 0 auto 2rem;
+    padding: 0 0.25rem;
+}
+
+.lede p {
+    margin: 0;
+    color: var(--text-body);
+    font-size: 1.08rem;
+    line-height: 1.85;
+    text-align: start;
+}
+
+/* the honest note, small and last: these are fables, not treatment */
+.disclaimer {
+    max-width: 46rem;
+    margin: 1.75rem auto 0;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line-soft);
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    line-height: 1.7;
+    text-align: center;
+}
+
 /* ---- landing page -------------------------------------------- */
 
 .index-list {

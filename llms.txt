@@ -1,28 +1,82 @@
 # Tales of the Mirror (אגדות המראה)
 
-> Modern fables about emotional defences, the patterns couples fall into, and the road back to yourself
+> Tales of the Mirror — fables about the patterns couples fall into
 
-Seven modern fables, each about one way a person can turn love away:
-hypersensitivity, fault-finding, loyalty tests, mind-reading, blame,
-the threat of separation, and the refusal to forgive. Written in Hebrew
-and published in Hebrew, English, Russian, Spanish and Chinese.
+Seven modern fables about the emotional patterns that wear a relationship down — hypersensitivity, fault-finding, loyalty tests, assuming bad intent, blame, threats of separation and the refusal to forgive — and about recognising your own part and repairing it.
+
+Seven fables, each one about a single pattern that quietly wears a relationship down. They are written to be recognised rather than studied: you read one, you see yourself somewhere in it, and you know what there is to repair.
+
+These are stories, not clinical treatment. They are meant to prompt recognition and a first step, and they do not replace a qualified therapist.
+
+Published in Hebrew, English, Russian, Spanish and Chinese; each
+language has its own URL and its own copy of every story.
 
 ## Stories (English)
 
-- [Liryon's Armour of Mirrors](https://shayh22.github.io/tells/en/story-1.html): hypersensitivity, low self-worth and the sense of being persecuted
-- [Elran's Cloth of Truth](https://shayh22.github.io/tells/en/story-2.html): a compulsive focus on what is missing and on flaws
-- [Arian's Cedar Roots](https://shayh22.github.io/tells/en/story-3.html): the loyalty test and the demand to tear other bonds apart
-- [Razia's Waters of Revelation](https://shayh22.github.io/tells/en/story-4.html): the illusion of mind-reading, and dressing others in malice
-- [Kai's Burden of Stones](https://shayh22.github.io/tells/en/story-5.html): the trap of blame, turning a partner into the address for every frustration
-- [Noit's Cabin Foundations](https://shayh22.github.io/tells/en/story-6.html): using separation and the threat of banishment as a weapon for control
-- [Tamara's Bridges of Ash](https://shayh22.github.io/tells/en/story-7.html): demanding perfection, refusing to forgive, and cutting every tie
+Each fable is about one pattern. The line after the link says which.
+
+### 1. Liryon's Armour of Mirrors
+
+- Pattern: hypersensitivity and feeling persecuted
+- Also: hypersensitivity, low self-worth and the sense of being persecuted
+- Summary: When you read every kind word as an insult, you end up alone and certain the world turned on you. A fable about hypersensitivity, low self-worth, and the armour that keeps love out.
+- Read: https://shayh22.github.io/tells/en/story-1.html
+- Other languages: עברית https://shayh22.github.io/tells/story-1.html, Русский https://shayh22.github.io/tells/ru/story-1.html, Español https://shayh22.github.io/tells/es/story-1.html, 中文 https://shayh22.github.io/tells/zh/story-1.html
+
+### 2. Elran's Cloth of Truth
+
+- Pattern: constant fault-finding in a marriage
+- Also: a compulsive focus on what is missing and on flaws
+- Summary: A thousand golden threads and one faded spot — and the spot is all he sees. A fable about fault-finding, about never noticing what a partner gives, and about the loneliness it earns.
+- Read: https://shayh22.github.io/tells/en/story-2.html
+- Other languages: עברית https://shayh22.github.io/tells/story-2.html, Русский https://shayh22.github.io/tells/ru/story-2.html, Español https://shayh22.github.io/tells/es/story-2.html, 中文 https://shayh22.github.io/tells/zh/story-2.html
+
+### 3. Arian's Cedar Roots
+
+- Pattern: loyalty tests and cutting off family
+- Also: the loyalty test and the demand to tear other bonds apart
+- Summary: She asks him to prove his love by cutting off his family. A fable about loyalty tests, about jealousy of a partner's other bonds, and about what is left of a man whose roots are cut.
+- Read: https://shayh22.github.io/tells/en/story-3.html
+- Other languages: עברית https://shayh22.github.io/tells/story-3.html, Русский https://shayh22.github.io/tells/ru/story-3.html, Español https://shayh22.github.io/tells/es/story-3.html, 中文 https://shayh22.github.io/tells/zh/story-3.html
+
+### 4. Razia's Waters of Revelation
+
+- Pattern: assuming bad intent in a partner
+- Also: the illusion of mind-reading, and dressing others in malice
+- Summary: She was certain she could read his mind — until his thoughts were shown to her. A fable about mind-reading, suspicion, and years spent fighting a partner who was never the enemy.
+- Read: https://shayh22.github.io/tells/en/story-4.html
+- Other languages: עברית https://shayh22.github.io/tells/story-4.html, Русский https://shayh22.github.io/tells/ru/story-4.html, Español https://shayh22.github.io/tells/es/story-4.html, 中文 https://shayh22.github.io/tells/zh/story-4.html
+
+### 5. Kai's Burden of Stones
+
+- Pattern: blaming a partner for everything
+- Also: the trap of blame, turning a partner into the address for every frustration
+- Summary: Every stone in her road became a stone on his back, until his back broke. A fable about blame, about making a partner the address for every frustration, and about what it costs.
+- Read: https://shayh22.github.io/tells/en/story-5.html
+- Other languages: עברית https://shayh22.github.io/tells/story-5.html, Русский https://shayh22.github.io/tells/ru/story-5.html, Español https://shayh22.github.io/tells/es/story-5.html, 中文 https://shayh22.github.io/tells/zh/story-5.html
+
+### 6. Noit's Cabin Foundations
+
+- Pattern: threatening separation to win an argument
+- Also: using separation and the threat of banishment as a weapon for control
+- Summary: Every argument ended with "get out" — and every time, another stone left the foundations. A fable about using the threat of separation as a weapon, until the house cannot stand.
+- Read: https://shayh22.github.io/tells/en/story-6.html
+- Other languages: עברית https://shayh22.github.io/tells/story-6.html, Русский https://shayh22.github.io/tells/ru/story-6.html, Español https://shayh22.github.io/tells/es/story-6.html, 中文 https://shayh22.github.io/tells/zh/story-6.html
+
+### 7. Tamara's Bridges of Ash
+
+- Pattern: refusing to forgive and cutting people off
+- Also: demanding perfection, refusing to forgive, and cutting every tie
+- Summary: She burned a bridge for every slight, and then the storm came. A fable about demanding perfection from people, about refusing to forgive an ordinary mistake, and about the isolation it builds.
+- Read: https://shayh22.github.io/tells/en/story-7.html
+- Other languages: עברית https://shayh22.github.io/tells/story-7.html, Русский https://shayh22.github.io/tells/ru/story-7.html, Español https://shayh22.github.io/tells/es/story-7.html, 中文 https://shayh22.github.io/tells/zh/story-7.html
 
 ## Other languages
 
-- עברית: https://shayh22.github.io/tells/
-- Русский: https://shayh22.github.io/tells/ru/
-- Español: https://shayh22.github.io/tells/es/
-- 中文: https://shayh22.github.io/tells/zh/
+- עברית: https://shayh22.github.io/tells/ — אגדות המראה — משלים על הדפוסים שמכרסמים בזוגיות
+- Русский: https://shayh22.github.io/tells/ru/ — Сказания зеркала — притчи о том, что разрушает отношения
+- Español: https://shayh22.github.io/tells/es/ — Cuentos del espejo — fábulas sobre lo que desgasta a una pareja
+- 中文: https://shayh22.github.io/tells/zh/ — 明镜寓言 — 关于消耗亲密关系的那些模式
 
 ## Licence
 

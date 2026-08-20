@@ -6,10 +6,11 @@ Hebrew is the original and sits at the root; each translation gets its own
 directory, so every language is a separate URL that can be indexed and linked
 with hreflang rather than being swapped in by script."""
 
-import json, os, re, sys, html
+import datetime, json, os, re, sys, html
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from langs import LANGS, META, UI, SITE
+from seo import SEO
 from content_he_1_3 import STORY_1, STORY_2, STORY_3
 from content_he_4_7 import STORY_4, STORY_5, STORY_6, STORY_7
 from PIL import Image
@@ -24,6 +25,9 @@ EMAIL = "shayh22@gmail.com"
 ENGAGE_SITE = "st_4z18htIPwyOn"
 LOGO = "images/birkat-hanasi-logo.webp"
 HERO = "images/mirror-hero.jpg"
+# a freshness signal for search; the modified date follows the last build
+PUBLISHED = "2026-08-18"
+MODIFIED = datetime.date.today().isoformat()
 
 
 # ---------------------------------------------------------------- translations
@@ -108,17 +112,25 @@ def publisher():
 
 def index_jsonld(lang, tr):
     u = UI[lang]
+    seo = SEO[lang]
+    topics = [seo[i + 1]["label"] for i in range(N)]
     site = {"@context": "https://schema.org", "@type": "WebSite",
             "@id": url(lang, "") + "#website",
             "name": u["site"], "alternateName": UI["he"]["site"],
-            "description": u["tagline"], "url": url(lang, ""),
+            "description": seo["about"], "url": url(lang, ""),
+            "about": topics, "keywords": seo["keywords"],
             "inLanguage": lang, "publisher": publisher()}
     collection = {"@context": "https://schema.org", "@type": "CollectionPage",
-                  "name": u["site"], "description": u["tagline"],
+                  "name": u["site"], "description": seo["about"],
+                  "about": topics, "keywords": seo["keywords"],
                   "url": url(lang, ""), "inLanguage": lang,
+                  "datePublished": PUBLISHED, "dateModified": MODIFIED,
                   "isPartOf": {"@id": url(lang, "") + "#website"},
                   "hasPart": [{"@type": "ShortStory", "position": i + 1,
-                               "name": tr[i + 1]["title"], "about": tr[i + 1]["topic"],
+                               "name": tr[i + 1]["title"],
+                               "alternativeHeadline": seo[i + 1]["label"],
+                               "about": [seo[i + 1]["label"], tr[i + 1]["topic"]],
+                               "description": seo[i + 1]["desc"],
                                "url": url(lang, "story-%d.html" % (i + 1)),
                                "inLanguage": lang}
                               for i in range(N)]}
@@ -133,15 +145,18 @@ def index_jsonld(lang, tr):
 
 def story_jsonld(lang, n, tr, first_image, description):
     u = UI[lang]
+    seo = SEO[lang][n]
     story = {"@context": "https://schema.org", "@type": "ShortStory",
              "headline": tr[n]["title"], "name": tr[n]["title"],
-             "description": description, "about": tr[n]["topic"],
+             "alternativeHeadline": seo["label"],
+             "description": description, "about": [seo["label"], tr[n]["topic"]],
              "inLanguage": lang, "url": url(lang, "story-%d.html" % n),
              "mainEntityOfPage": {"@type": "WebPage", "@id": url(lang, "story-%d.html" % n)},
              "isPartOf": {"@type": "CreativeWorkSeries", "name": u["site"], "url": url(lang, "")},
              "position": n, "genre": ["Fable", "Parable"],
+             "datePublished": PUBLISHED, "dateModified": MODIFIED,
              "publisher": publisher(), "author": publisher(),
-             "keywords": tr[n]["topic"]}
+             "keywords": seo["keywords"]}
     if first_image:
         story["image"] = "%s/%s" % (SITE, first_image)
     crumbs = {"@context": "https://schema.org", "@type": "BreadcrumbList",
@@ -322,12 +337,15 @@ def footer(lang):
                 </span>
             </a>
         </div>
+
+        <p class="disclaimer">%s</p>
     </footer>
 """ % (e(u["footer"]), e(u["share"]), e(u["share"]), SHARE_PATH, CHECK_PATH,
        mailto, e(u["contact"]), e(u["contact"]), MAIL_PATH,
        e(u["bigger"]), e(u["bigger"]), e(u["smaller"]), e(u["smaller"]),
        e(u["credit_aria"]), up, LOGO,
-       e(u["credit_lead"]), e(u["credit_name"]), e(u["credit_tag"]))
+       e(u["credit_lead"]), e(u["credit_name"]), e(u["credit_tag"]),
+       e(SEO[lang]["disclaimer"]))
 
 
 def drawer(lang):
@@ -416,14 +434,19 @@ def story_page(lang, i, tr):
                 first_img = rel
             body.append(figure_html(lang, st["slug"], val, alt, cap, f == 1))
 
-    desc = (first_para or tr[n]["topic"])[:180].rsplit(" ", 1)[0] + "…"
+    seo = SEO[lang][n]
+    # the opening line of a fable ("in the kingdom of…") tells a search engine
+    # nothing, so the description names the pattern the story is about
+    desc = seo["desc"]
     page = "story-%d.html" % n
     prev_l = ('            <a href="story-%d.html"><span class="dir">%s</span><span>%s</span></a>'
               % (n - 1, e(u["prev"]), e(tr[n - 1]["title"]))) if i > 0 else "            "
     next_l = ('            <a href="story-%d.html"><span class="dir">%s</span><span>%s</span></a>'
               % (n + 1, e(u["next"]), e(tr[n + 1]["title"]))) if i < N - 1 else "            "
 
-    out = head(lang, page, "%s · %s" % (tr[n]["title"], u["site"]), desc,
+    # the pattern goes in the title too, where a query can match it; the brand
+    # is carried by og:site_name and the structured data instead
+    out = head(lang, page, "%s — %s" % (tr[n]["title"], seo["label"]), desc,
                first_img or HERO, story_jsonld(lang, n, tr, first_img, desc))
     out += """
     <header class="compact" id="top">
@@ -491,7 +514,8 @@ def index_page(lang, tr, counts):
                     </a>
                 </li>""" % (n, n, e(tr[n]["title"]), e(tr[n]["topic"]), badge))
 
-    out = head(lang, "", u["site_title"], u["tagline"], HERO, index_jsonld(lang, tr))
+    seo = SEO[lang]
+    out = head(lang, "", seo["site_title"], seo["about"], HERO, index_jsonld(lang, tr))
     out += """
     <header id="top">
 %s
@@ -507,6 +531,10 @@ def index_page(lang, tr, counts):
             <img src="%s%s" alt="%s" width="1280" height="698">
             <figcaption>%s</figcaption>
         </figure>
+
+        <section class="lede">
+            <p>%s</p>
+        </section>
 
         <nav class="toc-card" aria-label="%s">
             <h2>%s</h2>
@@ -526,7 +554,8 @@ def index_page(lang, tr, counts):
 </html>
 """ % (header_tools(lang), lang_flags(lang, ""), e(u["site"]),
        e(u["tagline"]), up, HERO,
-       e(u["hero_caption"]), e(u["hero_caption"]), e(u["toc"]), e(u["toc"]),
+       e(u["hero_caption"]), e(u["hero_caption"]), e(seo["lede"]),
+       e(u["toc"]), e(u["toc"]),
        "\n".join(items), footer(lang), drawer(lang), scripts(lang))
     # the engagement widgets are told the page's language outright
     return out.replace('data-locale="{lang}"', 'data-locale="%s"' % lang)
@@ -542,9 +571,10 @@ def sitemap(langs):
                 '\n    <xhtml:link rel="alternate" hreflang="%s" href="%s"/>' % (x, url(x, page))
                 for x in langs)
             alts += '\n    <xhtml:link rel="alternate" hreflang="x-default" href="%s"/>' % url("he", page)
-            rows.append("  <url>\n    <loc>%s</loc>%s\n    <changefreq>monthly</changefreq>"
+            rows.append("  <url>\n    <loc>%s</loc>%s\n    <lastmod>%s</lastmod>"
+                        "\n    <changefreq>monthly</changefreq>"
                         "\n    <priority>%s</priority>\n  </url>"
-                        % (url(l, page), alts, "1.0" if page == "" else "0.8"))
+                        % (url(l, page), alts, MODIFIED, "1.0" if page == "" else "0.8"))
     return ('<?xml version="1.0" encoding="UTF-8"?>\n'
             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n'
             '        xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
@@ -562,23 +592,36 @@ def robots():
 
 
 def llms_txt(trs):
-    """The convention AI crawlers look for: what this site is, in one file."""
+    """The convention AI crawlers look for: what this site is, in one file.
+
+    Written so an answer engine can tell, without reading the fables, which one
+    to cite when a reader describes a pattern in their own relationship."""
+    seo = SEO["en"]
     out = ["# %s (%s)" % (UI["en"]["site"], UI["he"]["site"]), "",
-           "> %s" % UI["en"]["tagline"], "",
-           "Seven modern fables, each about one way a person can turn love away:",
-           "hypersensitivity, fault-finding, loyalty tests, mind-reading, blame,",
-           "the threat of separation, and the refusal to forgive. Written in Hebrew",
-           "and published in Hebrew, English, Russian, Spanish and Chinese.", "",
-           "## Stories (English)", ""]
+           "> %s" % seo["site_title"], "",
+           seo["about"], "",
+           seo["lede"], "",
+           "%s" % seo["disclaimer"], "",
+           "Published in Hebrew, English, Russian, Spanish and Chinese; each",
+           "language has its own URL and its own copy of every story.", "",
+           "## Stories (English)", "",
+           "Each fable is about one pattern. The line after the link says which.", ""]
     for n in range(1, N + 1):
-        out.append("- [%s](%s): %s" % (trs["en"][n]["title"],
-                                       url("en", "story-%d.html" % n),
-                                       trs["en"][n]["topic"]))
-    out += ["", "## Other languages", ""]
+        out += ["### %d. %s" % (n, trs["en"][n]["title"]),
+                "",
+                "- Pattern: %s" % seo[n]["label"],
+                "- Also: %s" % trs["en"][n]["topic"],
+                "- Summary: %s" % seo[n]["desc"],
+                "- Read: %s" % url("en", "story-%d.html" % n),
+                "- Other languages: %s" % ", ".join(
+                    "%s %s" % (META[l]["native"], url(l, "story-%d.html" % n))
+                    for l in LANGS if l != "en"),
+                ""]
+    out += ["## Other languages", ""]
     for l in LANGS:
         if l == "en":
             continue
-        out.append("- %s: %s" % (META[l]["native"], url(l, "")))
+        out.append("- %s: %s — %s" % (META[l]["native"], url(l, ""), SEO[l]["site_title"]))
     out += ["", "## Licence", "",
             "Free to read, quote and cite with attribution to %s." % UI["en"]["site"], ""]
     return "\n".join(out)
