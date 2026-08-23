@@ -14,10 +14,14 @@ from seo import SEO
 from content_he_1_3 import STORY_1, STORY_2, STORY_3
 from content_he_4_7 import STORY_4, STORY_5, STORY_6, STORY_7
 from content_he_8 import STORY_8, FIGTEXT_8
+from content_he_9 import STORY_9, FIGTEXT_9
 from PIL import Image
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-HE = [STORY_1, STORY_2, STORY_3, STORY_4, STORY_5, STORY_6, STORY_7, STORY_8]
+HE = [STORY_1, STORY_2, STORY_3, STORY_4, STORY_5, STORY_6, STORY_7,
+      STORY_8, STORY_9]
+# each translation is split across these modules; a new story adds one entry
+TR_PARTS = ("1_3", "4_7", "8", "9")
 N = len(HE)
 ASSET_V = {}          # filled in by stamp()
 EMAIL = "shayh22@gmail.com"
@@ -47,7 +51,7 @@ def load(lang):
                             "texts": texts, "figs": figs}
         return out
     d = {}
-    for part in ("1_3", "4_7", "8"):
+    for part in TR_PARTS:
         mod = __import__("tr_%s_%s" % (lang, part))
         d.update(getattr(mod, "%s_%s" % (lang.upper(), part)))
     return d
@@ -68,7 +72,8 @@ def hebrew_figure_text():
 
 
 FIGTEXT_HE = hebrew_figure_text()
-FIGTEXT_HE.update(FIGTEXT_8)   # newer stories carry their own
+for extra in (FIGTEXT_8, FIGTEXT_9):   # newer stories carry their own
+    FIGTEXT_HE.update(extra)
 
 
 # ---------------------------------------------------------------- helpers

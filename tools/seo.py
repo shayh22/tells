@@ -68,6 +68,11 @@ SEO = {
               "grandfather covered three wicks of a four-flame lantern. A fable about sibling "
               "rivalry and what children learn at home."),
      "keywords": "sibling rivalry, jealousy between siblings, favouritism, competing for attention, raising children, sharing a home"},
+ 9: {"label": "envy of a sibling's talent",
+     "desc": ("Every compliment his brother earned felt like proof he was worth less — until an "
+              "old craftsman handed him a pair of clouded lenses. A fable about envy between "
+              "siblings and comparing yourself away."),
+     "keywords": "envy between siblings, comparing children, sibling jealousy, talented brother, self-worth in children, raising children"},
 },
 
 "he": {
@@ -115,6 +120,10 @@ SEO = {
      "desc": ("כל מחמאה שקיבלה אחותו הרגישה כמו משהו שנלקח ממנו — עד שסבו כיסה שלוש פתילות "
               "בפנס בעל ארבע להבות. משל על יריבות בין אחים ועל מה שילדים לומדים בבית."),
      "keywords": "יריבות בין אחים, קנאה בין אחים, העדפת ילד, תחרות על תשומת לב, חינוך ילדים, חיים משותפים בבית"},
+ 9: {"label": "קנאה בכישרון של האח",
+     "desc": ("כל מחמאה שקיבל אחיו הרגישה כהוכחה שהוא שווה פחות — עד שאומן זקן הגיש לו זוג עדשות "
+              "עכורות. משל על קנאה בין אחים ועל השוואה שמוחקת אותנו."),
+     "keywords": "קנאה בין אחים, השוואה בין ילדים, אח מוכשר, דימוי עצמי אצל ילדים, חינוך ילדים, תחרות בין אחים"},
 },
 
 "ru": {
@@ -171,6 +180,11 @@ SEO = {
               "фонаря с четырьмя пламенами. Притча о соперничестве между детьми и о том, чему "
               "они учатся дома."),
      "keywords": "соперничество между братьями, детская ревность, выделять любимчика, борьба за внимание, воспитание детей, жизнь под одной крышей"},
+ 9: {"label": "зависть к таланту брата",
+     "desc": ("Каждая похвала брату казалась доказательством, что он сам стоит меньше, — пока "
+              "старый ремесленник не дал ему очки с мутными стёклами. Притча о зависти между "
+              "детьми и о сравнении, которое стирает."),
+     "keywords": "зависть между братьями, сравнивать детей, детская ревность, талантливый брат, самооценка ребёнка, воспитание детей"},
 },
 
 "es": {
@@ -228,6 +242,11 @@ SEO = {
               "tres mechas de un farol de cuatro llamas. Una fábula sobre la rivalidad entre "
               "hermanos y lo que los niños aprenden en casa."),
      "keywords": "rivalidad entre hermanos, celos entre hermanos, favoritismo, competir por atención, criar hijos, convivir en casa"},
+ 9: {"label": "envidia del talento de un hermano",
+     "desc": ("Cada elogio a su hermano le parecía la prueba de que él valía menos — hasta que un "
+              "viejo artesano le dio unas lentes turbias. Una fábula sobre la envidia entre "
+              "hermanos y sobre compararse hasta desaparecer."),
+     "keywords": "envidia entre hermanos, comparar a los hijos, celos entre hermanos, hermano talentoso, autoestima infantil, criar hijos"},
 },
 
 "zh": {
@@ -271,5 +290,9 @@ SEO = {
      "desc": ("姐姐每得到一句夸奖，他都觉得是从自己身上拿走的 —— 直到祖父盖住了四芯灯里的三根灯芯。"
               "一则关于手足之争、关于孩子在家里学到什么的寓言。"),
      "keywords": "手足之争, 兄弟姐妹嫉妒, 偏心, 争夺关注, 教养孩子, 共处一个家"},
+ 9: {"label": "嫉妒手足的才华",
+     "desc": ("弟弟每被夸一句，他都觉得是自己不如人的证据 —— 直到一位老工匠递给他一副浑浊的镜片。"
+              "一则关于手足之间的嫉妒、关于比较如何抹去一个人的寓言。"),
+     "keywords": "手足之间的嫉妒, 拿孩子作比较, 兄弟嫉妒, 有才华的兄弟, 孩子的自我价值, 教养孩子"},
 },
 }

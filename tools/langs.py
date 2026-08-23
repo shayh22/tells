@@ -20,7 +20,7 @@ CATEGORIES = ["couples", "parenting"]
 
 STORY_CATEGORY = {1: "couples", 2: "couples", 3: "couples", 4: "couples",
                   5: "couples", 6: "couples", 7: "couples",
-                  8: "parenting"}
+                  8: "parenting", 9: "parenting"}
 
 CAT = {
     "he": {"couples":   ("זוגיות ויחסים",
