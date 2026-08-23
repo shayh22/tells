@@ -13,7 +13,7 @@ treatment, and it never claims to be.
 
 SEO = {
 "en": {
- "site_title": "Tales of the Mirror — fables about relationships and raising children",
+ "site_title": "Mirrors of the Soul — fables about relationships and raising children",
  "about": ("Modern fables about the emotional patterns that wear people down at home. One "
            "collection on couples — hypersensitivity, fault-finding, loyalty tests, assuming bad "
            "intent, blame, threats of separation, refusing to forgive. One on raising children "
@@ -76,7 +76,7 @@ SEO = {
 },
 
 "he": {
- "site_title": "אגדות המראה — משלים על זוגיות ועל חינוך ילדים",
+ "site_title": "מראות הנפש — משלים על זוגיות ועל חינוך ילדים",
  "about": ("משלים מודרניים על הדפוסים הרגשיים ששוחקים אנשים בתוך הבית. אוסף אחד על זוגיות — "
            "רגישות יתר, התמקדות בחסר, מבחני נאמנות, ייחוס כוונות רעות, האשמה, איומי פרידה "
            "וסירוב לסלוח. אוסף שני על חינוך ילדים ועל מה שאחים לומדים על המקום שלהם. כל משל "
@@ -127,7 +127,7 @@ SEO = {
 },
 
 "ru": {
- "site_title": "Сказания зеркала — притчи об отношениях и о воспитании детей",
+ "site_title": "Зеркала души — притчи об отношениях и о воспитании детей",
  "about": ("Современные притчи об эмоциональных сценариях, которые изнашивают людей дома. Один "
            "сборник — об отношениях в паре: сверхчувствительность, придирчивость, проверки на "
            "верность, приписывание злого умысла, обвинения, угрозы расставанием, отказ прощать. "
@@ -188,7 +188,7 @@ SEO = {
 },
 
 "es": {
- "site_title": "Cuentos del espejo — fábulas sobre la pareja y sobre criar hijos",
+ "site_title": "Espejos del alma — fábulas sobre la pareja y sobre criar hijos",
  "about": ("Fábulas modernas sobre los patrones emocionales que desgastan a las personas dentro "
            "de casa. Una colección sobre la pareja: hipersensibilidad, buscar defectos, pruebas de "
            "lealtad, suponer mala intención, culpar, amenazar con la ruptura y negarse a perdonar. "
@@ -250,7 +250,7 @@ SEO = {
 },
 
 "zh": {
- "site_title": "明镜寓言 — 关于亲密关系与教养孩子的故事",
+ "site_title": "心灵之镜 — 关于亲密关系与教养孩子的故事",
  "about": ("现代寓言，写的是在家里一点点消耗人的那些情绪模式。一辑写亲密关系：过度敏感、只盯着缺点、"
            "忠诚测试、把恶意安在对方身上、指责、拿分开当威胁，以及拒绝原谅。另一辑写教养孩子，"
            "写手足之间学到的关于自己位置的事。每一则都关乎认出自己那一份，然后去修补。"),

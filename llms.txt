@@ -1,6 +1,6 @@
-# Tales of the Mirror (אגדות המראה)
+# Mirrors of the Soul (מראות הנפש)
 
-> Tales of the Mirror — fables about relationships and raising children
+> Mirrors of the Soul — fables about relationships and raising children
 
 Modern fables about the emotional patterns that wear people down at home. One collection on couples — hypersensitivity, fault-finding, loyalty tests, assuming bad intent, blame, threats of separation, refusing to forgive. One on raising children and what brothers and sisters learn about their place. Each fable is about recognising your own part and repairing it.
 
@@ -95,11 +95,11 @@ What children learn at home about space, envy and belonging
 
 ## Other languages
 
-- עברית: https://shayh22.github.io/tells/ — אגדות המראה — משלים על זוגיות ועל חינוך ילדים
-- Русский: https://shayh22.github.io/tells/ru/ — Сказания зеркала — притчи об отношениях и о воспитании детей
-- Español: https://shayh22.github.io/tells/es/ — Cuentos del espejo — fábulas sobre la pareja y sobre criar hijos
-- 中文: https://shayh22.github.io/tells/zh/ — 明镜寓言 — 关于亲密关系与教养孩子的故事
+- עברית: https://shayh22.github.io/tells/ — מראות הנפש — משלים על זוגיות ועל חינוך ילדים
+- Русский: https://shayh22.github.io/tells/ru/ — Зеркала души — притчи об отношениях и о воспитании детей
+- Español: https://shayh22.github.io/tells/es/ — Espejos del alma — fábulas sobre la pareja y sobre criar hijos
+- 中文: https://shayh22.github.io/tells/zh/ — 心灵之镜 — 关于亲密关系与教养孩子的故事
 
 ## Licence
 
-Free to read, quote and cite with attribution to Tales of the Mirror.
+Free to read, quote and cite with attribution to Mirrors of the Soul.
