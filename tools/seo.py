@@ -13,18 +13,21 @@ treatment, and it never claims to be.
 
 SEO = {
 "en": {
- "site_title": "Tales of the Mirror — fables about the patterns couples fall into",
- "about": ("Seven modern fables about the emotional patterns that wear a relationship down — "
-           "hypersensitivity, fault-finding, loyalty tests, assuming bad intent, blame, threats "
-           "of separation and the refusal to forgive — and about recognising your own part and "
-           "repairing it."),
- "lede": ("Seven fables, each one about a single pattern that quietly wears a relationship down. "
-          "They are written to be recognised rather than studied: you read one, you see yourself "
-          "somewhere in it, and you know what there is to repair."),
+ "site_title": "Tales of the Mirror — fables about relationships and raising children",
+ "about": ("Modern fables about the emotional patterns that wear people down at home. One "
+           "collection on couples — hypersensitivity, fault-finding, loyalty tests, assuming bad "
+           "intent, blame, threats of separation, refusing to forgive. One on raising children "
+           "and what brothers and sisters learn about their place. Each fable is about "
+           "recognising your own part and repairing it."),
+ "lede": ("Fables, each one about a single pattern that quietly wears people down at home — some "
+          "between partners, some between brothers and sisters. They are written to be recognised "
+          "rather than studied: you read one, you see yourself somewhere in it, and you know what "
+          "there is to repair."),
  "disclaimer": ("These are stories, not clinical treatment. They are meant to prompt recognition "
                 "and a first step, and they do not replace a qualified therapist."),
- "keywords": ("relationship patterns, couples, emotional defences, fables, parables, blame, "
-              "jealousy, forgiveness, self-worth, communication in a relationship"),
+ "keywords": ("relationship patterns, couples, raising children, sibling rivalry, emotional "
+              "defences, fables, parables, blame, jealousy, forgiveness, self-worth, "
+              "communication in a relationship"),
  1: {"label": "hypersensitivity and feeling persecuted",
      "desc": ("When you read every kind word as an insult, you end up alone and certain the world "
               "turned on you. A fable about hypersensitivity, low self-worth, and the armour that "
@@ -60,19 +63,26 @@ SEO = {
               "demanding perfection from people, about refusing to forgive an ordinary mistake, "
               "and about the isolation it builds."),
      "keywords": "refusing to forgive, holding grudges, cutting people off, demanding perfection, isolation, estrangement"},
+ 8: {"label": "sibling rivalry and feeling replaced",
+     "desc": ("Every compliment his sister got felt like something taken from him — until his "
+              "grandfather covered three wicks of a four-flame lantern. A fable about sibling "
+              "rivalry and what children learn at home."),
+     "keywords": "sibling rivalry, jealousy between siblings, favouritism, competing for attention, raising children, sharing a home"},
 },
 
 "he": {
- "site_title": "אגדות המראה — משלים על הדפוסים שמכרסמים בזוגיות",
- "about": ("שבעה משלים מודרניים על הדפוסים הרגשיים ששוחקים קשר זוגי — רגישות יתר, התמקדות "
-           "בחסר, מבחני נאמנות, ייחוס כוונות רעות, האשמה, איומי פרידה וסירוב לסלוח — ועל "
-           "ההכרה בחלק שלנו ובתיקון שאפשר לעשות."),
- "lede": ("שבעה משלים, כל אחד על דפוס אחד ששוחק קשר זוגי בשקט. הם נכתבו כדי שיזהו אותם, לא "
-          "כדי שילמדו אותם: קוראים אחד, מזהים בו משהו מעצמנו, ויודעים מה יש לתקן."),
+ "site_title": "אגדות המראה — משלים על זוגיות ועל חינוך ילדים",
+ "about": ("משלים מודרניים על הדפוסים הרגשיים ששוחקים אנשים בתוך הבית. אוסף אחד על זוגיות — "
+           "רגישות יתר, התמקדות בחסר, מבחני נאמנות, ייחוס כוונות רעות, האשמה, איומי פרידה "
+           "וסירוב לסלוח. אוסף שני על חינוך ילדים ועל מה שאחים לומדים על המקום שלהם. כל משל "
+           "עוסק בהכרה בחלק שלנו ובתיקון שאפשר לעשות."),
+ "lede": ("משלים, כל אחד על דפוס אחד ששוחק אנשים בתוך הבית בשקט — חלקם בין בני זוג, חלקם בין "
+          "אחים. הם נכתבו כדי שיזהו אותם, לא כדי שילמדו אותם: קוראים אחד, מזהים בו משהו מעצמנו, "
+          "ויודעים מה יש לתקן."),
  "disclaimer": ("אלה סיפורים, לא טיפול קליני. הם נועדו לעורר זיהוי וצעד ראשון, ואינם מחליפים "
                 "מטפל מוסמך."),
- "keywords": ("דפוסים בזוגיות, זוגיות, מנגנוני הגנה רגשיים, משלים, אגדות, האשמה, קנאה, סליחה, "
-              "דימוי עצמי, תקשורת בזוגיות"),
+ "keywords": ("דפוסים בזוגיות, זוגיות, חינוך ילדים, יריבות בין אחים, מנגנוני הגנה רגשיים, "
+              "משלים, אגדות, האשמה, קנאה, סליחה, דימוי עצמי, תקשורת בזוגיות"),
  1: {"label": "רגישות יתר ותחושת נרדפות",
      "desc": ("כשכל מילה טובה נקראת כעלבון, נשארים לבד ובטוחים שכל העולם נגדך. משל על רגישות "
               "יתר, דימוי עצמי נמוך, והשריון שלא נותן לאהבה להיכנס."),
@@ -101,21 +111,27 @@ SEO = {
      "desc": ("היא שרפה גשר על כל עלבון, ואז הגיעה הסערה. משל על דרישת שלמות מאנשים, על סירוב "
               "לסלוח על טעות אנוש, ועל הבידוד שזה בונה."),
      "keywords": "סירוב לסלוח, נטירת טינה, ניתוק קשרים, דרישת שלמות, בידוד, נתק משפחתי"},
+ 8: {"label": "יריבות בין אחים והתחושה שנדחקתי",
+     "desc": ("כל מחמאה שקיבלה אחותו הרגישה כמו משהו שנלקח ממנו — עד שסבו כיסה שלוש פתילות "
+              "בפנס בעל ארבע להבות. משל על יריבות בין אחים ועל מה שילדים לומדים בבית."),
+     "keywords": "יריבות בין אחים, קנאה בין אחים, העדפת ילד, תחרות על תשומת לב, חינוך ילדים, חיים משותפים בבית"},
 },
 
 "ru": {
- "site_title": "Сказания зеркала — притчи о том, что разрушает отношения",
- "about": ("Семь современных притч об эмоциональных сценариях, которые изнашивают отношения: "
-           "сверхчувствительность, придирчивость, проверки на верность, приписывание злого "
-           "умысла, обвинения, угрозы расставанием и отказ прощать — и о том, как увидеть "
-           "собственную роль и всё исправить."),
- "lede": ("Семь притч, каждая об одном сценарии, который тихо изнашивает отношения. Они написаны "
-          "не для изучения, а для узнавания: читаешь одну, находишь в ней себя и понимаешь, что "
-          "именно стоит исправить."),
+ "site_title": "Сказания зеркала — притчи об отношениях и о воспитании детей",
+ "about": ("Современные притчи об эмоциональных сценариях, которые изнашивают людей дома. Один "
+           "сборник — об отношениях в паре: сверхчувствительность, придирчивость, проверки на "
+           "верность, приписывание злого умысла, обвинения, угрозы расставанием, отказ прощать. "
+           "Второй — о воспитании детей и о том, что братья и сёстры узнают о своём месте. "
+           "Каждая притча — о том, как увидеть собственную роль и всё исправить."),
+ "lede": ("Притчи, каждая об одном сценарии, который тихо изнашивает людей дома — какие-то между "
+          "супругами, какие-то между братьями и сёстрами. Они написаны не для изучения, а для "
+          "узнавания: читаешь одну, находишь в ней себя и понимаешь, что именно стоит исправить."),
  "disclaimer": ("Это рассказы, а не клиническая терапия. Они призваны помочь узнать себя и "
                 "сделать первый шаг и не заменяют работу с квалифицированным специалистом."),
- "keywords": ("сценарии в отношениях, отношения в паре, психологические защиты, притчи, "
-              "обвинения, ревность, прощение, самооценка, общение в паре"),
+ "keywords": ("сценарии в отношениях, отношения в паре, воспитание детей, соперничество между "
+              "детьми, психологические защиты, притчи, обвинения, ревность, прощение, самооценка, "
+              "общение в паре"),
  1: {"label": "сверхчувствительность и ощущение преследования",
      "desc": ("Когда каждое доброе слово читается как оскорбление, остаёшься один и уверен, что "
               "мир против тебя. Притча о сверхчувствительности, низкой самооценке и доспехе, "
@@ -150,21 +166,28 @@ SEO = {
               "безупречности от людей, об отказе прощать обычную ошибку и об одиночестве, "
               "которое так выстраивается."),
      "keywords": "отказ прощать, держать обиду, разрывать связи, требование совершенства, изоляция, отчуждение"},
+ 8: {"label": "соперничество между братьями и чувство вытесненности",
+     "desc": ("Каждая похвала сестре ощущалась как отнятое у него — пока дед не накрыл три фитиля "
+              "фонаря с четырьмя пламенами. Притча о соперничестве между детьми и о том, чему "
+              "они учатся дома."),
+     "keywords": "соперничество между братьями, детская ревность, выделять любимчика, борьба за внимание, воспитание детей, жизнь под одной крышей"},
 },
 
 "es": {
- "site_title": "Cuentos del espejo — fábulas sobre lo que desgasta a una pareja",
- "about": ("Siete fábulas modernas sobre los patrones emocionales que desgastan una relación: "
-           "hipersensibilidad, buscar defectos, pruebas de lealtad, suponer mala intención, "
-           "culpar, amenazar con la ruptura y negarse a perdonar — y sobre reconocer la parte "
-           "propia y repararla."),
- "lede": ("Siete fábulas, cada una sobre un patrón que desgasta una relación en silencio. Están "
-          "escritas para reconocerse en ellas, no para estudiarlas: lees una, te ves en algún "
-          "punto y sabes qué hay que reparar."),
+ "site_title": "Cuentos del espejo — fábulas sobre la pareja y sobre criar hijos",
+ "about": ("Fábulas modernas sobre los patrones emocionales que desgastan a las personas dentro "
+           "de casa. Una colección sobre la pareja: hipersensibilidad, buscar defectos, pruebas de "
+           "lealtad, suponer mala intención, culpar, amenazar con la ruptura y negarse a perdonar. "
+           "Otra sobre criar hijos y sobre lo que los hermanos aprenden acerca de su lugar. Cada "
+           "fábula trata de reconocer la parte propia y repararla."),
+ "lede": ("Fábulas, cada una sobre un patrón que desgasta en silencio a las personas dentro de "
+          "casa: algunos entre la pareja, otros entre hermanos. Están escritas para reconocerse en "
+          "ellas, no para estudiarlas: lees una, te ves en algún punto y sabes qué hay que reparar."),
  "disclaimer": ("Son relatos, no tratamiento clínico. Buscan despertar el reconocimiento y un "
                 "primer paso, y no sustituyen a un terapeuta cualificado."),
- "keywords": ("patrones de pareja, relación de pareja, defensas emocionales, fábulas, parábolas, "
-              "culpa, celos, perdón, autoestima, comunicación en pareja"),
+ "keywords": ("patrones de pareja, relación de pareja, criar hijos, rivalidad entre hermanos, "
+              "defensas emocionales, fábulas, parábolas, culpa, celos, perdón, autoestima, "
+              "comunicación en pareja"),
  1: {"label": "hipersensibilidad y sentirse perseguido",
      "desc": ("Cuando cada palabra amable se lee como un insulto, acabas solo y convencido de que "
               "el mundo se volvió contra ti. Una fábula sobre la hipersensibilidad, la baja "
@@ -200,16 +223,22 @@ SEO = {
               "exigir perfección a la gente, sobre negarse a perdonar un error humano y sobre el "
               "aislamiento que eso construye."),
      "keywords": "negarse a perdonar, guardar rencor, cortar relaciones, exigir perfección, aislamiento, distanciamiento familiar"},
+ 8: {"label": "rivalidad entre hermanos y sentirse desplazado",
+     "desc": ("Cada elogio a su hermana le parecía algo que le quitaban — hasta que su abuelo tapó "
+              "tres mechas de un farol de cuatro llamas. Una fábula sobre la rivalidad entre "
+              "hermanos y lo que los niños aprenden en casa."),
+     "keywords": "rivalidad entre hermanos, celos entre hermanos, favoritismo, competir por atención, criar hijos, convivir en casa"},
 },
 
 "zh": {
- "site_title": "明镜寓言 — 关于消耗亲密关系的那些模式",
- "about": ("七则现代寓言，写的是一段关系被慢慢消耗的七种模式：过度敏感、只盯着缺点、忠诚测试、"
-           "把恶意安在对方身上、指责、拿分开当威胁，以及拒绝原谅 — 也写认出自己那一份、然后去修补。"),
- "lede": ("七则寓言，每一则只写一种悄悄消耗亲密关系的模式。它们不是用来研究的，是用来认出自己的："
-          "读一则，在某处看见自己，也就知道该修补什么。"),
+ "site_title": "明镜寓言 — 关于亲密关系与教养孩子的故事",
+ "about": ("现代寓言，写的是在家里一点点消耗人的那些情绪模式。一辑写亲密关系：过度敏感、只盯着缺点、"
+           "忠诚测试、把恶意安在对方身上、指责、拿分开当威胁，以及拒绝原谅。另一辑写教养孩子，"
+           "写手足之间学到的关于自己位置的事。每一则都关乎认出自己那一份，然后去修补。"),
+ "lede": ("一则则寓言，每一则只写一种在家里悄悄消耗人的模式 —— 有的在伴侣之间，有的在手足之间。"
+          "它们不是用来研究的，是用来认出自己的：读一则，在某处看见自己，也就知道该修补什么。"),
  "disclaimer": ("这些是故事，不是临床治疗。它们只为唤起自我觉察和迈出第一步，不能替代专业的心理治疗师。"),
- "keywords": "亲密关系模式, 夫妻关系, 情绪防御, 寓言, 譬喻, 指责, 嫉妒, 原谅, 自我价值, 伴侣沟通",
+ "keywords": "亲密关系模式, 夫妻关系, 教养孩子, 手足之争, 情绪防御, 寓言, 譬喻, 指责, 嫉妒, 原谅, 自我价值, 伴侣沟通",
  1: {"label": "过度敏感与被迫害感",
      "desc": ("当每一句善意都被读成羞辱，人就只剩自己，还确信全世界都与他为敌。一则关于过度敏感、"
               "自我价值低落，以及那副把爱挡在外面的铠甲的寓言。"),
@@ -238,5 +267,9 @@ SEO = {
      "desc": ("每受一次委屈她就烧掉一座桥，然后风暴来了。一则关于要求别人完美、关于不肯原谅一个"
               "人之常情的错误，以及由此筑起的孤岛的寓言。"),
      "keywords": "拒绝原谅, 记恨, 断绝往来, 要求完美, 孤立, 亲人疏离"},
+ 8: {"label": "手足之争与被挤开的感觉",
+     "desc": ("姐姐每得到一句夸奖，他都觉得是从自己身上拿走的 —— 直到祖父盖住了四芯灯里的三根灯芯。"
+              "一则关于手足之争、关于孩子在家里学到什么的寓言。"),
+     "keywords": "手足之争, 兄弟姐妹嫉妒, 偏心, 争夺关注, 教养孩子, 共处一个家"},
 },
 }

@@ -1,21 +1,23 @@
 # Tales of the Mirror (אגדות המראה)
 
-> Tales of the Mirror — fables about the patterns couples fall into
+> Tales of the Mirror — fables about relationships and raising children
 
-Seven modern fables about the emotional patterns that wear a relationship down — hypersensitivity, fault-finding, loyalty tests, assuming bad intent, blame, threats of separation and the refusal to forgive — and about recognising your own part and repairing it.
+Modern fables about the emotional patterns that wear people down at home. One collection on couples — hypersensitivity, fault-finding, loyalty tests, assuming bad intent, blame, threats of separation, refusing to forgive. One on raising children and what brothers and sisters learn about their place. Each fable is about recognising your own part and repairing it.
 
-Seven fables, each one about a single pattern that quietly wears a relationship down. They are written to be recognised rather than studied: you read one, you see yourself somewhere in it, and you know what there is to repair.
+Fables, each one about a single pattern that quietly wears people down at home — some between partners, some between brothers and sisters. They are written to be recognised rather than studied: you read one, you see yourself somewhere in it, and you know what there is to repair.
 
 These are stories, not clinical treatment. They are meant to prompt recognition and a first step, and they do not replace a qualified therapist.
 
 Published in Hebrew, English, Russian, Spanish and Chinese; each
 language has its own URL and its own copy of every story.
 
-## Stories (English)
+## Collections
 
-Each fable is about one pattern. The line after the link says which.
+### Couples and relationships
 
-### 1. Liryon's Armour of Mirrors
+Patterns that wear a relationship down, and what can be repaired
+
+#### 1. Liryon's Armour of Mirrors
 
 - Pattern: hypersensitivity and feeling persecuted
 - Also: hypersensitivity, low self-worth and the sense of being persecuted
@@ -23,7 +25,7 @@ Each fable is about one pattern. The line after the link says which.
 - Read: https://shayh22.github.io/tells/en/story-1.html
 - Other languages: עברית https://shayh22.github.io/tells/story-1.html, Русский https://shayh22.github.io/tells/ru/story-1.html, Español https://shayh22.github.io/tells/es/story-1.html, 中文 https://shayh22.github.io/tells/zh/story-1.html
 
-### 2. Elran's Cloth of Truth
+#### 2. Elran's Cloth of Truth
 
 - Pattern: constant fault-finding in a marriage
 - Also: a compulsive focus on what is missing and on flaws
@@ -31,7 +33,7 @@ Each fable is about one pattern. The line after the link says which.
 - Read: https://shayh22.github.io/tells/en/story-2.html
 - Other languages: עברית https://shayh22.github.io/tells/story-2.html, Русский https://shayh22.github.io/tells/ru/story-2.html, Español https://shayh22.github.io/tells/es/story-2.html, 中文 https://shayh22.github.io/tells/zh/story-2.html
 
-### 3. Arian's Cedar Roots
+#### 3. Arian's Cedar Roots
 
 - Pattern: loyalty tests and cutting off family
 - Also: the loyalty test and the demand to tear other bonds apart
@@ -39,7 +41,7 @@ Each fable is about one pattern. The line after the link says which.
 - Read: https://shayh22.github.io/tells/en/story-3.html
 - Other languages: עברית https://shayh22.github.io/tells/story-3.html, Русский https://shayh22.github.io/tells/ru/story-3.html, Español https://shayh22.github.io/tells/es/story-3.html, 中文 https://shayh22.github.io/tells/zh/story-3.html
 
-### 4. Razia's Waters of Revelation
+#### 4. Razia's Waters of Revelation
 
 - Pattern: assuming bad intent in a partner
 - Also: the illusion of mind-reading, and dressing others in malice
@@ -47,7 +49,7 @@ Each fable is about one pattern. The line after the link says which.
 - Read: https://shayh22.github.io/tells/en/story-4.html
 - Other languages: עברית https://shayh22.github.io/tells/story-4.html, Русский https://shayh22.github.io/tells/ru/story-4.html, Español https://shayh22.github.io/tells/es/story-4.html, 中文 https://shayh22.github.io/tells/zh/story-4.html
 
-### 5. Kai's Burden of Stones
+#### 5. Kai's Burden of Stones
 
 - Pattern: blaming a partner for everything
 - Also: the trap of blame, turning a partner into the address for every frustration
@@ -55,7 +57,7 @@ Each fable is about one pattern. The line after the link says which.
 - Read: https://shayh22.github.io/tells/en/story-5.html
 - Other languages: עברית https://shayh22.github.io/tells/story-5.html, Русский https://shayh22.github.io/tells/ru/story-5.html, Español https://shayh22.github.io/tells/es/story-5.html, 中文 https://shayh22.github.io/tells/zh/story-5.html
 
-### 6. Noit's Cabin Foundations
+#### 6. Noit's Cabin Foundations
 
 - Pattern: threatening separation to win an argument
 - Also: using separation and the threat of banishment as a weapon for control
@@ -63,7 +65,7 @@ Each fable is about one pattern. The line after the link says which.
 - Read: https://shayh22.github.io/tells/en/story-6.html
 - Other languages: עברית https://shayh22.github.io/tells/story-6.html, Русский https://shayh22.github.io/tells/ru/story-6.html, Español https://shayh22.github.io/tells/es/story-6.html, 中文 https://shayh22.github.io/tells/zh/story-6.html
 
-### 7. Tamara's Bridges of Ash
+#### 7. Tamara's Bridges of Ash
 
 - Pattern: refusing to forgive and cutting people off
 - Also: demanding perfection, refusing to forgive, and cutting every tie
@@ -71,12 +73,24 @@ Each fable is about one pattern. The line after the link says which.
 - Read: https://shayh22.github.io/tells/en/story-7.html
 - Other languages: עברית https://shayh22.github.io/tells/story-7.html, Русский https://shayh22.github.io/tells/ru/story-7.html, Español https://shayh22.github.io/tells/es/story-7.html, 中文 https://shayh22.github.io/tells/zh/story-7.html
 
+### Raising children and sibling relationships
+
+What children learn at home about space, envy and belonging
+
+#### 8. Liryon and the Lantern of One Flame
+
+- Pattern: sibling rivalry and feeling replaced
+- Also: sibling rivalry and the sense that another's success comes at your expense
+- Summary: Every compliment his sister got felt like something taken from him — until his grandfather covered three wicks of a four-flame lantern. A fable about sibling rivalry and what children learn at home.
+- Read: https://shayh22.github.io/tells/en/story-8.html
+- Other languages: עברית https://shayh22.github.io/tells/story-8.html, Русский https://shayh22.github.io/tells/ru/story-8.html, Español https://shayh22.github.io/tells/es/story-8.html, 中文 https://shayh22.github.io/tells/zh/story-8.html
+
 ## Other languages
 
-- עברית: https://shayh22.github.io/tells/ — אגדות המראה — משלים על הדפוסים שמכרסמים בזוגיות
-- Русский: https://shayh22.github.io/tells/ru/ — Сказания зеркала — притчи о том, что разрушает отношения
-- Español: https://shayh22.github.io/tells/es/ — Cuentos del espejo — fábulas sobre lo que desgasta a una pareja
-- 中文: https://shayh22.github.io/tells/zh/ — 明镜寓言 — 关于消耗亲密关系的那些模式
+- עברית: https://shayh22.github.io/tells/ — אגדות המראה — משלים על זוגיות ועל חינוך ילדים
+- Русский: https://shayh22.github.io/tells/ru/ — Сказания зеркала — притчи об отношениях и о воспитании детей
+- Español: https://shayh22.github.io/tells/es/ — Cuentos del espejo — fábulas sobre la pareja y sobre criar hijos
+- 中文: https://shayh22.github.io/tells/zh/ — 明镜寓言 — 关于亲密关系与教养孩子的故事
 
 ## Licence
 

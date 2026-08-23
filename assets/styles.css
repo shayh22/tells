@@ -693,6 +693,31 @@ header.compact {
     margin-bottom: 0.6rem;
 }
 
+/* the contents are split into collections, each with its own heading */
+.index-group + .index-group {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--line-soft);
+}
+
+.index-cat {
+    margin: 0 0 0.35rem;
+    color: var(--heading);
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.3;
+    text-align: start;
+}
+
+.index-cat-note {
+    margin: 0 0 1.25rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    text-align: start;
+}
+
 /* the plain-language opening on the landing page: what this collection is
    about, in the words a reader would use themselves */
 .lede {

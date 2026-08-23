@@ -9,14 +9,15 @@ with hreflang rather than being swapped in by script."""
 import datetime, json, os, re, sys, html
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from langs import LANGS, META, UI, SITE
+from langs import CAT, CATEGORIES, LANGS, META, STORY_CATEGORY, UI, SITE
 from seo import SEO
 from content_he_1_3 import STORY_1, STORY_2, STORY_3
 from content_he_4_7 import STORY_4, STORY_5, STORY_6, STORY_7
+from content_he_8 import STORY_8, FIGTEXT_8
 from PIL import Image
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-HE = [STORY_1, STORY_2, STORY_3, STORY_4, STORY_5, STORY_6, STORY_7]
+HE = [STORY_1, STORY_2, STORY_3, STORY_4, STORY_5, STORY_6, STORY_7, STORY_8]
 N = len(HE)
 ASSET_V = {}          # filled in by stamp()
 EMAIL = "shayh22@gmail.com"
@@ -45,10 +46,10 @@ def load(lang):
             out[st["n"]] = {"title": st["title"], "topic": st["topic"],
                             "texts": texts, "figs": figs}
         return out
-    mod_a = __import__("tr_%s_1_3" % lang)
-    mod_b = __import__("tr_%s_4_7" % lang)
-    d = dict(getattr(mod_a, "%s_1_3" % lang.upper()))
-    d.update(getattr(mod_b, "%s_4_7" % lang.upper()))
+    d = {}
+    for part in ("1_3", "4_7", "8"):
+        mod = __import__("tr_%s_%s" % (lang, part))
+        d.update(getattr(mod, "%s_%s" % (lang.upper(), part)))
     return d
 
 
@@ -67,6 +68,7 @@ def hebrew_figure_text():
 
 
 FIGTEXT_HE = hebrew_figure_text()
+FIGTEXT_HE.update(FIGTEXT_8)   # newer stories carry their own
 
 
 # ---------------------------------------------------------------- helpers
@@ -129,6 +131,7 @@ def index_jsonld(lang, tr):
                   "hasPart": [{"@type": "ShortStory", "position": i + 1,
                                "name": tr[i + 1]["title"],
                                "alternativeHeadline": seo[i + 1]["label"],
+                               "articleSection": CAT[lang][STORY_CATEGORY[i + 1]][0],
                                "about": [seo[i + 1]["label"], tr[i + 1]["topic"]],
                                "description": seo[i + 1]["desc"],
                                "url": url(lang, "story-%d.html" % (i + 1)),
@@ -140,7 +143,19 @@ def index_jsonld(lang, tr):
                                   "name": tr[i + 1]["title"],
                                   "url": url(lang, "story-%d.html" % (i + 1))}
                                  for i in range(N)]}
-    return "\n".join([jsonld(site), jsonld(collection), jsonld(items)])
+    groups = [{"@context": "https://schema.org", "@type": "ItemList",
+               "@id": url(lang, "") + "#cat-" + c,
+               "name": CAT[lang][c][0], "description": CAT[lang][c][1],
+               "inLanguage": lang, "isPartOf": {"@id": url(lang, "") + "#website"},
+               "numberOfItems": sum(1 for n in STORY_CATEGORY.values() if n == c),
+               "itemListElement": [
+                   {"@type": "ListItem", "position": j + 1, "name": tr[n]["title"],
+                    "url": url(lang, "story-%d.html" % n)}
+                   for j, n in enumerate(x for x in range(1, N + 1)
+                                         if STORY_CATEGORY[x] == c)]}
+              for c in CATEGORIES]
+    return "\n".join([jsonld(site), jsonld(collection), jsonld(items)]
+                     + [jsonld(g) for g in groups])
 
 
 def story_jsonld(lang, n, tr, first_image, description):
@@ -154,15 +169,19 @@ def story_jsonld(lang, n, tr, first_image, description):
              "mainEntityOfPage": {"@type": "WebPage", "@id": url(lang, "story-%d.html" % n)},
              "isPartOf": {"@type": "CreativeWorkSeries", "name": u["site"], "url": url(lang, "")},
              "position": n, "genre": ["Fable", "Parable"],
+             "articleSection": CAT[lang][STORY_CATEGORY[n]][0],
              "datePublished": PUBLISHED, "dateModified": MODIFIED,
              "publisher": publisher(), "author": publisher(),
              "keywords": seo["keywords"]}
     if first_image:
         story["image"] = "%s/%s" % (SITE, first_image)
+    cat = STORY_CATEGORY[n]
     crumbs = {"@context": "https://schema.org", "@type": "BreadcrumbList",
               "itemListElement": [
                   {"@type": "ListItem", "position": 1, "name": u["site"], "item": url(lang, "")},
-                  {"@type": "ListItem", "position": 2, "name": tr[n]["title"],
+                  {"@type": "ListItem", "position": 2, "name": CAT[lang][cat][0],
+                   "item": url(lang, "") + "#cat-" + cat},
+                  {"@type": "ListItem", "position": 3, "name": tr[n]["title"],
                    "item": url(lang, "story-%d.html" % n)}]}
     return "\n".join([jsonld(story), jsonld(crumbs)])
 
@@ -499,20 +518,34 @@ def story_page(lang, i, tr):
 def index_page(lang, tr, counts):
     u = UI[lang]
     up = "../" if META[lang]["path"] else ""
-    items = []
-    for i in range(N):
-        n = i + 1
-        badge = ('\n                            <span class="index-count">%s</span>'
-                 % e(u["illustrations"] % counts[n])) if counts[n] else ""
-        items.append("""                <li>
-                    <a class="index-link" href="story-%d.html">
-                        <span class="index-num">%d</span>
-                        <span class="index-text">
-                            <span class="index-title">%s</span>
-                            <span class="index-topic">%s</span>%s
-                        </span>
-                    </a>
-                </li>""" % (n, n, e(tr[n]["title"]), e(tr[n]["topic"]), badge))
+    # the stories are grouped into collections, each under its own heading, so a
+    # reader arriving for one subject can see at a glance which fables are theirs
+    groups = []
+    for cat in CATEGORIES:
+        nums = [n for n in range(1, N + 1) if STORY_CATEGORY[n] == cat]
+        if not nums:
+            continue
+        rows = []
+        for n in nums:
+            badge = ('\n                                <span class="index-count">%s</span>'
+                     % e(u["illustrations"] % counts[n])) if counts[n] else ""
+            rows.append("""                    <li>
+                        <a class="index-link" href="story-%d.html">
+                            <span class="index-num">%d</span>
+                            <span class="index-text">
+                                <span class="index-title">%s</span>
+                                <span class="index-topic">%s</span>%s
+                            </span>
+                        </a>
+                    </li>""" % (n, n, e(tr[n]["title"]), e(tr[n]["topic"]), badge))
+        name, blurb = CAT[lang][cat]
+        groups.append("""            <section class="index-group" aria-labelledby="cat-%s">
+                <h3 class="index-cat" id="cat-%s">%s</h3>
+                <p class="index-cat-note">%s</p>
+                <ul class="index-list">
+%s
+                </ul>
+            </section>""" % (cat, cat, e(name), e(blurb), "\n".join(rows)))
 
     seo = SEO[lang]
     out = head(lang, "", seo["site_title"], seo["about"], HERO, index_jsonld(lang, tr))
@@ -538,9 +571,7 @@ def index_page(lang, tr, counts):
 
         <nav class="toc-card" aria-label="%s">
             <h2>%s</h2>
-            <ul class="index-list">
 %s
-            </ul>
         </nav>
 
         <div class="views-line">
@@ -556,7 +587,7 @@ def index_page(lang, tr, counts):
        e(u["tagline"]), up, HERO,
        e(u["hero_caption"]), e(u["hero_caption"]), e(seo["lede"]),
        e(u["toc"]), e(u["toc"]),
-       "\n".join(items), footer(lang), drawer(lang), scripts(lang))
+       "\n".join(groups), footer(lang), drawer(lang), scripts(lang))
     # the engagement widgets are told the page's language outright
     return out.replace('data-locale="{lang}"', 'data-locale="%s"' % lang)
 
@@ -604,19 +635,24 @@ def llms_txt(trs):
            "%s" % seo["disclaimer"], "",
            "Published in Hebrew, English, Russian, Spanish and Chinese; each",
            "language has its own URL and its own copy of every story.", "",
-           "## Stories (English)", "",
-           "Each fable is about one pattern. The line after the link says which.", ""]
-    for n in range(1, N + 1):
-        out += ["### %d. %s" % (n, trs["en"][n]["title"]),
-                "",
-                "- Pattern: %s" % seo[n]["label"],
-                "- Also: %s" % trs["en"][n]["topic"],
-                "- Summary: %s" % seo[n]["desc"],
-                "- Read: %s" % url("en", "story-%d.html" % n),
-                "- Other languages: %s" % ", ".join(
-                    "%s %s" % (META[l]["native"], url(l, "story-%d.html" % n))
-                    for l in LANGS if l != "en"),
-                ""]
+           "## Collections", ""]
+    for cat in CATEGORIES:
+        nums = [n for n in range(1, N + 1) if STORY_CATEGORY[n] == cat]
+        if not nums:
+            continue
+        name, blurb = CAT["en"][cat]
+        out += ["### %s" % name, "", blurb, ""]
+        for n in nums:
+            out += ["#### %d. %s" % (n, trs["en"][n]["title"]),
+                    "",
+                    "- Pattern: %s" % seo[n]["label"],
+                    "- Also: %s" % trs["en"][n]["topic"],
+                    "- Summary: %s" % seo[n]["desc"],
+                    "- Read: %s" % url("en", "story-%d.html" % n),
+                    "- Other languages: %s" % ", ".join(
+                        "%s %s" % (META[l]["native"], url(l, "story-%d.html" % n))
+                        for l in LANGS if l != "en"),
+                    ""]
     out += ["## Other languages", ""]
     for l in LANGS:
         if l == "en":

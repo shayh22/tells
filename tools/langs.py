@@ -15,6 +15,36 @@ META = {
     "zh": {"dir": "ltr", "path": "zh/",  "locale": "zh_CN", "native": "中文",     "label": "中文"},
 }
 
+# The collections the stories are grouped into. A story belongs to exactly one.
+CATEGORIES = ["couples", "parenting"]
+
+STORY_CATEGORY = {1: "couples", 2: "couples", 3: "couples", 4: "couples",
+                  5: "couples", 6: "couples", 7: "couples",
+                  8: "parenting"}
+
+CAT = {
+    "he": {"couples":   ("זוגיות ויחסים",
+                         "דפוסים ששוחקים קשר זוגי, ומה אפשר לתקן בהם"),
+           "parenting": ("חינוך ילדים ויחסי אחים",
+                         "מה שילדים לומדים בבית על מקום, קנאה ושייכות")},
+    "en": {"couples":   ("Couples and relationships",
+                         "Patterns that wear a relationship down, and what can be repaired"),
+           "parenting": ("Raising children and sibling relationships",
+                         "What children learn at home about space, envy and belonging")},
+    "ru": {"couples":   ("Отношения в паре",
+                         "Сценарии, которые изнашивают отношения, и что в них можно исправить"),
+           "parenting": ("Воспитание детей и отношения между братьями и сёстрами",
+                         "Чему дети учатся дома о своём месте, зависти и принадлежности")},
+    "es": {"couples":   ("Pareja y relaciones",
+                         "Patrones que desgastan una relación, y lo que se puede reparar"),
+           "parenting": ("Criar hijos y relaciones entre hermanos",
+                         "Lo que los niños aprenden en casa sobre su lugar, la envidia y la pertenencia")},
+    "zh": {"couples":   ("亲密关系",
+                         "消耗一段关系的模式，以及可以修补的地方"),
+           "parenting": ("教养孩子与手足关系",
+                         "孩子在家里学到的关于位置、嫉妒与归属的事")},
+}
+
 UI = {
     "he": {
         "site": "אגדות המראה",
