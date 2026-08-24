@@ -376,7 +376,7 @@ a:hover { color: var(--accent-hover); }
 
 .project {
     display: grid;
-    grid-template-columns: 4rem minmax(0, 1fr) minmax(0, 1.1fr);
+    grid-template-columns: 4rem minmax(0, 1fr) 15rem;
     gap: clamp(1.25rem, 3vw, 2.5rem);
     align-items: center;
     padding-block: 2.25rem;
@@ -423,19 +423,23 @@ a:hover { color: var(--accent-hover); }
 .project-link:hover { color: var(--accent); border-color: var(--accent); }
 .project-link .arrow { direction: ltr; }
 
+/* the screenshots are phone captures, so they sit in a device-shaped frame
+   rather than a full-width card */
 .project-art {
     margin: 0;
+    justify-self: center;
+    width: min(13rem, 100%);
+    padding: 0.5rem;
     background: var(--bg-card);
     border: 1px solid var(--line);
-    border-radius: var(--radius-md);
-    padding: 1rem;
+    border-radius: 1.35rem;
     box-shadow: var(--shadow-lg);
 }
-.project-art svg { display: block; width: 100%; height: auto; }
-.project-art figcaption {
-    margin-top: 0.6rem;
-    font-size: 0.78rem;
-    color: var(--text-muted);
+.project-art img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 0.95rem;
 }
 
 /* ---- process ------------------------------------------------------ */
@@ -529,6 +533,38 @@ a:hover { color: var(--accent-hover); }
 .page p, .page li { color: var(--text-body); }
 .page ul { padding-inline-start: 1.25rem; display: flex; flex-direction: column; gap: 0.4rem; }
 .page .back { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 2.75rem; font-weight: 700; }
+
+/* ---- opening logo ------------------------------------------------- */
+
+.intro {
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.intro-bg {
+    position: absolute;
+    inset: 0;
+    background: var(--bg-primary);
+}
+.intro img {
+    position: relative;
+    width: min(45vw, 15rem);
+    height: auto;
+    border-radius: 50%;
+}
+/* the header keeps the logo's place while the big one is still flying to it */
+.intro-playing .brand img { visibility: hidden; }
+.intro-playing, .intro-playing body { overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+    .intro { display: none; }
+    .intro-playing .brand img { visibility: visible; }
+}
+.a11y-no-motion .intro { display: none; }
+.a11y-no-motion .brand img { visibility: visible; }
 
 /* ---- accessibility drawer ----------------------------------------
    Reused from the stories site so both properties behave the same way. */
