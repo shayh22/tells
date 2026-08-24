@@ -1,7 +1,7 @@
 {
   "artboards": [
-    { "file": "Main.dc.html", "x": 0, "y": 0, "w": 1440, "h": 3520, "title": "דף נחיתה — דסקטופ" },
-    { "file": "Mobile.dc.html", "x": 1600, "y": 0, "w": 390, "h": 3700, "title": "דף נחיתה — מובייל" }
+    { "file": "Main.dc.html", "x": 0, "y": 0, "w": 1440, "h": 3820, "title": "דף נחיתה — דסקטופ" },
+    { "file": "Mobile.dc.html", "x": 1600, "y": 0, "w": 390, "h": 4780, "title": "דף נחיתה — מובייל" }
   ],
   "launch": { "view": "canvas" }
 }
