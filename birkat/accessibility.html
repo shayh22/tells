@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>הצהרת נגישות — ברכת הנשיא</title>
+    <meta name="description" content="הצהרת הנגישות של אתר ברכת הנשיא: רמת הנגישות באתר, ההתאמות שבוצעו, מגבלות ידועות ודרכי פנייה לרכז הנגישות.">
+    <link rel="canonical" href="https://shayh22.github.io/tells/birkat/accessibility.html">
+    <meta name="robots" content="index, follow">
+
+    <link rel="icon" href="logo.webp" type="image/webp">
+    <link rel="apple-touch-icon" href="logo.webp">
+    <meta name="theme-color" content="#0a1a30">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800;900&family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <script>
+        (function () {
+            var root = document.documentElement;
+            try {
+                var a = JSON.parse(localStorage.getItem('tells.a11y') || '{}');
+                window.__a11yState = { size: a.size || 100 };
+                if (a.size && a.size !== 100) root.style.fontSize = a.size + '%';
+                var flags = { contrast: 'a11y-contrast', grayscale: 'a11y-grayscale',
+                              underline: 'a11y-underline', readable: 'a11y-readable',
+                              motion: 'a11y-no-motion' };
+                for (var k in flags) {
+                    if (a[k]) { root.classList.add(flags[k]); window.__a11yState[k] = true; }
+                }
+            } catch (e) { window.__a11yState = { size: 100 }; }
+        })();
+    </script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">דילוג לתוכן המרכזי</a>
+
+<header class="site-header">
+    <div class="wrap">
+        <a class="brand" href="index.html">
+            <img src="logo.webp" alt="הלוגו של ברכת הנשיא" width="46" height="46">
+            <span>
+                <span class="brand-name">ברכת הנשיא</span>
+                <span class="brand-tag">בית תוכנה · AI לעסקים</span>
+            </span>
+        </a>
+        <nav class="site-nav" aria-label="ניווט ראשי">
+            <a class="nav-link" href="index.html#work">עבודות</a>
+            <a class="nav-link" href="index.html#services">מה אנחנו בונים</a>
+            <a class="nav-link" href="index.html#contact">יצירת קשר</a>
+        </nav>
+    </div>
+</header>
+
+<main id="main" class="page">
+    <div class="wrap">
+        <h1>הצהרת נגישות</h1>
+
+        <p>בברכת הנשיא אנחנו בונים מערכות שאנשים אמורים להשתמש בהן בפועל — ולכן הנגישות של האתר הזה חשובה לנו לא פחות מהנגישות של המוצרים שאנחנו מפתחים ללקוחות. השקענו מאמץ כדי שהאתר יהיה שמיש עבור כלל המשתמשים, לרבות אנשים עם מוגבלות.</p>
+
+        <h2>רמת הנגישות באתר</h2>
+        <p>האתר נבנה בהתאם להנחיות תקן ישראלי 5568, המבוסס על הנחיות <span dir="ltr">WCAG 2.1</span> ברמה <span dir="ltr">AA</span>. בין ההתאמות שבוצעו:</p>
+        <ul>
+            <li>מבנה סמנטי ותקין: כותרות בהיררכיה, אזורי ניווט מסומנים וקישור לדילוג ישיר לתוכן.</li>
+            <li>ניווט מלא במקלדת, כולל סימון ברור של מוקד המקלדת ולכידת מוקד בתוך תפריט הנגישות.</li>
+            <li>יחסי ניגודיות העומדים בדרישות התקן לטקסט רגיל ולטקסט גדול, במצב בהיר ובמצב כהה.</li>
+            <li>טקסט חלופי לתמונות, ואיורים דקורטיביים המוסתרים מקוראי מסך.</li>
+            <li>גדלים יחסיים בלבד, כך שהגדלת טקסט אינה שוברת את המבנה.</li>
+            <li>כיבוד העדפת המערכת להפחתת תנועה, ואפשרות לעצור אנימציות ידנית.</li>
+            <li>אזורי לחיצה בגודל 44 פיקסלים לפחות.</li>
+        </ul>
+
+        <h2>תפריט הנגישות</h2>
+        <p>בפינה העליונה של כל עמוד נמצא כפתור תפריט הנגישות. בתפריט אפשר להגדיל ולהקטין טקסט, להפעיל ניגודיות גבוהה, לעבור לגווני אפור, להדגיש קישורים בקו תחתון, לעבור לגופן קריא ולעצור אנימציות. הבחירות נשמרות בדפדפן וממשיכות לעמודים הבאים באתר.</p>
+
+        <h2>מגבלות ידועות</h2>
+        <ul>
+            <li>האיורים בעמוד הפרויקטים הם איורים סכמטיים ולא צילומי מסך של המערכות עצמן.</li>
+            <li>קישורים מהאתר מובילים למערכות חיצוניות (בהן המערכות שפיתחנו עבור לקוחות). לכל מערכת כזאת מדיניות נגישות משלה, ואיננו שולטים בתכניה.</li>
+            <li>ייתכנו דפים או רכיבים שטרם הונגשו במלואם. אנחנו ממשיכים לתקן ככל שנתקלים בליקוי או מקבלים פנייה.</li>
+        </ul>
+
+        <h2>פנייה בנושא נגישות</h2>
+        <p>נתקלתם בבעיית נגישות באתר, או שיש לכם הצעה לשיפור? נשמח לשמוע ולתקן. רכז הנגישות שלנו: <strong>[שם רכז/ת הנגישות]</strong>.</p>
+        <ul>
+            <li>טלפון: <a href="tel:+972533319072" dir="ltr">053-331-9072</a></li>
+            <li>דוא״ל: <a href="mailto:shayh22@gmail.com" dir="ltr">shayh22@gmail.com</a></li>
+        </ul>
+        <p>אנחנו משתדלים להשיב לכל פנייה בתוך שני ימי עסקים.</p>
+
+        <h2>עדכון ההצהרה</h2>
+        <p>ההצהרה עודכנה לאחרונה באוגוסט 2026.</p>
+
+        <p><a class="back" href="index.html"><span>חזרה לעמוד הבית</span><span aria-hidden="true" dir="ltr">←</span></a></p>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="wrap">
+        <div class="footer-brand">
+            <img src="logo.webp" alt="" width="34" height="34">
+            <span>ברכת הנשיא · פיתוח תוכנה מותאם בטכנולוגיית AI</span>
+        </div>
+        <nav aria-label="ניווט תחתון">
+            <a href="index.html">עמוד הבית</a>
+            <a href="index.html#contact">יצירת קשר</a>
+            <span class="year">© 2026</span>
+        </nav>
+    </div>
+</footer>
+
+<button type="button" class="a11y-toggle" id="a11yToggle" data-a11y-open aria-expanded="false" aria-controls="a11yPanel" aria-label="תפריט נגישות" title="תפריט נגישות">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z"></path></svg>
+</button>
+<div class="a11y-scrim" id="a11yScrim" hidden></div>
+<div class="a11y-panel" id="a11yPanel" role="dialog" aria-modal="true" aria-labelledby="a11yTitle">
+    <div class="a11y-head">
+        <h2 id="a11yTitle">תפריט נגישות</h2>
+        <button type="button" class="a11y-close" id="a11yClose" aria-label="סגירת תפריט הנגישות">✕</button>
+    </div>
+    <div>
+        <span class="a11y-label" id="a11ySizeLabel">גודל טקסט</span>
+        <div class="a11y-size">
+            <button type="button" data-a11y="font-down" aria-label="הקטנת גודל הטקסט">A−</button>
+            <output id="a11ySize" for="a11ySizeLabel">100%</output>
+            <button type="button" data-a11y="font-up" aria-label="הגדלת גודל הטקסט">A+</button>
+        </div>
+    </div>
+    <button type="button" class="a11y-opt" data-a11y="contrast" aria-pressed="false">ניגודיות גבוהה</button>
+    <button type="button" class="a11y-opt" data-a11y="grayscale" aria-pressed="false">גווני אפור</button>
+    <button type="button" class="a11y-opt" data-a11y="underline" aria-pressed="false">הדגשת קישורים</button>
+    <button type="button" class="a11y-opt" data-a11y="readable" aria-pressed="false">גופן קריא</button>
+    <button type="button" class="a11y-opt" data-a11y="motion" aria-pressed="false">עצירת אנימציות</button>
+    <button type="button" class="a11y-reset" data-a11y="reset">איפוס הגדרות הנגישות</button>
+</div>
+
+<script src="a11y.js" defer></script>
+</body>
+</html>
