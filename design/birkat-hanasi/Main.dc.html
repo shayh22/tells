@@ -1,0 +1,326 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;800;900&family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background: #071426;
+      font-family: 'Assistant', 'Arial Hebrew', Arial, sans-serif;
+      color: #0a1a30;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: #0a1a30; text-decoration: none; }
+    a:hover { color: #b5822a; }
+    h1, h2, h3 { margin: 0; font-family: 'Frank Ruhl Libre', 'David Libre', Georgia, serif; }
+    p { margin: 0; text-wrap: pretty; }
+  </style>
+</helmet>
+
+<div dir="rtl" style="width: 1440px; background: #f6f1e7; overflow: hidden">
+
+  <!-- ============ TOP BAR ============ -->
+  <div style="display: flex; align-items: center; justify-content: space-between; gap: 32px; padding: 22px 88px; border-bottom: 1px solid #ded5c4">
+    <div style="display: flex; align-items: center; gap: 14px">
+      <img src="birkat-hanasi-logo.webp" alt="ברכת הנשיא" width="46" height="46" style="width: 46px; height: 46px; border-radius: 50%; display: block">
+      <div style="display: flex; flex-direction: column; gap: 1px">
+        <span style="font-family: 'Frank Ruhl Libre', 'David Libre', Georgia, serif; font-size: 22px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.1">ברכת הנשיא</span>
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; color: #6b7789">בית תוכנה · AI לעסקים</span>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 34px">
+      <a href="#work" style="font-size: 16px; font-weight: 600">עבודות</a>
+      <a href="#services" style="font-size: 16px; font-weight: 600">מה אנחנו בונים</a>
+      <a href="#how" style="font-size: 16px; font-weight: 600">איך זה עובד</a>
+      <a href="#contact" style="display: flex; align-items: center; gap: 9px; background: {{accent}}; color: #ffffff; font-size: 15px; font-weight: 700; padding: 11px 22px; border-radius: 2px">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5z"></path></svg>
+        <span>וואטסאפ</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ============ HERO ============ -->
+  <div style="position: relative; padding: 92px 88px 78px">
+
+    <!-- node-mesh motif, bleeding off the left edge -->
+    <svg viewBox="0 0 460 460" width="620" height="620" aria-hidden="true" style="position: absolute; left: -215px; top: -30px; opacity: 0.34">
+      <g fill="none" stroke="#143a6b" stroke-width="1" opacity="0.55">
+        <path d="M230 30 L90 120 L60 260 L150 380 L300 400 L400 290 L380 140 Z"></path>
+        <path d="M230 30 L150 380 M90 120 L400 290 M60 260 L380 140 M300 400 L230 30 M90 120 L300 400 M400 290 L150 380"></path>
+        <path d="M230 30 L215 215 M90 120 L215 215 M60 260 L215 215 M150 380 L215 215 M300 400 L215 215 M400 290 L215 215 M380 140 L215 215"></path>
+      </g>
+      <g fill="#143a6b">
+        <circle cx="230" cy="30" r="5"></circle><circle cx="90" cy="120" r="5"></circle>
+        <circle cx="60" cy="260" r="5"></circle><circle cx="150" cy="380" r="5"></circle>
+        <circle cx="300" cy="400" r="5"></circle><circle cx="400" cy="290" r="5"></circle>
+        <circle cx="380" cy="140" r="5"></circle>
+      </g>
+      <circle cx="215" cy="215" r="9" fill="{{accent}}"></circle>
+      <circle cx="230" cy="230" r="212" fill="none" stroke="{{accent}}" stroke-width="1.5" opacity="0.6"></circle>
+    </svg>
+
+    <div style="position: relative; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; align-items: end">
+      <div style="grid-column: span 8">
+        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 26px">
+          <span style="width: 46px; height: 2px; background: {{accent}}; display: block"></span>
+          <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.2em; color: #b5822a">בית תוכנה לפיתוח מותאם</span>
+        </div>
+        <h1 style="font-size: 98px; font-weight: 800; line-height: 0.93; letter-spacing: -0.025em; color: #0a1a30">
+          תוכנה שנתפרת<br>לעסק שלך.<br>
+          <span style="color: {{accent}}">במהירות הבזק.</span>
+        </h1>
+      </div>
+      <div style="grid-column: span 4; display: flex; flex-direction: column; gap: 28px; padding-bottom: 10px">
+        <p style="font-size: 20px; line-height: 1.6; color: #3c4a5e">
+          אנחנו בונים מערכות ואפליקציות בהתאמה אישית — לפי הדרך שבה העסק שלך באמת עובד, לא לפי תבנית מדף. טכנולוגיית AI מקצרת את הדרך מרעיון למערכת עובדת.
+        </p>
+        <div style="display: flex; flex-direction: column; gap: 12px">
+          <a href="#contact" style="display: flex; align-items: center; justify-content: center; gap: 10px; background: {{accent}}; color: #ffffff; font-size: 19px; font-weight: 700; padding: 18px 28px; border-radius: 2px; box-shadow: 0 10px 24px -12px rgba(181,130,42,0.9)">
+            <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5z"></path></svg>
+            <span>דברו איתנו בוואטסאפ</span>
+          </a>
+          <a href="#work" style="display: flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid #0a1a30; color: #0a1a30; font-size: 17px; font-weight: 600; padding: 15px 28px; border-radius: 2px">
+            <span>לראות מה כבר בנינו</span>
+            <span dir="ltr" style="font-size: 15px">↓</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ PROJECT TICKER ============ -->
+  <div style="display: flex; align-items: center; gap: 26px; padding: 20px 88px; background: #0a1a30; color: #f6f1e7">
+    <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.2em; color: #d8a63e; white-space: nowrap">כבר באוויר</span>
+    <span style="flex-grow: 1; height: 1px; background: rgba(246,241,231,0.22); display: block"></span>
+    <div style="display: flex; align-items: center; gap: 26px; font-family: 'Frank Ruhl Libre', 'David Libre', Georgia, serif; font-size: 21px; font-weight: 700; white-space: nowrap">
+      <span>ליד פל</span><span style="color: #d8a63e">·</span>
+      <span>קליניק-פל</span><span style="color: #d8a63e">·</span>
+      <span>קלסר</span><span style="color: #d8a63e">·</span>
+      <span>אח לטוב</span><span style="color: #d8a63e">·</span>
+      <span>מראות הנפש</span>
+    </div>
+  </div>
+
+  <!-- ============ SERVICES ============ -->
+  <div id="services" style="padding: 96px 88px 88px">
+    <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; margin-bottom: 54px">
+      <h2 style="grid-column: span 6; font-size: 54px; font-weight: 800; line-height: 1.05; letter-spacing: -0.02em">מה אנחנו בונים</h2>
+      <p style="grid-column: span 5; align-self: end; font-size: 18px; line-height: 1.65; color: #5f6d80">
+        כל מערכת נכתבת מאפס סביב התהליך שלכם — ומגיעה עם ליווי אחרי העלייה לאוויר, לא עם חוזה תמיכה מנותק.
+      </p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border-top: 1px solid #ded5c4">
+      <div style="display: flex; gap: 22px; padding: 34px 40px 34px 0; border-bottom: 1px solid #ded5c4; border-left: 1px solid #ded5c4">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#b5822a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 4px"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 9h18M8 20V9"></path></svg>
+        <div style="display: flex; flex-direction: column; gap: 9px">
+          <h3 style="font-size: 25px; font-weight: 700">מערכות ניהול ו‑CRM מותאמים</h3>
+          <p style="font-size: 17px; line-height: 1.6; color: #5f6d80">לידים, לקוחות, עסקאות והתחשבנות — במסך אחד שמדבר בשפה של הענף שלכם.</p>
+        </div>
+      </div>
+      <div style="display: flex; gap: 22px; padding: 34px 0 34px 40px; border-bottom: 1px solid #ded5c4">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#b5822a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 4px"><rect x="6" y="2" width="12" height="20" rx="2.5"></rect><path d="M11 18.5h2"></path></svg>
+        <div style="display: flex; flex-direction: column; gap: 9px">
+          <h3 style="font-size: 25px; font-weight: 700">אפליקציות ואתרים לעסקים</h3>
+          <p style="font-size: 17px; line-height: 1.6; color: #5f6d80">חוויית מובייל מהירה בעברית מלאה, נגישה ומוכנה למנועי חיפוש מהיום הראשון.</p>
+        </div>
+      </div>
+      <div style="display: flex; gap: 22px; padding: 34px 40px 34px 0; border-bottom: 1px solid #ded5c4; border-left: 1px solid #ded5c4">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#b5822a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 4px"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"></path><circle cx="12" cy="12" r="4"></circle></svg>
+        <div style="display: flex; flex-direction: column; gap: 9px">
+          <h3 style="font-size: 25px; font-weight: 700">אוטומציות ו‑AI בתוך התהליך</h3>
+          <p style="font-size: 17px; line-height: 1.6; color: #5f6d80">סיווג פניות, מסמכים שמתמלאים לבד, סיכומים והתראות — במקום עבודה ידנית חוזרת.</p>
+        </div>
+      </div>
+      <div style="display: flex; gap: 22px; padding: 34px 0 34px 40px; border-bottom: 1px solid #ded5c4">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#b5822a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0; margin-top: 4px"><path d="M12 3l7.5 3.2v5c0 4.4-3.1 8.1-7.5 9.3-4.4-1.2-7.5-4.9-7.5-9.3v-5z"></path><path d="M9.2 12.1l2 2 3.6-3.9"></path></svg>
+        <div style="display: flex; flex-direction: column; gap: 9px">
+          <h3 style="font-size: 25px; font-weight: 700">אחסון, אבטחה וליווי שוטף</h3>
+          <p style="font-size: 17px; line-height: 1.6; color: #5f6d80">העלאה לאוויר, גיבויים ועדכונים — עם איש קשר אחד שמכיר את המערכת שלכם.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ WORK ============ -->
+  <div id="work" style="padding: 88px 88px 96px; background: #f0e9dc">
+    <div style="display: flex; align-items: end; justify-content: space-between; gap: 40px; margin-bottom: 12px">
+      <h2 style="font-size: 54px; font-weight: 800; line-height: 1.05; letter-spacing: -0.02em">פרויקטים שכבר רצים</h2>
+      <p style="max-width: 420px; font-size: 17px; line-height: 1.6; color: #5f6d80; padding-bottom: 8px">
+        ההוכחה שלנו היא לא מצגת — אלה מערכות חיות שעסקים עובדים בהן כל יום.
+      </p>
+    </div>
+
+    <!-- 01 -->
+    <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; align-items: start; padding: 38px 0; border-top: 1px solid #d6cbb6">
+      <span dir="ltr" style="grid-column: span 1; font-family: 'Frank Ruhl Libre', 'David Libre', Georgia, serif; font-size: 46px; font-weight: 800; line-height: 1; color: {{accent}}">01</span>
+      <div style="grid-column: span 5; display: flex; flex-direction: column; gap: 10px">
+        <h3 style="font-size: 38px; font-weight: 800; line-height: 1.1; letter-spacing: -0.015em">ליד פל — השוואה חכמה</h3>
+        <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; color: #b5822a">CRM לתחום הסלולר</span>
+      </div>
+      <div style="grid-column: span 6; display: flex; flex-direction: column; gap: 16px; padding-top: 6px">
+        <p style="font-size: 18px; line-height: 1.65; color: #3c4a5e">
+          לידים נכנסים, רשת סוחרים וחנויות, השוואת חבילות ומפעילים, עסקאות סגורות והתחשבנות עמלות — הכול במערכת אחת, עם דוחות שמראים איפה הכסף באמת נמצא.
+        </p>
+        <a href="#" style="display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 700; color: #0a1a30; border-bottom: 1px solid {{accent}}; align-self: start; padding-bottom: 3px">
+          <span>למקרה הבוחן</span><span dir="ltr">←</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- 02 -->
+    <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; align-items: start; padding: 38px 0; border-top: 1px solid #d6cbb6">
+      <span dir="ltr" style="grid-column: span 1; font-family: 'Frank Ruhl Libre', 'David Libre', Georgia, serif; font-size: 46px; font-weight: 800; line-height: 1; color: {{accent}}">02</span>
+      <div style="grid-column: span 5; display: flex; flex-direction: column; gap: 10px">
+        <h3 style="font-size: 38px; font-weight: 800; line-height: 1.1; letter-spacing: -0.015em">קליניק‑פל</h3>
+        <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; color: #b5822a">[קטגוריה — למשל: ניהול קליניקה]</span>
+      </div>
+      <div style="grid-column: span 6; display: flex; flex-direction: column; gap: 16px; padding-top: 6px">
+        <p style="font-size: 18px; line-height: 1.65; color: #3c4a5e">
+          [משפט אחד: מה קליניק‑פל עושה, למי, ומה הוא חוסך למשתמש שלו]
+        </p>
+        <a href="#" style="display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 700; color: #0a1a30; border-bottom: 1px solid {{accent}}; align-self: start; padding-bottom: 3px">
+          <span>למקרה הבוחן</span><span dir="ltr">←</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- 03 -->
+    <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; align-items: start; padding: 38px 0; border-top: 1px solid #d6cbb6">
+      <span dir="ltr" style="grid-column: span 1; font-family: 'Frank Ruhl Libre', 'David Libre', Georgia, serif; font-size: 46px; font-weight: 800; line-height: 1; color: {{accent}}">03</span>
+      <div style="grid-column: span 5; display: flex; flex-direction: column; gap: 10px">
+        <h3 style="font-size: 38px; font-weight: 800; line-height: 1.1; letter-spacing: -0.015em">קלסר</h3>
+        <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; color: #b5822a">[קטגוריה]</span>
+      </div>
+      <div style="grid-column: span 6; display: flex; flex-direction: column; gap: 16px; padding-top: 6px">
+        <p style="font-size: 18px; line-height: 1.65; color: #3c4a5e">
+          [משפט אחד: מה קלסר עושה, למי, ומה הוא חוסך למשתמש שלו]
+        </p>
+        <a href="#" style="display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 700; color: #0a1a30; border-bottom: 1px solid {{accent}}; align-self: start; padding-bottom: 3px">
+          <span>למקרה הבוחן</span><span dir="ltr">←</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- 04 -->
+    <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; align-items: start; padding: 38px 0; border-top: 1px solid #d6cbb6">
+      <span dir="ltr" style="grid-column: span 1; font-family: 'Frank Ruhl Libre', 'David Libre', Georgia, serif; font-size: 46px; font-weight: 800; line-height: 1; color: {{accent}}">04</span>
+      <div style="grid-column: span 5; display: flex; flex-direction: column; gap: 10px">
+        <h3 style="font-size: 38px; font-weight: 800; line-height: 1.1; letter-spacing: -0.015em">אח לטוב</h3>
+        <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; color: #b5822a">[קטגוריה]</span>
+      </div>
+      <div style="grid-column: span 6; display: flex; flex-direction: column; gap: 16px; padding-top: 6px">
+        <p style="font-size: 18px; line-height: 1.65; color: #3c4a5e">
+          [משפט אחד: מה אח לטוב עושה, למי, ומה הוא חוסך למשתמש שלו]
+        </p>
+        <a href="#" style="display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 700; color: #0a1a30; border-bottom: 1px solid {{accent}}; align-self: start; padding-bottom: 3px">
+          <span>למקרה הבוחן</span><span dir="ltr">←</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- 05 -->
+    <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; align-items: start; padding: 38px 0; border-top: 1px solid #d6cbb6; border-bottom: 1px solid #d6cbb6">
+      <span dir="ltr" style="grid-column: span 1; font-family: 'Frank Ruhl Libre', 'David Libre', Georgia, serif; font-size: 46px; font-weight: 800; line-height: 1; color: {{accent}}">05</span>
+      <div style="grid-column: span 5; display: flex; flex-direction: column; gap: 10px">
+        <h3 style="font-size: 38px; font-weight: 800; line-height: 1.1; letter-spacing: -0.015em">מראות הנפש</h3>
+        <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; color: #b5822a">אתר תוכן רב‑לשוני</span>
+      </div>
+      <div style="grid-column: span 6; display: flex; flex-direction: column; gap: 16px; padding-top: 6px">
+        <p style="font-size: 18px; line-height: 1.65; color: #3c4a5e">
+          אוסף סיפורים בחמש שפות, עם תפריט נגישות מלא, שיתוף, לייקים ותגובות — בנוי לקריאה בנייד ולאינדוקס נקי בגוגל.
+        </p>
+        <a href="https://shayh22.github.io/tells/" style="display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 700; color: #0a1a30; border-bottom: 1px solid {{accent}}; align-self: start; padding-bottom: 3px">
+          <span>לאתר החי</span><span dir="ltr">←</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ HOW ============ -->
+  <div id="how" style="padding: 92px 88px">
+    <div style="display: flex; align-items: end; justify-content: space-between; gap: 40px; margin-bottom: 52px">
+      <h2 style="font-size: 54px; font-weight: 800; line-height: 1.05; letter-spacing: -0.02em">איך זה עובד</h2>
+      <span style="flex-grow: 1; height: 1px; background: #ded5c4; display: block; margin-bottom: 16px"></span>
+      <span style="font-size: 15px; font-weight: 600; color: #5f6d80; padding-bottom: 8px">משיחה ראשונה ועד מערכת באוויר</span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px">
+      <div style="display: flex; flex-direction: column; gap: 14px; border-top: 3px solid {{accent}}; padding-top: 22px">
+        <span dir="ltr" style="font-family: 'Frank Ruhl Libre', 'David Libre', Georgia, serif; font-size: 34px; font-weight: 800; color: {{accent}}">01</span>
+        <h3 style="font-size: 27px; font-weight: 700">שיחה קצרה</h3>
+        <p style="font-size: 17px; line-height: 1.65; color: #5f6d80">מספרים לנו איפה כואב בתהליך. אנחנו חוזרים עם הצעה ברורה — מה נבנה, בכמה זמן ובכמה.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 14px; border-top: 3px solid #0a1a30; padding-top: 22px">
+        <span dir="ltr" style="font-family: 'Frank Ruhl Libre', 'David Libre', Georgia, serif; font-size: 34px; font-weight: 800; color: #0a1a30">02</span>
+        <h3 style="font-size: 27px; font-weight: 700">אב‑טיפוס שאפשר לגעת בו</h3>
+        <p style="font-size: 17px; line-height: 1.65; color: #5f6d80">במקום מסמך אפיון ארוך, אתם מקבלים מסכים עובדים מוקדם — ומכוונים אותנו לפני שנכתבת שורת קוד מיותרת.</p>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 14px; border-top: 3px solid #0a1a30; padding-top: 22px">
+        <span dir="ltr" style="font-family: 'Frank Ruhl Libre', 'David Libre', Georgia, serif; font-size: 34px; font-weight: 800; color: #0a1a30">03</span>
+        <h3 style="font-size: 27px; font-weight: 700">עלייה לאוויר וליווי</h3>
+        <p style="font-size: 17px; line-height: 1.65; color: #5f6d80">אנחנו מעלים, מלמדים את הצוות ונשארים בקשר — התאמות והרחבות ממשיכות גם אחרי ההשקה.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ CONTACT ============ -->
+  <div id="contact" style="background: #0a1a30; color: #f6f1e7; padding: 86px 88px">
+    <div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 40px; align-items: center">
+      <div style="grid-column: span 7; display: flex; flex-direction: column; gap: 20px">
+        <h2 style="font-size: 62px; font-weight: 800; line-height: 1.02; letter-spacing: -0.025em; color: #f6f1e7">
+          יש לך תהליך שאוכל<br>לך את היום?
+        </h2>
+        <p style="font-size: 20px; line-height: 1.6; color: rgba(246,241,231,0.78); max-width: 560px">
+          כתבו לנו בוואטסאפ בשורה אחת מה מציק — נחזור אליכם עם הצעה קונקרטית, בלי התחייבות.
+        </p>
+      </div>
+      <div style="grid-column: span 5; display: flex; flex-direction: column; gap: 18px">
+        <a href="#" style="display: flex; align-items: center; justify-content: center; gap: 12px; background: {{accent}}; color: #ffffff; font-size: 21px; font-weight: 700; padding: 22px 30px; border-radius: 2px">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5z"></path></svg>
+          <span>לשיחת וואטסאפ</span>
+        </a>
+        <div style="display: flex; flex-direction: column; gap: 10px; border-top: 1px solid rgba(246,241,231,0.2); padding-top: 18px">
+          <div style="display: flex; align-items: center; gap: 10px; font-size: 17px">
+            <span style="color: #d8a63e; font-weight: 700">טלפון</span>
+            <span dir="ltr" style="color: rgba(246,241,231,0.85)">[מספר הטלפון שלכם]</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px; font-size: 17px">
+            <span style="color: #d8a63e; font-weight: 700">מייל</span>
+            <span dir="ltr" style="color: rgba(246,241,231,0.85)">[כתובת המייל שלכם]</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ FOOTER ============ -->
+  <div style="display: flex; align-items: center; justify-content: space-between; gap: 32px; padding: 30px 88px; background: #071426; color: rgba(246,241,231,0.6)">
+    <div style="display: flex; align-items: center; gap: 12px">
+      <img src="birkat-hanasi-logo.webp" alt="" width="34" height="34" style="width: 34px; height: 34px; border-radius: 50%; display: block">
+      <span style="font-size: 15px">ברכת הנשיא · פיתוח תוכנה מותאם בטכנולוגיית AI</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 26px; font-size: 14px">
+      <a href="#work" style="color: rgba(246,241,231,0.6)">עבודות</a>
+      <a href="#contact" style="color: rgba(246,241,231,0.6)">יצירת קשר</a>
+      <span dir="ltr">© 2026</span>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{"accent":{"editor":"color","default":"#b5822a","options":["#b5822a","#d8a63e","#143a6b","#0a1a30"],"section":"מותג"},"$preview":{"width":1440,"height":3520}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { accent: this.props.accent ?? '#b5822a' };
+  }
+}
+</script>
+</body>
+</html>
