@@ -73,6 +73,11 @@ SEO = {
               "old craftsman handed him a pair of clouded lenses. A fable about envy between "
               "siblings and comparing yourself away."),
      "keywords": "envy between siblings, comparing children, sibling jealousy, talented brother, self-worth in children, raising children"},
+ 10: {"label": "the example a child copies, not the lecture",
+     "desc": ("He lectured the younger ones about respect and then cut the queue himself — and "
+              "watched his cousin do exactly that. A fable about a double standard and the "
+              "example children actually learn from."),
+     "keywords": "leading by example, double standard, children copy behaviour, role model, respect, raising children, what parents model"},
 },
 
 "he": {
@@ -124,6 +129,10 @@ SEO = {
      "desc": ("כל מחמאה שקיבל אחיו הרגישה כהוכחה שהוא שווה פחות — עד שאומן זקן הגיש לו זוג עדשות "
               "עכורות. משל על קנאה בין אחים ועל השוואה שמוחקת אותנו."),
      "keywords": "קנאה בין אחים, השוואה בין ילדים, אח מוכשר, דימוי עצמי אצל ילדים, חינוך ילדים, תחרות בין אחים"},
+ 10: {"label": "דוגמה אישית מול הטפה",
+     "desc": ("הוא הטיף לקטנים על כבוד ואז עקף בעצמו את התור — וראה את בן דודו עושה בדיוק את "
+              "זה. משל על מוסר כפול ועל הדוגמה שילדים באמת לומדים ממנה."),
+     "keywords": "דוגמה אישית, מוסר כפול, ילדים מחקים התנהגות, מודל לחיקוי, כבוד, חינוך ילדים, מה שההורים משדרים"},
 },
 
 "ru": {
@@ -185,6 +194,11 @@ SEO = {
               "старый ремесленник не дал ему очки с мутными стёклами. Притча о зависти между "
               "детьми и о сравнении, которое стирает."),
      "keywords": "зависть между братьями, сравнивать детей, детская ревность, талантливый брат, самооценка ребёнка, воспитание детей"},
+ 10: {"label": "пример, который копируют, а не нравоучение",
+     "desc": ("Он поучал младших об уважении, а сам лез без очереди — и увидел, как двоюродный "
+              "брат делает ровно то же. Притча о двойной морали и о примере, с которого дети "
+              "берут на самом деле."),
+     "keywords": "личный пример, двойная мораль, дети копируют поведение, образец для подражания, уважение, воспитание детей"},
 },
 
 "es": {
@@ -247,6 +261,11 @@ SEO = {
               "viejo artesano le dio unas lentes turbias. Una fábula sobre la envidia entre "
               "hermanos y sobre compararse hasta desaparecer."),
      "keywords": "envidia entre hermanos, comparar a los hijos, celos entre hermanos, hermano talentoso, autoestima infantil, criar hijos"},
+ 10: {"label": "el ejemplo que copian, no el sermón",
+     "desc": ("Sermoneaba a los pequeños sobre el respeto y luego se colaba en la fila — y vio a "
+              "su primo hacer exactamente eso. Una fábula sobre el doble rasero y sobre el "
+              "ejemplo del que los niños aprenden de verdad."),
+     "keywords": "predicar con el ejemplo, doble rasero, los niños copian conductas, modelo a seguir, respeto, criar hijos"},
 },
 
 "zh": {
@@ -294,5 +313,9 @@ SEO = {
      "desc": ("弟弟每被夸一句，他都觉得是自己不如人的证据 —— 直到一位老工匠递给他一副浑浊的镜片。"
               "一则关于手足之间的嫉妒、关于比较如何抹去一个人的寓言。"),
      "keywords": "手足之间的嫉妒, 拿孩子作比较, 兄弟嫉妒, 有才华的兄弟, 孩子的自我价值, 教养孩子"},
+ 10: {"label": "孩子学的是榜样，不是说教",
+     "desc": ("他教训小孩子要懂得尊重，自己却去插队 —— 然后看着表弟做了一模一样的事。"
+              "一则关于双重标准、关于孩子真正学的是什么的寓言。"),
+     "keywords": "以身作则, 双重标准, 孩子模仿行为, 榜样, 尊重, 教养孩子, 父母示范"},
 },
 }
